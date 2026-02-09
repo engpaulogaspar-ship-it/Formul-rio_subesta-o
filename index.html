@@ -1069,7 +1069,7 @@
       <div class="card-header">
         <h3 class="card-title">
           <i class="fas fa-search"></i>
-          CONSTATAÇÕES
+          CONSTATAÇões
         </h3>
       </div>
       
@@ -1079,7 +1079,7 @@
           <div class="checkbox-option">
             <input type="checkbox" id="inconformidades" name="constatacoes" value="inconformidades" onchange="atualizarTextoGerado()">
             <label for="inconformidades" class="checkbox-text">
-              <strong>Foram identificadas inconformidades:</strong><br>
+              <strong>Foram identificadas inconformidades, consistindo em:</strong><br>
               <small style="color: #666;">(Exemplos: avarias no sistema de drenagem, tubulações abertas e parcialmente obstruídas.)</small>
             </label>
           </div>
@@ -1096,7 +1096,7 @@
           <div class="checkbox-option">
             <input type="checkbox" id="semInconformidades" name="constatacoes" value="semInconformidades" onchange="atualizarTextoGerado()">
             <label for="semInconformidades" class="checkbox-text">
-              <strong>Não foram identificadas inconformidades:</strong><br>
+              <strong>Não foram identificadas inconformidades.</strong><br>
               <small style="color: #666;">Os sistemas de contenção de óleo e de separação de água e óleo encontram-se em conformidade, não sendo observadas irregularidades durante a vistoria.</small>
             </label>
           </div>
@@ -1420,10 +1420,6 @@
       }
       
       textoCompleto += `.`;
-      
-      if (subestacao && subestacao !== '___________________________') {
-        textoCompleto += ` Na subestação ${subestacao}`;
-      }
       
       if (textoInconformidades) {
         textoCompleto += ` ${textoInconformidades}`;
@@ -1960,7 +1956,7 @@
     }
     
     // ============================================
-    // FUNÇÃO GERAR PDF COM MELHORIAS VISUAIS
+    // FUNÇÃO GERAR PDF COM AS MODIFICAÇÕES SOLICITADAS
     // ============================================
     function gerarPDF() {
       try {
@@ -2133,32 +2129,20 @@
           yPos += 10;
         };
         
-        // FUNÇÃO CORRIGIDA PARA ADICIONAR IMAGENS
+        // FUNÇÃO PARA ADICIONAR IMAGENS
         const adicionarImagem = (dataUrl, descricao, index) => {
           return new Promise((resolve) => {
-            // Primeiro verificar se precisa de nova página
-            if (yPos > 200) {
-              const paginaAtual = pdf.internal.getNumberOfPages();
-              adicionarRodape(paginaAtual, paginaAtual + 1);
-              pdf.addPage();
-              adicionarCabecalho();
-              yPos = 40;
-            }
-            
             try {
-              // Criar elemento de imagem
               const img = new Image();
               
               img.onload = function() {
                 try {
-                  // Configurar dimensões máximas
-                  const maxWidth = 140; // mm
-                  const maxHeight = 80; // mm
+                  const maxWidth = 140;
+                  const maxHeight = 80;
                   
-                  let width = img.width;
-                  let height = img.height;
+                  let width = this.width;
+                  let height = this.height;
                   
-                  // Calcular proporções para caber no PDF
                   const widthRatio = maxWidth / width;
                   const heightRatio = maxHeight / height;
                   const ratio = Math.min(widthRatio, heightRatio);
@@ -2166,64 +2150,74 @@
                   width = width * ratio;
                   height = height * ratio;
                   
-                  // Centralizar horizontalmente
                   const xPos = (pageWidth - width) / 2;
                   
-                  // Adicionar legenda antes da imagem
+                  // Adicionar legenda
                   pdf.setFontSize(9);
                   pdf.setFont("helvetica", "bold");
-                  pdf.text(`Foto ${index + 1}: ${descricao || 'Registro fotográfico'}`, pageWidth / 2, yPos, { align: 'center' });
+                  pdf.text(`Foto ${index + 1}: ${descricao || 'Registro fotográfico'}`, 
+                          pageWidth / 2, yPos, { align: 'center' });
                   yPos += 5;
                   
-                  // Criar canvas para processar a imagem
-                  const canvas = document.createElement('canvas');
-                  const ctx = canvas.getContext('2d');
+                  // Adicionar imagem
+                  pdf.addImage(dataUrl, 'JPEG', xPos, yPos, width, height);
                   
-                  // Definir tamanho do canvas
-                  canvas.width = img.width;
-                  canvas.height = img.height;
-                  
-                  // Desenhar imagem no canvas
-                  ctx.drawImage(img, 0, 0, img.width, img.height);
-                  
-                  // Converter para JPEG (mais compatível com jsPDF)
-                  const jpegDataUrl = canvas.toDataURL('image/jpeg', 0.7);
-                  
-                  // Adicionar imagem ao PDF
-                  pdf.addImage(jpegDataUrl, 'JPEG', xPos, yPos, width, height);
-                  
-                  // Atualizar posição Y
                   yPos += height + 15;
-                  
                   resolve();
                 } catch (error) {
-                  console.error('Erro ao processar imagem:', error);
-                  // Adicionar texto como fallback
+                  console.error('Erro ao adicionar imagem:', error);
                   pdf.setFontSize(10);
-                  pdf.text(`[Foto ${index + 1}: Imagem não pôde ser carregada]`, marginLeft, yPos);
+                  pdf.text(`[Foto ${index + 1}: ${descricao || 'Imagem'}]`, marginLeft, yPos);
                   yPos += 10;
                   resolve();
                 }
               };
               
               img.onerror = function() {
-                console.error('Imagem não pôde ser carregada');
                 pdf.setFontSize(10);
-                pdf.text(`[Foto ${index + 1}: Imagem não disponível]`, marginLeft, yPos);
+                pdf.text(`[Foto ${index + 1}: Erro ao carregar]`, marginLeft, yPos);
                 yPos += 10;
                 resolve();
               };
               
-              // Configurar a fonte da imagem
               img.src = dataUrl;
-              img.crossOrigin = 'Anonymous';
               
             } catch (error) {
-              console.error('Erro geral ao adicionar imagem:', error);
-              yPos += 20;
+              console.error('Erro geral:', error);
+              yPos += 10;
               resolve();
             }
           });
+        };
+        
+        // MODIFICAÇÃO IMPORTANTE: Função para adicionar constatações sem o texto padrão
+        const adicionarConstatacoes = () => {
+          const temInconformidades = document.getElementById('inconformidades').checked;
+          const semInconformidades = document.getElementById('semInconformidades').checked;
+          const descInconformidades = document.getElementById('descricaoInconformidades').value || '';
+          const descSemInconformidades = document.getElementById('descricaoSemInconformidades').value || '';
+          
+          pdf.setFontSize(10);
+          pdf.setFont("helvetica", "normal");
+          
+          // MODIFICAÇÃO: Não adicionar o texto padrão "Foram identificadas inconformidades, consistindo em:"
+          if (temInconformidades && descInconformidades) {
+            // Adiciona APENAS a descrição do usuário, sem o texto padrão
+            adicionarTexto(descInconformidades, 10);
+          } else if (semInconformidades) {
+            if (descSemInconformidades) {
+              adicionarTexto(descSemInconformidades, 10);
+            } else {
+              pdf.text('Não foram identificadas inconformidades durante a vistoria.', marginLeft, yPos);
+              yPos += 6;
+              pdf.text('Os sistemas de contenção de óleo e de separação de água e óleo encontram-se em conformidade,', marginLeft, yPos);
+              yPos += 5;
+              pdf.text('não sendo observadas irregularidades durante a vistoria.', marginLeft, yPos);
+              yPos += 10;
+            }
+          }
+          
+          yPos += 10;
         };
         
         // Começar a primeira página
@@ -2257,51 +2251,6 @@
         
         yPos += 10;
         
-        // CONSTATAÇÕES
-        verificarNovaPagina(50);
-        pdf.setFontSize(12);
-        pdf.setFont("helvetica", "bold");
-        pdf.setTextColor(...PDF_CONFIG.colors.primary);
-        pdf.text('CONSTATAÇÕES', marginLeft, yPos);
-        yPos += 10;
-        
-        const temInconformidades = document.getElementById('inconformidades').checked;
-        const semInconformidades = document.getElementById('semInconformidades').checked;
-        const descInconformidades = document.getElementById('descricaoInconformidades').value || '';
-        const descSemInconformidades = document.getElementById('descricaoSemInconformidades').value || '';
-        
-        pdf.setFontSize(10);
-        pdf.setFont("helvetica", "normal");
-        
-        // CORREÇÃO COMPLETA: Remover símbolos especiais e usar texto simples
-        if (temInconformidades) {
-          // Usar texto simples sem símbolos especiais
-          pdf.text('Foram identificadas inconformidades, consistindo em:', marginLeft, yPos);
-          yPos += 6;
-          if (descInconformidades) {
-            adicionarTexto(descInconformidades, 10);
-          }
-        } else if (semInconformidades) {
-          // Usar texto simples sem símbolos especiais
-          pdf.text('Não foram identificadas inconformidades.', marginLeft, yPos);
-          yPos += 6;
-          if (descSemInconformidades) {
-            adicionarTexto(descSemInconformidades, 10);
-          } else {
-            pdf.text('Os sistemas de contenção de óleo e de separação de água e óleo encontram-se em conformidade,', marginLeft, yPos);
-            yPos += 5;
-            pdf.text('não sendo observadas irregularidades durante a vistoria.', marginLeft, yPos);
-            yPos += 10;
-          }
-        } else {
-          // Opções não marcadas - mostrar ambas como opções
-          pdf.text('Foram identificadas inconformidades, consistindo em:', marginLeft, yPos);
-          yPos += 6;
-          pdf.text('Não foram identificadas inconformidades.', marginLeft, yPos);
-          yPos += 6;
-        }
-        
-        yPos += 10;
         
         // REGISTROS FOTOGRÁFICOS (se houver fotos)
         if (fotos.length > 0) {
@@ -2317,11 +2266,10 @@
           pdf.text(`Total de ${fotos.length} foto(s) registrada(s):`, marginLeft, yPos);
           yPos += 10;
           
-          // Adicionar cada imagem de forma síncrona
+          // Adicionar cada imagem
           const processarImagens = async () => {
             for (let i = 0; i < fotos.length; i++) {
               const foto = fotos[i];
-              const descricao = foto.descricao || `Registro ${i + 1}`;
               
               // Verificar espaço antes de adicionar
               if (yPos > 180) {
@@ -2332,14 +2280,14 @@
                 yPos = 40;
               }
               
-              await adicionarImagem(foto.dataUrl, descricao, i);
+              await adicionarImagem(foto.dataUrl, foto.descricao, i);
             }
             
             // Após processar todas as imagens, adicionar conclusões
             adicionarConclusoes();
           };
           
-          // Função para adicionar as conclusões (conformidades e inconformidades)
+          // Função para adicionar as conclusões
           const adicionarConclusoes = () => {
             yPos += 10;
             
@@ -2516,7 +2464,7 @@
           pdf.setFont("helvetica", "normal");
           pdf.text(cargo, marginLeft + 55, yPos);
           yPos += 15;
-         
+          
           // Adicionar rodapé em todas as páginas
           const totalPaginas = pdf.internal.getNumberOfPages();
           for (let i = 1; i <= totalPaginas; i++) {
