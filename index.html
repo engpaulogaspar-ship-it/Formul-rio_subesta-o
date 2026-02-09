@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Relatório de Vistoria Técnica - ERCBA</title>
+  <title>Relatório de Vistoria Técnica - Subestação</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -97,28 +97,28 @@
     }
 
     .org-title {
-      font-size: 26px;
+      font-size: 22px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       letter-spacing: 0.5px;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     }
 
     .org-department {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 500;
       opacity: 0.95;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     }
 
     .report-title {
-      font-size: 18px;
+      font-size: 16px;
       background: rgba(255, 255, 255, 0.15);
-      padding: 10px 25px;
-      border-radius: 10px;
+      padding: 8px 20px;
+      border-radius: 8px;
       display: inline-block;
-      margin-top: 12px;
+      margin-top: 8px;
       font-weight: 600;
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.2);
@@ -127,7 +127,7 @@
     /* Layout em Grid */
     .dashboard-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 25px;
       margin-bottom: 30px;
     }
@@ -143,16 +143,16 @@
       }
       
       .org-title {
-        font-size: 22px;
+        font-size: 20px;
       }
       
       .org-department {
-        font-size: 18px;
+        font-size: 16px;
       }
       
       .report-title {
-        font-size: 16px;
-        padding: 8px 20px;
+        font-size: 14px;
+        padding: 6px 16px;
       }
     }
 
@@ -183,15 +183,15 @@
       }
       
       .org-title {
-        font-size: 20px;
+        font-size: 18px;
       }
       
       .org-department {
-        font-size: 16px;
+        font-size: 15px;
       }
       
       .report-title {
-        font-size: 15px;
+        font-size: 13px;
       }
     }
 
@@ -201,16 +201,20 @@
       }
       
       .org-title {
-        font-size: 18px;
+        font-size: 16px;
       }
       
       .org-department {
-        font-size: 15px;
+        font-size: 14px;
       }
       
       .logo-img {
         height: 55px;
         padding: 6px;
+      }
+      
+      .report-title {
+        font-size: 12px;
       }
     }
 
@@ -269,7 +273,7 @@
     }
 
     .form-group {
-      margin-bottom: 0;
+      margin-bottom: 20px;
     }
 
     .form-label {
@@ -297,104 +301,305 @@
       outline: none;
     }
 
-    /* Tabelas */
-    .table-container {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      border: 1px solid #e9ecef;
-      margin-bottom: 15px;
-    }
-
-    .custom-table {
-      width: 100%;
-      margin-bottom: 0;
-      border-collapse: separate;
-      border-spacing: 0;
-    }
-
-    .custom-table thead th {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: white;
-      font-weight: 600;
-      padding: 16px;
-      border: none;
-      text-align: left;
-      font-size: 14px;
-    }
-
-    .custom-table tbody td {
-      padding: 16px;
-      border-bottom: 1px solid #e9ecef;
-      vertical-align: middle;
-    }
-
-    .custom-table tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    .custom-table tbody tr:hover {
-      background-color: #f8f9fa;
-    }
-
-    .condicionante-cell {
-      min-width: 450px;
-      color: #333;
-      line-height: 1.5;
-    }
-
-    /* Radio Buttons Modernos */
-    .radio-group {
-      display: flex;
-      gap: 25px;
-      justify-content: flex-start;
-    }
-
-    .radio-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-    }
-
-    .radio-option input[type="radio"] {
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-      accent-color: var(--primary-color);
-    }
-
-    .radio-option label {
-      margin: 0;
-      cursor: pointer;
-      font-weight: 500;
-      color: #495057;
-    }
-
-    /* Textarea */
-    .observacoes-container {
+    /* Preview do texto gerado */
+    .texto-preview {
       background: #f8f9fa;
       padding: 20px;
       border-radius: 10px;
       border: 2px solid #e9ecef;
+      margin: 20px 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #333;
+      text-align: justify;
+      white-space: pre-line;
+      max-height: 300px;
+      overflow-y: auto;
     }
 
-    .observacoes-container textarea {
+    .texto-preview h5 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 5px;
+    }
+
+    /* Checkboxes com descrição */
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .checkbox-container {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #e9ecef;
+      transition: all 0.3s;
+    }
+
+    .checkbox-container.checked {
+      border-color: var(--primary-color);
+      background: rgba(0, 51, 102, 0.05);
+    }
+
+    .checkbox-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .checkbox-option input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      accent-color: var(--primary-color);
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .checkbox-text {
+      margin: 0;
+      cursor: pointer;
+      font-weight: 500;
+      color: #495057;
+      line-height: 1.5;
+    }
+
+    .checkbox-description {
+      margin-top: 15px;
+      padding-left: 32px;
+    }
+
+    .checkbox-description textarea {
       width: 100%;
-      min-height: 120px;
+      min-height: 100px;
       border: 2px solid #e9ecef;
       border-radius: 8px;
       padding: 15px;
       font-size: 15px;
       resize: vertical;
       transition: all 0.3s;
+      font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     }
 
-    .observacoes-container textarea:focus {
+    .checkbox-description textarea:focus {
       border-color: var(--primary-color);
       box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
       outline: none;
+    }
+
+    /* Textarea grandes */
+    .large-textarea {
+      min-height: 150px;
+      width: 100%;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 15px;
+      resize: vertical;
+      transition: all 0.3s;
+      font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    .large-textarea:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+      outline: none;
+    }
+
+    /* Lista de campos */
+    .field-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .field-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .field-number {
+      background: var(--primary-color);
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .field-input {
+      flex: 1;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      padding: 12px 15px;
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+
+    .field-input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+      outline: none;
+    }
+
+    /* Botões de Adicionar/Remover */
+    .btn-add-field {
+      background: linear-gradient(135deg, #6610f2, #6f42c1);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .btn-add-field:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(102, 16, 242, 0.3);
+    }
+
+    .btn-remove-field {
+      background: linear-gradient(135deg, #dc3545, #c82333);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      margin-left: 10px;
+      flex-shrink: 0;
+    }
+
+    .btn-remove-field:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+    }
+
+    /* Galeria de Fotos */
+    .foto-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .foto-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .foto-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .foto-preview {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6c757d;
+    }
+
+    .foto-actions {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 5px;
+    }
+
+    .foto-action-btn {
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .foto-action-btn:hover {
+      background: rgba(0, 0, 0, 0.9);
+      transform: scale(1.1);
+    }
+
+    .foto-description {
+      padding: 10px;
+      background: white;
+      border-top: 1px solid #e9ecef;
+    }
+
+    .foto-description input {
+      width: 100%;
+      border: 1px solid #e9ecef;
+      border-radius: 4px;
+      padding: 5px 8px;
+      font-size: 12px;
+    }
+
+    .add-foto-btn {
+      background: #f8f9fa;
+      border: 2px dashed #6c757d;
+      border-radius: 8px;
+      width: 100%;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #6c757d;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .add-foto-btn:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      background: rgba(0, 51, 102, 0.05);
+    }
+
+    .add-foto-btn i {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .add-foto-btn span {
+      font-size: 14px;
+      font-weight: 500;
     }
 
     /* Assinatura */
@@ -405,19 +610,6 @@
       border: 2px solid #e9ecef;
       margin-top: 30px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .assinatura-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-    }
-
-    @media (max-width: 768px) {
-      .assinatura-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
     }
 
     .assinatura-line {
@@ -513,59 +705,6 @@
       box-shadow: 0 8px 20px rgba(255, 193, 7, 0.3);
     }
 
-    /* Botões de Adicionar */
-    .btn-add {
-      background: linear-gradient(135deg, #6610f2, #6f42c1);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-      width: 100%;
-      justify-content: center;
-    }
-
-    .btn-add:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(102, 16, 242, 0.3);
-    }
-
-    .btn-remove {
-      background: linear-gradient(135deg, #fd7e14, #e36209);
-      color: white;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 12px;
-      margin-left: 10px;
-    }
-
-    .btn-remove:hover {
-      background: linear-gradient(135deg, #dc3545, #c82333);
-      transform: translateY(-2px);
-    }
-
-    /* Botão de adicionar no final da tabela */
-    .table-footer {
-      background: #f8f9fa;
-      padding: 15px;
-      border-radius: 0 0 10px 10px;
-      border-top: 1px solid #e9ecef;
-      margin-top: -1px;
-    }
-
     /* Status Bar */
     .status-bar {
       position: fixed;
@@ -642,9 +781,28 @@
         padding: 20px;
       }
       
-      .btn-add {
-        padding: 8px 15px;
-        font-size: 13px;
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .field-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      
+      .field-input {
+        width: 100%;
+      }
+      
+      .btn-remove-field {
+        align-self: flex-start;
+        margin-left: 0;
+        margin-top: 5px;
+      }
+      
+      .foto-gallery {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -672,11 +830,16 @@
         display: none;
       }
       
-      .table-footer {
+      .btn-add-field,
+      .btn-remove-field {
         display: none !important;
       }
       
-      .btn-remove {
+      .add-foto-btn {
+        display: none !important;
+      }
+      
+      .foto-action-btn {
         display: none !important;
       }
     }
@@ -705,6 +868,22 @@
     .status-icon {
       font-size: 12px;
     }
+
+    /* Seção de Data */
+    .data-section {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #e9ecef;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      align-items: center;
+    }
   </style>
 </head>
 
@@ -719,7 +898,7 @@
       
       <!-- Informações da Organização (Centro) -->
       <div class="org-info">
-        <h1 class="org-title">ESCRITÓRIO REGIONAL DE CURITIBA</h1>
+        <h1 class="org-title">ESCRITÓRIO REGIONAL DE CURITIBA (ERCBA)</h1>
         <h2 class="org-department">SETOR DE LICENCIAMENTO DE ENERGIA</h2>
         <div class="report-title">RELATÓRIO DE VISTORIA TÉCNICA</div>
       </div>
@@ -730,170 +909,286 @@
       </div>
     </div>
 
-    <!-- Grid Principal -->
-    <div class="dashboard-grid">
-      <!-- Card de Informações Básicas -->
-      <div class="dashboard-card">
-        <div class="card-header">
-          <h3 class="card-title">
-            <i class="fas fa-info-circle"></i>
-            INFORMAÇÕES BÁSICAS
-            <span id="saveStatus" class="status-badge unsaved">
-              <i class="fas fa-sync-alt status-icon"></i> NÃO SALVO
-            </span>
-          </h3>
-        </div>
-        
-        <form id="formularioVistoria" onsubmit="event.preventDefault();">
-          <div class="form-grid">
-            <div class="form-group">
-              <label class="form-label" for="empreendimento">
-                <i class="fas fa-building"></i> EMPREENDIMENTO:
-              </label>
-              <input type="text" id="empreendimento" class="form-control" 
-                     placeholder="Nome do empreendimento" required>
-            </div>
-            
-            <div class="form-group">
-              <label class="form-label" for="protocolo">
-                <i class="fas fa-file-alt"></i> PROTOCOLO:
-              </label>
-              <input type="text" id="protocolo" class="form-control" 
-                     placeholder="Número do protocolo" required>
-            </div>
-            
-            <div class="form-group">
-              <label class="form-label" for="dataVistoria">
-                <i class="fas fa-calendar-alt"></i> DATA DA VISTORIA:
-              </label>
-              <input type="date" id="dataVistoria" class="form-control" required>
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <!-- Card de Vistoriador -->
-      <div class="dashboard-card">
-        <div class="card-header">
-          <h3 class="card-title">
-            <i class="fas fa-user-check"></i>
-            RESPONSÁVEL TÉCNICO
-          </h3>
-        </div>
-        
-        <div class="form-grid">
-          <div class="form-group">
-            <label class="form-label" for="vistoriador">
-              <i class="fas fa-user"></i> VISTORIADOR:
-            </label>
-            <input type="text" id="vistoriador" class="form-control" 
-                   placeholder="Nome do vistoriador" required>
-          </div>
-          
-          <div class="form-group">
-            <label class="form-label" for="cargo">
-              <i class="fas fa-briefcase"></i> CARGO:
-            </label>
-            <input type="text" id="cargo" class="form-control" 
-                   value="Engenheiro/Responsável Técnico" required>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card de Condicionantes -->
-    <div class="dashboard-card" style="margin-bottom: 25px;">
-      <div class="card-header">
-        <h3 class="card-title">
-          <i class="fas fa-clipboard-check"></i>
-          1. ATENDIMENTO ÀS CONDICIONANTES
-        </h3>
-        <span class="card-subtitle">Marque SIM ou NÃO para cada condicionante</span>
-      </div>
-      
-      <div class="table-container">
-        <table class="table custom-table">
-          <thead>
-            <tr>
-              <th width="65%">CONDICIONANTES</th>
-              <th width="35%">ATENDE</th>
-            </tr>
-          </thead>
-          <tbody id="condicionantes-body"></tbody>
-        </table>
-      </div>
-      
-      <!-- Botão para adicionar nova condicionante NO FINAL -->
-      <div class="table-footer no-print">
-        <button type="button" class="btn-add" onclick="adicionarCondicionante()">
-          <i class="fas fa-plus-circle"></i> Adicionar Nova Condicionante
-        </button>
-      </div>
-    </div>
-
-    <!-- Card de Checklist -->
-    <div class="dashboard-card" style="margin-bottom: 25px;">
-      <div class="card-header">
-        <h3 class="card-title">
-          <i class="fas fa-tasks"></i>
-          2. RELATÓRIO DE CONFORMIDADE
-        </h3>
-        <span class="card-subtitle">Check-list in-loco</span>
-      </div>
-      
-      <div class="table-container">
-        <table class="table custom-table">
-          <thead>
-            <tr>
-              <th width="65%">CHECK-LIST IN-LOCO</th>
-              <th width="35%">ATENDE</th>
-            </tr>
-          </thead>
-          <tbody id="checklist-body"></tbody>
-        </table>
-      </div>
-      
-      <!-- Botão para adicionar novo item de checklist NO FINAL -->
-      <div class="table-footer no-print">
-        <button type="button" class="btn-add" onclick="adicionarChecklistItem()">
-          <i class="fas fa-plus-circle"></i> Adicionar Novo Item ao Checklist
-        </button>
-      </div>
-    </div>
-
-    <!-- Card de Observações -->
+    <!-- Card de Identificação do Empreendimento -->
     <div class="dashboard-card">
       <div class="card-header">
         <h3 class="card-title">
-          <i class="fas fa-sticky-note"></i>
-          OBSERVAÇÕES ADICIONAIS
+          <i class="fas fa-fingerprint"></i>
+          IDENTIFICAÇÃO DO EMPREENDIMENTO
         </h3>
       </div>
       
-      <div class="observacoes-container">
-        <textarea id="observacoes" class="form-control" 
-                  placeholder="Digite observações adicionais sobre a vistoria..."></textarea>
+      <form id="formularioIdentificacao" onsubmit="event.preventDefault();">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="interessado">
+              <i class="fas fa-user-tie"></i> INTERESSADO:
+            </label>
+            <input type="text" id="interessado" class="form-control" 
+                   placeholder="Nome do interessado" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="assunto">
+              <i class="fas fa-file-contract"></i> ASSUNTO:
+            </label>
+            <input type="text" id="assunto" class="form-control" 
+                   placeholder="Assunto da vistoria" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="municipio">
+              <i class="fas fa-map-marker-alt"></i> MUNICÍPIO:
+            </label>
+            <input type="text" id="municipio" class="form-control" 
+                   placeholder="Município do empreendimento" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="coordenadas">
+              <i class="fas fa-globe-americas"></i> COORDENADAS:
+            </label>
+            <input type="text" id="coordenadas" class="form-control" 
+                   placeholder="Coordenadas geográficas" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="atividade">
+              <i class="fas fa-industry"></i> ATIVIDADE:
+            </label>
+            <input type="text" id="atividade" class="form-control" 
+                   placeholder="Atividade desenvolvida" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="protocolo">
+              <i class="fas fa-file-alt"></i> PROTOCOLO:
+            </label>
+            <input type="text" id="protocolo" class="form-control" 
+                   placeholder="Número do protocolo" required>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Card de Informações da Vistoria -->
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="fas fa-clipboard-list"></i>
+          INFORMAÇÕES DA VISTORIA
+        </h3>
+      </div>
+      
+      <div class="data-section">
+        <div class="data-grid">
+          <div class="form-group">
+            <label class="form-label" for="dia">
+              <i class="fas fa-calendar-day"></i> DIA:
+            </label>
+            <input type="number" id="dia" class="form-control" min="1" max="31" 
+                   placeholder="DD" oninput="atualizarTextoGerado()">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="mes">
+              <i class="fas fa-calendar-month"></i> MÊS:
+            </label>
+            <input type="text" id="mes" class="form-control" 
+                   placeholder="Mês" oninput="atualizarTextoGerado()">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="ano">
+              <i class="fas fa-calendar-year"></i> ANO:
+            </label>
+            <input type="number" id="ano" class="form-control" min="2000" max="2100" 
+                   placeholder="AAAA" oninput="atualizarTextoGerado()">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="subestacao">
+            <i class="fas fa-bolt"></i> SUBESTAÇÃO:
+          </label>
+          <input type="text" id="subestacao" class="form-control" 
+                 placeholder="Nome da subestação" oninput="atualizarTextoGerado()">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">
+            <i class="fas fa-user-cog"></i> TÉCNICOS DA VISTORIA:
+          </label>
+          <div id="tecnicos-container">
+            <!-- Técnicos serão adicionados dinamicamente -->
+          </div>
+          <button type="button" class="btn-add-field no-print" onclick="adicionarTecnico()">
+            <i class="fas fa-plus-circle"></i> Adicionar Técnico
+          </button>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="empresa">
+            <i class="fas fa-building"></i> EMPRESA:
+          </label>
+          <input type="text" id="empresa" class="form-control" 
+                 placeholder="Nome da empresa" oninput="atualizarTextoGerado()">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">
+            <i class="fas fa-user-tie"></i> REPRESENTANTES DA EMPRESA:
+          </label>
+          <div id="representantes-container">
+            <!-- Representantes serão adicionados dinamicamente -->
+          </div>
+          <button type="button" class="btn-add-field no-print" onclick="adicionarRepresentante()">
+            <i class="fas fa-plus-circle"></i> Adicionar Representante
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card de Texto Gerado (Preview) -->
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="fas fa-file-alt"></i>
+          DESCRIÇÃO DA VISTORIA (PREVIEW)
+        </h3>
+      </div>
+      
+      <div class="texto-preview" id="textoPreview">
+        <h5>DESCRIÇÃO:</h5>
+        <!-- O texto será gerado automaticamente aqui -->
+      </div>
+    </div>
+
+    <!-- Card de Constatações -->
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="fas fa-search"></i>
+          CONSTATAÇÕES
+        </h3>
+      </div>
+      
+      <div class="checkbox-group">
+        <!-- Opção 1: Com inconformidades -->
+        <div class="checkbox-container" id="container-inconformidades">
+          <div class="checkbox-option">
+            <input type="checkbox" id="inconformidades" name="constatacoes" value="inconformidades" onchange="atualizarTextoGerado()">
+            <label for="inconformidades" class="checkbox-text">
+              <strong>Foram identificadas inconformidades:</strong><br>
+              <small style="color: #666;">(Exemplos: avarias no sistema de drenagem, tubulações abertas e parcialmente obstruídas.)</small>
+            </label>
+          </div>
+          
+          <div class="checkbox-description" id="desc-inconformidades">
+            <textarea id="descricaoInconformidades" 
+                      placeholder="Descreva detalhadamente as inconformidades identificadas..."
+                      oninput="atualizarTextoGerado()"></textarea>
+          </div>
+        </div>
+        
+        <!-- Opção 2: Sem inconformidades -->
+        <div class="checkbox-container" id="container-sem-inconformidades">
+          <div class="checkbox-option">
+            <input type="checkbox" id="semInconformidades" name="constatacoes" value="semInconformidades" onchange="atualizarTextoGerado()">
+            <label for="semInconformidades" class="checkbox-text">
+              <strong>Não foram identificadas inconformidades:</strong><br>
+              <small style="color: #666;">Os sistemas de contenção de óleo e de separação de água e óleo encontram-se em conformidade, não sendo observadas irregularidades durante a vistoria.</small>
+            </label>
+          </div>
+          
+          <div class="checkbox-description" id="desc-sem-inconformidades">
+            <textarea id="descricaoSemInconformidades" 
+                      placeholder="Descreva as condições de conformidade observadas..."
+                      oninput="atualizarTextoGerado()"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card de Registros Fotográficos -->
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="fas fa-camera"></i>
+          REGISTROS FOTOGRÁFICOS
+        </h3>
+      </div>
+      
+      <div class="foto-gallery" id="foto-gallery">
+        <!-- Fotos serão adicionadas dinamicamente -->
+      </div>
+      
+      <div class="no-print">
+        <div class="add-foto-btn" onclick="adicionarFoto()">
+          <i class="fas fa-plus-circle"></i>
+          <span>Adicionar Foto/Imagem</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card de Conclusão -->
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="fas fa-check-circle"></i>
+          CONCLUSÃO
+        </h3>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">
+          <i class="fas fa-check text-success"></i> CONFORMIDADES IDENTIFICADAS:
+        </label>
+        <div id="conformidades-container">
+          <!-- Conformidades serão adicionadas dinamicamente -->
+        </div>
+        <button type="button" class="btn-add-field no-print" onclick="adicionarConformidade()">
+          <i class="fas fa-plus-circle"></i> Adicionar Conformidade
+        </button>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">
+          <i class="fas fa-times text-danger"></i> INCONFORMIDADES IDENTIFICADAS (QUANDO APLICÁVEL):
+        </label>
+        <div id="inconformidades-container">
+          <!-- Inconformidades serão adicionadas dinamicamente -->
+        </div>
+        <button type="button" class="btn-add-field no-print" onclick="adicionarInconformidade()">
+          <i class="fas fa-plus-circle"></i> Adicionar Inconformidade
+        </button>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="observacoesAdicionais">
+          <i class="fas fa-sticky-note"></i> OBSERVAÇÕES ADICIONAIS (SE HOUVER):
+        </label>
+        <textarea id="observacoesAdicionais" class="large-textarea" 
+                  placeholder="Digite observações adicionais..." oninput="atualizarStatusSalvamento()"></textarea>
       </div>
     </div>
 
     <!-- Card de Assinatura -->
     <div class="assinatura-container">
-      <div class="assinatura-grid">
-        <div class="form-group">
-          <label class="form-label" for="vistoriador2">
-            <i class="fas fa-signature"></i> VISTORIADOR:
-          </label>
-          <input type="text" id="vistoriador2" class="form-control" 
-                 placeholder="Nome do vistoriador" required>
-        </div>
-        
-        <div class="form-group">
-          <label class="form-label" for="cargo2">
-            <i class="fas fa-id-card"></i> CARGO:
-          </label>
-          <input type="text" id="cargo2" class="form-control" 
-                 value="Engenheiro/Responsável Técnico" required>
-        </div>
+      <div class="form-group">
+        <label class="form-label" for="assinaturaVistoriador">
+          <i class="fas fa-signature"></i> VISTORIADOR (A):
+        </label>
+        <input type="text" id="assinaturaVistoriador" class="form-control" 
+               placeholder="Nome completo do vistoriador" required oninput="atualizarStatusSalvamento()">
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="cargoVistoriador">
+          <i class="fas fa-id-card"></i> CARGO:
+        </label>
+        <input type="text" id="cargoVistoriador" class="form-control" 
+               value="Engenheiro/Responsável Técnico" required oninput="atualizarStatusSalvamento()">
       </div>
       
       <div class="assinatura-line">
@@ -936,7 +1231,7 @@
     // ============================================
     const PDF_CONFIG = {
       relatorioText: {
-        linha1: "ESCRITÓRIO REGIONAL DE CURITIBA",
+        linha1: "ESCRITÓRIO REGIONAL DE CURITIBA (ERCBA)",
         linha2: "SETOR DE LICENCIAMENTO DE ENERGIA",
         linha3: "RELATÓRIO DE VISTORIA TÉCNICA"
       },
@@ -949,7 +1244,10 @@
         primary: [0, 51, 102],
         secondary: [0, 86, 179],
         lightGray: [240, 240, 240],
-        darkGray: [100, 100, 100]
+        darkGray: [100, 100, 100],
+        tableHeader: [230, 240, 250], // Azul claro para cabeçalho
+        tableRowBlue: [230, 240, 250], // Azul claro para linhas alternadas
+        tableRowWhite: [255, 255, 255] // Branco para linhas alternadas
       },
       pageWidth: 210,
       marginLeft: 20,
@@ -966,74 +1264,76 @@
     };
     
     // ============================================
-    // DADOS INICIAIS DO FORMULÁRIO
+    // DADOS DINÂMICOS DO FORMULÁRIO
     // ============================================
-    const condicionantesIniciais = [
-      "O esgoto sanitário deverá ser encaminhado para a fossa séptica e semidouro ou para rede coletora pública.",
-      "Disposição e destinação adequadas dos resíduos sólidos e líquidos."
-    ];
-    
-    const checklistIniciais = [
-      "Alvará de funcionamento",
-      "Licença de Operação vigente",
-      "Plano de Atendimento a Emergências",
-      "FISPQ's ficha de inspeção de segurança de produtos químicos",
-      "Iluminação antifaísca em funcionamento",
-      "Sinalização de advertência de obrigatoriedade ao uso de EPI's",
-      "Sinalização de alerta de perigo e restrição de entrada a pessoas autorizadas",
-      "Sinalização de segurança para manobra de veículos",
-      "Validade dos extintores",
-      "Mapa de risco",
-      "Indício de vazamento de óleo sob os transformadores",
-      "Existência de filme de óleo no sistema SAO*",
-      "Avarias nas tampas do SAO* (infiltração de água pluvial pelas tampas)",
-      "Necessidade de limpeza das canaletas",
-      "Indícios de contaminação do solo",
-      "Bacia de Contenção",
-      "Existência de indícios de processos erosivos",
-      "Necessidade limpeza (existência de lixo/materiais de manutenção a recolher)",
-      "Necessidade de manutenção da vegetação"
-    ];
-    
-    // Arrays para armazenar itens dinâmicos
-    let condicionantes = [...condicionantesIniciais];
-    let checklistItems = [...checklistIniciais];
+    let tecnicos = [];
+    let representantes = [];
+    let conformidades = [];
+    let inconformidades = [];
+    let fotos = [];
     
     // ============================================
     // INICIALIZAÇÃO
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
-      const hoje = new Date().toISOString().split('T')[0];
-      document.getElementById('dataVistoria').value = hoje;
+      // Configurar data atual
+      const hoje = new Date();
+      const meses = [
+        "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+        "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+      ];
       
-      // Sincronizar campos de vistoriador
-      const vistoriador1 = document.getElementById('vistoriador');
-      const vistoriador2 = document.getElementById('vistoriador2');
-      const cargo1 = document.getElementById('cargo');
-      const cargo2 = document.getElementById('cargo2');
+      document.getElementById('dia').value = hoje.getDate();
+      document.getElementById('mes').value = meses[hoje.getMonth()];
+      document.getElementById('ano').value = hoje.getFullYear();
       
-      vistoriador1.addEventListener('input', function() {
-        vistoriador2.value = this.value;
+      // Configurar checkboxes para serem mutuamente exclusivos
+      const inconformidadesCheckbox = document.getElementById('inconformidades');
+      const semInconformidadesCheckbox = document.getElementById('semInconformidades');
+      
+      // Inicialmente esconder descrições
+      document.getElementById('desc-inconformidades').style.display = 'none';
+      document.getElementById('desc-sem-inconformidades').style.display = 'none';
+      
+      inconformidadesCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+          semInconformidadesCheckbox.checked = false;
+          document.getElementById('desc-inconformidades').style.display = 'block';
+          document.getElementById('desc-sem-inconformidades').style.display = 'none';
+          document.getElementById('container-inconformidades').classList.add('checked');
+          document.getElementById('container-sem-inconformidades').classList.remove('checked');
+        } else {
+          document.getElementById('desc-inconformidades').style.display = 'none';
+          document.getElementById('container-inconformidades').classList.remove('checked');
+        }
+        atualizarTextoGerado();
         atualizarStatusSalvamento();
       });
       
-      vistoriador2.addEventListener('input', function() {
-        vistoriador1.value = this.value;
+      semInconformidadesCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+          inconformidadesCheckbox.checked = false;
+          document.getElementById('desc-sem-inconformidades').style.display = 'block';
+          document.getElementById('desc-inconformidades').style.display = 'none';
+          document.getElementById('container-sem-inconformidades').classList.add('checked');
+          document.getElementById('container-inconformidades').classList.remove('checked');
+        } else {
+          document.getElementById('desc-sem-inconformidades').style.display = 'none';
+          document.getElementById('container-sem-inconformidades').classList.remove('checked');
+        }
+        atualizarTextoGerado();
         atualizarStatusSalvamento();
       });
       
-      cargo1.addEventListener('input', function() {
-        cargo2.value = this.value;
-        atualizarStatusSalvamento();
-      });
+      // Inicializar containers vazios
+      renderizarTecnicos();
+      renderizarRepresentantes();
+      renderizarConformidades();
+      renderizarInconformidades();
+      renderizarFotos();
       
-      cargo2.addEventListener('input', function() {
-        cargo1.value = this.value;
-        atualizarStatusSalvamento();
-      });
-      
-      preencherCondicionantes();
-      preencherChecklist();
+      // Atualizar texto gerado inicialmente
+      atualizarTextoGerado();
       
       // Adicionar listeners para atualizar status
       document.querySelectorAll('input, textarea').forEach(element => {
@@ -1047,306 +1347,549 @@
     });
     
     // ============================================
+    // FUNÇÃO PARA GERAR TEXTO DESCRITIVO
+    // ============================================
+    function atualizarTextoGerado() {
+      const dia = document.getElementById('dia').value || '____';
+      const mes = document.getElementById('mes').value || '__________';
+      const ano = document.getElementById('ano').value || '______';
+      const subestacao = document.getElementById('subestacao').value || '___________________________';
+      const empresa = document.getElementById('empresa').value || '______________________________________';
+      
+      // Lista de técnicos
+      let listaTecnicos = '';
+      if (tecnicos.length > 0) {
+        const tecnicosValidos = tecnicos.filter(t => t.trim() !== '');
+        if (tecnicosValidos.length > 0) {
+          if (tecnicosValidos.length === 1) {
+            listaTecnicos = `pelo técnico ${tecnicosValidos[0]}`;
+          } else if (tecnicosValidos.length === 2) {
+            listaTecnicos = `pelos técnicos ${tecnicosValidos[0]} e ${tecnicosValidos[1]}`;
+          } else {
+            const ultimo = tecnicosValidos.pop();
+            listaTecnicos = `pelos técnicos ${tecnicosValidos.join(', ')} e ${ultimo}`;
+          }
+        }
+      }
+      
+      // Lista de representantes
+      let listaRepresentantes = '';
+      if (representantes.length > 0) {
+        const representantesValidos = representantes.filter(r => r.trim() !== '');
+        if (representantesValidos.length > 0) {
+          if (representantesValidos.length === 1) {
+            listaRepresentantes = `pelo funcionário da ${empresa} ${representantesValidos[0]}`;
+          } else if (representantesValidos.length === 2) {
+            listaRepresentantes = `pelos funcionários da ${empresa} ${representantesValidos[0]} e ${representantesValidos[1]}`;
+          } else {
+            const ultimo = representantesValidos.pop();
+            listaRepresentantes = `pelos funcionários da ${empresa} ${representantesValidos.join(', ')} e ${ultimo}`;
+          }
+        }
+      }
+      
+      // Informações sobre inconformidades
+      const temInconformidades = document.getElementById('inconformidades').checked;
+      const semInconformidades = document.getElementById('semInconformidades').checked;
+      const descInconformidades = document.getElementById('descricaoInconformidades').value || '';
+      const descSemInconformidades = document.getElementById('descricaoSemInconformidades').value || '';
+      
+      let textoInconformidades = '';
+      if (temInconformidades && descInconformidades) {
+        textoInconformidades = `Na subestação foram encontradas algumas inconformidades como ${descInconformidades.toLowerCase()}. `;
+        if (semInconformidades || descSemInconformidades) {
+          textoInconformidades += `Já no sistema de contenção de óleo e no sistema de separação de água e óleo não foram encontradas inconformidades.`;
+        }
+      } else if (semInconformidades) {
+        if (descSemInconformidades) {
+          textoInconformidades = descSemInconformidades;
+        } else {
+          textoInconformidades = 'Não foram encontradas inconformidades durante a vistoria.';
+        }
+      }
+      
+      // Construir o texto completo
+      let textoCompleto = `A vistoria foi realizada no dia ${dia} de ${mes} de ${ano}`;
+      
+      if (listaTecnicos) {
+        textoCompleto += `, ${listaTecnicos}`;
+      }
+      
+      if (listaRepresentantes) {
+        textoCompleto += `, e acompanhada ${listaRepresentantes}`;
+      }
+      
+      textoCompleto += `.`;
+      
+      if (subestacao && subestacao !== '___________________________') {
+        textoCompleto += ` Na subestação ${subestacao}`;
+      }
+      
+      if (textoInconformidades) {
+        textoCompleto += ` ${textoInconformidades}`;
+      }
+      
+      // Adicionar informações sobre fotos
+      if (fotos.length > 0) {
+        textoCompleto += ` Segue abaixo registros fotográficos do empreendimento:`;
+      }
+      
+      // Atualizar o preview
+      const previewDiv = document.getElementById('textoPreview');
+      previewDiv.innerHTML = `<h5>DESCRIÇÃO:</h5>${textoCompleto}`;
+      
+      // Se não houver informações suficientes, mostrar mensagem
+      if (!dia && !mes && !ano && tecnicos.length === 0) {
+        previewDiv.innerHTML = `<h5>DESCRIÇÃO:</h5><p style="color: #666; font-style: italic;">Preencha as informações da vistoria para ver o texto gerado automaticamente.</p>`;
+      }
+    }
+    
+    // ============================================
     // FUNÇÕES PARA ADICIONAR ITENS DINÂMICOS
     // ============================================
     
-    function adicionarCondicionante() {
-      // Adicionar uma nova condicionante em branco
-      condicionantes.push("");
-      preencherCondicionantes();
-      atualizarStatusSalvamento();
-      mostrarStatus('Nova condicionante adicionada!');
+    function adicionarTecnico() {
+      const container = document.getElementById('tecnicos-container');
+      const index = tecnicos.length;
       
-      // Rolagem suave para o novo item
-      const tabela = document.getElementById('condicionantes-body');
-      const ultimaLinha = tabela.lastElementChild;
-      if (ultimaLinha) {
-        ultimaLinha.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        
-        // Focar no campo de texto da nova condicionante
-        const index = condicionantes.length - 1;
-        const input = document.getElementById(`cond_custom_${index}`);
-        if (input) {
-          setTimeout(() => {
-            input.focus();
-          }, 300);
-        }
-      }
+      const div = document.createElement('div');
+      div.className = 'field-item';
+      div.innerHTML = `
+        <div class="field-number">${index + 1}</div>
+        <input type="text" class="field-input tecnico-input" 
+               id="tecnico_${index}" 
+               placeholder="Nome completo do técnico"
+               oninput="atualizarTecnicoInput(${index})">
+        <button type="button" class="btn-remove-field no-print" onclick="removerTecnico(${index})">
+          <i class="fas fa-trash"></i> Remover
+        </button>
+      `;
       
-      // Rolagem suave para o botão de adicionar
+      container.appendChild(div);
+      tecnicos.push("");
+      
+      // Focar no novo campo
+      const input = document.getElementById(`tecnico_${index}`);
       setTimeout(() => {
-        const tableFooter = document.querySelector('.dashboard-card:nth-child(3) .table-footer');
-        if (tableFooter) {
-          tableFooter.scrollIntoView({ behavior: 'smooth', block: 'end' });
-        }
+        input.focus();
       }, 100);
-    }
-    
-    function adicionarChecklistItem() {
-      // Adicionar um novo item de checklist em branco
-      checklistItems.push("");
-      preencherChecklist();
+      
       atualizarStatusSalvamento();
-      mostrarStatus('Novo item de checklist adicionado!');
-      
-      // Rolagem suave para o novo item
-      const tabela = document.getElementById('checklist-body');
-      const ultimaLinha = tabela.lastElementChild;
-      if (ultimaLinha) {
-        ultimaLinha.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        
-        // Focar no campo de texto do novo item
-        const index = checklistItems.length - 1;
-        const input = document.getElementById(`check_custom_${index}`);
-        if (input) {
-          setTimeout(() => {
-            input.focus();
-          }, 300);
-        }
+      mostrarStatus('Novo técnico adicionado!');
+    }
+    
+    function atualizarTecnicoInput(index) {
+      const input = document.getElementById(`tecnico_${index}`);
+      if (input) {
+        tecnicos[index] = input.value;
+        atualizarTextoGerado();
+        atualizarStatusSalvamento();
       }
+    }
+    
+    function adicionarRepresentante() {
+      const container = document.getElementById('representantes-container');
+      const index = representantes.length;
       
-      // Rolagem suave para o botão de adicionar
+      const div = document.createElement('div');
+      div.className = 'field-item';
+      div.innerHTML = `
+        <div class="field-number">${index + 1}</div>
+        <input type="text" class="field-input representante-input" 
+               id="representante_${index}" 
+               placeholder="Nome completo do representante"
+               oninput="atualizarRepresentanteInput(${index})">
+        <button type="button" class="btn-remove-field no-print" onclick="removerRepresentante(${index})">
+          <i class="fas fa-trash"></i> Remover
+        </button>
+      `;
+      
+      container.appendChild(div);
+      representantes.push("");
+      
+      // Focar no novo campo
+      const input = document.getElementById(`representante_${index}`);
       setTimeout(() => {
-        const tableFooter = document.querySelector('.dashboard-card:nth-child(4) .table-footer');
-        if (tableFooter) {
-          tableFooter.scrollIntoView({ behavior: 'smooth', block: 'end' });
-        }
+        input.focus();
       }, 100);
+      
+      atualizarStatusSalvamento();
+      mostrarStatus('Novo representante adicionado!');
     }
     
-    function removerCondicionante(index) {
-      if (condicionantes.length <= 7) {
-        mostrarStatus('Não é possível remover as condicionantes padrão.', 'info');
-        return;
-      }
-      
-      if (confirm('Tem certeza que deseja remover esta condicionante?')) {
-        condicionantes.splice(index, 1);
-        preencherCondicionantes();
+    function atualizarRepresentanteInput(index) {
+      const input = document.getElementById(`representante_${index}`);
+      if (input) {
+        representantes[index] = input.value;
+        atualizarTextoGerado();
         atualizarStatusSalvamento();
-        mostrarStatus('Condicionante removida!');
       }
     }
     
-    function removerChecklistItem(index) {
-      if (checklistItems.length <= 19) {
-        mostrarStatus('Não é possível remover os itens padrão do checklist.', 'info');
-        return;
-      }
+    function adicionarConformidade() {
+      const container = document.getElementById('conformidades-container');
+      const index = conformidades.length;
       
-      if (confirm('Tem certeza que deseja remover este item do checklist?')) {
-        checklistItems.splice(index, 1);
-        preencherChecklist();
+      const div = document.createElement('div');
+      div.className = 'field-item';
+      div.innerHTML = `
+        <div class="field-number">${index + 1}</div>
+        <input type="text" class="field-input conformidade-input" 
+               id="conformidade_${index}" 
+               placeholder="Descreva a conformidade identificada..."
+               oninput="atualizarConformidadeInput(${index})">
+        <button type="button" class="btn-remove-field no-print" onclick="removerConformidade(${index})">
+          <i class="fas fa-trash"></i> Remover
+        </button>
+      `;
+      
+      container.appendChild(div);
+      conformidades.push("");
+      
+      // Focar no novo campo
+      const input = document.getElementById(`conformidade_${index}`);
+      setTimeout(() => {
+        input.focus();
+      }, 100);
+      
+      atualizarStatusSalvamento();
+      mostrarStatus('Nova conformidade adicionada!');
+    }
+    
+    function atualizarConformidadeInput(index) {
+      const input = document.getElementById(`conformidade_${index}`);
+      if (input) {
+        conformidades[index] = input.value;
         atualizarStatusSalvamento();
-        mostrarStatus('Item removido do checklist!');
+      }
+    }
+    
+    function adicionarInconformidade() {
+      const container = document.getElementById('inconformidades-container');
+      const index = inconformidades.length;
+      
+      const div = document.createElement('div');
+      div.className = 'field-item';
+      div.innerHTML = `
+        <div class="field-number">${index + 1}</div>
+        <input type="text" class="field-input inconformidade-input" 
+               id="inconformidade_${index}" 
+               placeholder="Descreva a inconformidade identificada..."
+               oninput="atualizarInconformidadeInput(${index})">
+        <button type="button" class="btn-remove-field no-print" onclick="removerInconformidade(${index})">
+          <i class="fas fa-trash"></i> Remover
+        </button>
+      `;
+      
+      container.appendChild(div);
+      inconformidades.push("");
+      
+      // Focar no novo campo
+      const input = document.getElementById(`inconformidade_${index}`);
+      setTimeout(() => {
+        input.focus();
+      }, 100);
+      
+      atualizarStatusSalvamento();
+      mostrarStatus('Nova inconformidade adicionada!');
+    }
+    
+    function atualizarInconformidadeInput(index) {
+      const input = document.getElementById(`inconformidade_${index}`);
+      if (input) {
+        inconformidades[index] = input.value;
+        atualizarStatusSalvamento();
+      }
+    }
+    
+    function adicionarFoto() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.style.display = 'none';
+      
+      input.onchange = function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            const fotoData = {
+              id: fotos.length,
+              dataUrl: event.target.result,
+              descricao: '',
+              fileName: file.name
+            };
+            
+            fotos.push(fotoData);
+            renderizarFotos();
+            atualizarTextoGerado();
+            atualizarStatusSalvamento();
+            mostrarStatus('Foto adicionada com sucesso!');
+          };
+          reader.readAsDataURL(file);
+        }
+      };
+      
+      document.body.appendChild(input);
+      input.click();
+      document.body.removeChild(input);
+    }
+    
+    function removerTecnico(index) {
+      if (tecnicos.length <= 0) return;
+      
+      if (confirm('Tem certeza que deseja remover este técnico?')) {
+        tecnicos.splice(index, 1);
+        renderizarTecnicos();
+        atualizarTextoGerado();
+        atualizarStatusSalvamento();
+        mostrarStatus('Técnico removido!');
+      }
+    }
+    
+    function removerRepresentante(index) {
+      if (representantes.length <= 0) return;
+      
+      if (confirm('Tem certeza que deseja remover este representante?')) {
+        representantes.splice(index, 1);
+        renderizarRepresentantes();
+        atualizarTextoGerado();
+        atualizarStatusSalvamento();
+        mostrarStatus('Representante removido!');
+      }
+    }
+    
+    function removerConformidade(index) {
+      if (conformidades.length <= 0) return;
+      
+      if (confirm('Tem certeza que deseja remover esta conformidade?')) {
+        conformidades.splice(index, 1);
+        renderizarConformidades();
+        atualizarStatusSalvamento();
+        mostrarStatus('Conformidade removida!');
+      }
+    }
+    
+    function removerInconformidade(index) {
+      if (inconformidades.length <= 0) return;
+      
+      if (confirm('Tem certeza que deseja remover esta inconformidade?')) {
+        inconformidades.splice(index, 1);
+        renderizarInconformidades();
+        atualizarStatusSalvamento();
+        mostrarStatus('Inconformidade removida!');
+      }
+    }
+    
+    function removerFoto(index) {
+      if (fotos.length <= 0) return;
+      
+      if (confirm('Tem certeza que deseja remover esta foto?')) {
+        fotos.splice(index, 1);
+        renderizarFotos();
+        atualizarTextoGerado();
+        atualizarStatusSalvamento();
+        mostrarStatus('Foto removida!');
+      }
+    }
+    
+    function atualizarDescricaoFoto(index, descricao) {
+      if (fotos[index]) {
+        fotos[index].descricao = descricao;
+        atualizarStatusSalvamento();
       }
     }
     
     // ============================================
-    // FUNÇÕES DE PREENCHIMENTO DAS TABELAS
+    // FUNÇÕES DE RENDERIZAÇÃO
     // ============================================
     
-    function preencherCondicionantes() {
-      const condicionantesBody = document.getElementById('condicionantes-body');
-      condicionantesBody.innerHTML = '';
+    function renderizarTecnicos() {
+      const container = document.getElementById('tecnicos-container');
+      container.innerHTML = '';
       
-      condicionantes.forEach((cond, index) => {
-        const row = document.createElement('tr');
-        row.id = `cond_row_${index}`;
-        
-        const isCustom = index >= condicionantesIniciais.length || condicionantesIniciais[index] === "";
-        
-        let conteudoCelula = '';
-        if (isCustom) {
-          conteudoCelula = `
-            <td>
-              <input type="text" class="form-control condicionante-input" 
-                     placeholder="Digite a condicionante" 
-                     id="cond_custom_${index}"
-                     value="${cond || ''}">
-              ${index >= condicionantesIniciais.length ? 
-                `<button type="button" class="btn-remove no-print" onclick="removerCondicionante(${index})">
-                  <i class="fas fa-trash"></i> Remover
-                </button>` : ''}
-            </td>
-          `;
-        } else {
-          conteudoCelula = `
-            <td class="condicionante-cell">${cond}</td>
-          `;
-        }
-        
-        row.innerHTML = conteudoCelula + `
-          <td>
-            <div class="radio-group">
-              <div class="radio-option">
-                <input type="radio" name="cond_${index}" value="sim" id="cond_sim_${index}">
-                <label for="cond_sim_${index}">SIM</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" name="cond_${index}" value="nao" id="cond_nao_${index}">
-                <label for="cond_nao_${index}">NÃO</label>
-              </div>
-            </div>
-          </td>
+      tecnicos.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'field-item';
+        div.innerHTML = `
+          <div class="field-number">${index + 1}</div>
+          <input type="text" class="field-input tecnico-input" 
+                 id="tecnico_${index}" 
+                 value="${item || ''}"
+                 placeholder="Nome completo do técnico"
+                 oninput="atualizarTecnicoInput(${index})">
+          <button type="button" class="btn-remove-field no-print" onclick="removerTecnico(${index})">
+            <i class="fas fa-trash"></i> Remover
+          </button>
         `;
         
-        condicionantesBody.appendChild(row);
-        
-        // Adicionar listener para o input de condicionante personalizada
-        const input = document.getElementById(`cond_custom_${index}`);
-        if (input) {
-          input.addEventListener('input', function() {
-            condicionantes[index] = this.value;
-            atualizarStatusSalvamento();
-          });
-        }
-      });
-      
-      // Adicionar listeners para os radios
-      document.querySelectorAll('input[type="radio"]').forEach(radio => {
-        radio.addEventListener('change', atualizarStatusSalvamento);
+        container.appendChild(div);
       });
     }
     
-    function preencherChecklist() {
-      const checklistBody = document.getElementById('checklist-body');
-      checklistBody.innerHTML = '';
+    function renderizarRepresentantes() {
+      const container = document.getElementById('representantes-container');
+      container.innerHTML = '';
       
-      checklistItems.forEach((item, index) => {
-        const row = document.createElement('tr');
-        row.id = `check_row_${index}`;
-        
-        const isCustom = index >= checklistIniciais.length;
-        
-        let conteudoCelula = '';
-        if (isCustom) {
-          conteudoCelula = `
-            <td>
-              <input type="text" class="form-control checklist-input" 
-                     placeholder="Digite o item do checklist" 
-                     id="check_custom_${index}"
-                     value="${item || ''}">
-              <button type="button" class="btn-remove no-print" onclick="removerChecklistItem(${index})">
-                <i class="fas fa-trash"></i> Remover
-              </button>
-            </td>
-          `;
-        } else {
-          conteudoCelula = `
-            <td class="condicionante-cell">${item}</td>
-          `;
-        }
-        
-        row.innerHTML = conteudoCelula + `
-          <td>
-            <div class="radio-group">
-              <div class="radio-option">
-                <input type="radio" name="check_${index}" value="sim" id="check_sim_${index}">
-                <label for="check_sim_${index}">SIM</label>
-              </div>
-              <div class="radio-option">
-                <input type="radio" name="check_${index}" value="nao" id="check_nao_${index}">
-                <label for="check_nao_${index}">NÃO</label>
-              </div>
-            </div>
-          </td>
+      representantes.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'field-item';
+        div.innerHTML = `
+          <div class="field-number">${index + 1}</div>
+          <input type="text" class="field-input representante-input" 
+                 id="representante_${index}" 
+                 value="${item || ''}"
+                 placeholder="Nome completo do representante"
+                 oninput="atualizarRepresentanteInput(${index})">
+          <button type="button" class="btn-remove-field no-print" onclick="removerRepresentante(${index})">
+            <i class="fas fa-trash"></i> Remover
+          </button>
         `;
         
-        checklistBody.appendChild(row);
+        container.appendChild(div);
+      });
+    }
+    
+    function renderizarConformidades() {
+      const container = document.getElementById('conformidades-container');
+      container.innerHTML = '';
+      
+      conformidades.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'field-item';
+        div.innerHTML = `
+          <div class="field-number">${index + 1}</div>
+          <input type="text" class="field-input conformidade-input" 
+                 id="conformidade_${index}" 
+                 value="${item || ''}"
+                 placeholder="Descreva a conformidade identificada..."
+                 oninput="atualizarConformidadeInput(${index})">
+          <button type="button" class="btn-remove-field no-print" onclick="removerConformidade(${index})">
+            <i class="fas fa-trash"></i> Remover
+          </button>
+        `;
         
-        // Adicionar listener para o input de checklist personalizado
-        const input = document.getElementById(`check_custom_${index}`);
-        if (input) {
-          input.addEventListener('input', function() {
-            checklistItems[index] = this.value;
-            atualizarStatusSalvamento();
-          });
-        }
+        container.appendChild(div);
+      });
+    }
+    
+    function renderizarInconformidades() {
+      const container = document.getElementById('inconformidades-container');
+      container.innerHTML = '';
+      
+      inconformidades.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'field-item';
+        div.innerHTML = `
+          <div class="field-number">${index + 1}</div>
+          <input type="text" class="field-input inconformidade-input" 
+                 id="inconformidade_${index}" 
+                 value="${item || ''}"
+                 placeholder="Descreva a inconformidade identificada..."
+                 oninput="atualizarInconformidadeInput(${index})">
+          <button type="button" class="btn-remove-field no-print" onclick="removerInconformidade(${index})">
+            <i class="fas fa-trash"></i> Remover
+          </button>
+        `;
+        
+        container.appendChild(div);
+      });
+    }
+    
+    function renderizarFotos() {
+      const container = document.getElementById('foto-gallery');
+      container.innerHTML = '';
+      
+      fotos.forEach((foto, index) => {
+        const div = document.createElement('div');
+        div.className = 'foto-item';
+        div.innerHTML = `
+          <div class="foto-preview">
+            <img src="${foto.dataUrl}" alt="Foto ${index + 1}" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="foto-actions">
+            <button class="foto-action-btn no-print" onclick="removerFoto(${index})" title="Remover foto">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+          <div class="foto-description">
+            <input type="text" 
+                   placeholder="Descrição da foto..." 
+                   value="${foto.descricao || ''}"
+                   oninput="atualizarDescricaoFoto(${index}, this.value)">
+          </div>
+        `;
+        
+        container.appendChild(div);
       });
       
-      // Adicionar listeners para os radios
-      document.querySelectorAll('input[type="radio"]').forEach(radio => {
-        radio.addEventListener('change', atualizarStatusSalvamento);
-      });
-    }
-    
-    function atualizarStatusSalvamento() {
-      const statusBadge = document.getElementById('saveStatus');
-      if (statusBadge) {
-        statusBadge.className = 'status-badge unsaved';
-        statusBadge.innerHTML = '<i class="fas fa-sync-alt status-icon"></i> NÃO SALVO';
-      }
-    }
-    
-    function atualizarStatusSalvo() {
-      const statusBadge = document.getElementById('saveStatus');
-      if (statusBadge) {
-        statusBadge.className = 'status-badge saved';
-        statusBadge.innerHTML = '<i class="fas fa-check-circle status-icon"></i> SALVO';
-      }
+      // Adicionar botão de adicionar foto
+      const addButtonDiv = document.createElement('div');
+      addButtonDiv.className = 'no-print';
+      addButtonDiv.innerHTML = `
+        <div class="add-foto-btn" onclick="adicionarFoto()">
+          <i class="fas fa-plus-circle"></i>
+          <span>Adicionar Foto/Imagem</span>
+        </div>
+      `;
+      
+      container.appendChild(addButtonDiv);
     }
     
     // ============================================
     // FUNÇÕES PRINCIPAIS DO FORMULÁRIO
     // ============================================
+    
+    function atualizarStatusSalvamento() {
+      // Esta função pode ser usada para mostrar status visual de alterações não salvas
+    }
+    
     function salvarFormulario() {
       const dados = {
-        empreendimento: document.getElementById('empreendimento').value,
+        // Identificação do Empreendimento
+        interessado: document.getElementById('interessado').value,
+        assunto: document.getElementById('assunto').value,
+        municipio: document.getElementById('municipio').value,
+        coordenadas: document.getElementById('coordenadas').value,
+        atividade: document.getElementById('atividade').value,
         protocolo: document.getElementById('protocolo').value,
-        dataVistoria: document.getElementById('dataVistoria').value,
-        observacoes: document.getElementById('observacoes').value,
-        vistoriador: document.getElementById('vistoriador').value,
-        cargo: document.getElementById('cargo').value,
-        condicionantes: [],
-        checklist: [],
-        // Salvar também os arrays dinâmicos
-        condicionantesArray: condicionantes,
-        checklistArray: checklistItems
+        
+        // Data da Vistoria
+        dia: document.getElementById('dia').value,
+        mes: document.getElementById('mes').value,
+        ano: document.getElementById('ano').value,
+        
+        // Detalhes da Vistoria
+        subestacao: document.getElementById('subestacao').value,
+        empresa: document.getElementById('empresa').value,
+        tecnicos: tecnicos,
+        representantes: representantes,
+        
+        // Constatações
+        inconformidadesCheck: document.getElementById('inconformidades').checked,
+        semInconformidadesCheck: document.getElementById('semInconformidades').checked,
+        descricaoInconformidades: document.getElementById('descricaoInconformidades').value,
+        descricaoSemInconformidades: document.getElementById('descricaoSemInconformidades').value,
+        
+        // Fotos
+        fotos: fotos,
+        
+        // Conclusão
+        conformidades: conformidades,
+        inconformidades: inconformidades,
+        observacoesAdicionais: document.getElementById('observacoesAdicionais').value,
+        
+        // Assinatura
+        assinaturaVistoriador: document.getElementById('assinaturaVistoriador').value,
+        cargoVistoriador: document.getElementById('cargoVistoriador').value
       };
       
-      // Salvar valores atuais dos inputs personalizados
-      for (let i = 0; i < condicionantes.length; i++) {
-        const input = document.getElementById(`cond_custom_${i}`);
-        if (input) {
-          condicionantes[i] = input.value;
-        }
-      }
-      
-      for (let i = 0; i < checklistItems.length; i++) {
-        const input = document.getElementById(`check_custom_${i}`);
-        if (input) {
-          checklistItems[i] = input.value;
-        }
-      }
-      
-      dados.condicionantesArray = condicionantes;
-      dados.checklistArray = checklistItems;
-      
-      // Salvar também as respostas dos radios
-      for (let i = 0; i < condicionantes.length; i++) {
-        const radioValue = document.querySelector(`input[name="cond_${i}"]:checked`)?.value;
-        dados.condicionantes.push({
-          texto: condicionantes[i],
-          atende: radioValue
-        });
-      }
-      
-      for (let i = 0; i < checklistItems.length; i++) {
-        const radioValue = document.querySelector(`input[name="check_${i}"]:checked`)?.value;
-        dados.checklist.push({
-          item: checklistItems[i],
-          atende: radioValue
-        });
-      }
-      
-      localStorage.setItem('relatorioVistoria', JSON.stringify(dados));
-      atualizarStatusSalvo();
+      localStorage.setItem('relatorioVistoriaSubestacao', JSON.stringify(dados));
       mostrarStatus('Formulário salvo localmente!');
     }
     
     function carregarFormulario() {
-      const dadosSalvos = localStorage.getItem('relatorioVistoria');
+      const dadosSalvos = localStorage.getItem('relatorioVistoriaSubestacao');
       if (!dadosSalvos) {
         mostrarStatus('Nenhum dado salvo encontrado.', 'info');
         return;
@@ -1355,48 +1898,60 @@
       try {
         const dados = JSON.parse(dadosSalvos);
         
-        document.getElementById('empreendimento').value = dados.empreendimento || '';
+        // Identificação do Empreendimento
+        document.getElementById('interessado').value = dados.interessado || '';
+        document.getElementById('assunto').value = dados.assunto || '';
+        document.getElementById('municipio').value = dados.municipio || '';
+        document.getElementById('coordenadas').value = dados.coordenadas || '';
+        document.getElementById('atividade').value = dados.atividade || '';
         document.getElementById('protocolo').value = dados.protocolo || '';
-        document.getElementById('dataVistoria').value = dados.dataVistoria || '';
-        document.getElementById('observacoes').value = dados.observacoes || '';
-        document.getElementById('vistoriador').value = dados.vistoriador || '';
-        document.getElementById('vistoriador2').value = dados.vistoriador || '';
-        document.getElementById('cargo').value = dados.cargo || 'Engenheiro/Responsável Técnico';
-        document.getElementById('cargo2').value = dados.cargo || 'Engenheiro/Responsável Técnico';
         
-        // Carregar arrays dinâmicos se existirem
-        if (dados.condicionantesArray) {
-          condicionantes = dados.condicionantesArray;
+        // Data da Vistoria
+        document.getElementById('dia').value = dados.dia || '';
+        document.getElementById('mes').value = dados.mes || '';
+        document.getElementById('ano').value = dados.ano || '';
+        
+        // Detalhes da Vistoria
+        document.getElementById('subestacao').value = dados.subestacao || '';
+        document.getElementById('empresa').value = dados.empresa || '';
+        tecnicos = dados.tecnicos || [];
+        representantes = dados.representantes || [];
+        
+        // Constatações
+        document.getElementById('inconformidades').checked = dados.inconformidadesCheck || false;
+        document.getElementById('semInconformidades').checked = dados.semInconformidadesCheck || false;
+        document.getElementById('descricaoInconformidades').value = dados.descricaoInconformidades || '';
+        document.getElementById('descricaoSemInconformidades').value = dados.descricaoSemInconformidades || '';
+        
+        // Atualizar visual dos checkboxes
+        if (dados.inconformidadesCheck) {
+          document.getElementById('inconformidades').dispatchEvent(new Event('change'));
+        } else if (dados.semInconformidadesCheck) {
+          document.getElementById('semInconformidades').dispatchEvent(new Event('change'));
         }
         
-        if (dados.checklistArray) {
-          checklistItems = dados.checklistArray;
-        }
+        // Fotos
+        fotos = dados.fotos || [];
         
-        // Reconstruir as tabelas
-        preencherCondicionantes();
-        preencherChecklist();
+        // Conclusão
+        conformidades = dados.conformidades || [];
+        inconformidades = dados.inconformidades || [];
+        document.getElementById('observacoesAdicionais').value = dados.observacoesAdicionais || '';
         
-        // Carregar respostas dos radios
-        if (dados.condicionantes) {
-          dados.condicionantes.forEach((cond, index) => {
-            if (cond.atende) {
-              const radio = document.querySelector(`input[name="cond_${index}"][value="${cond.atende}"]`);
-              if (radio) radio.checked = true;
-            }
-          });
-        }
+        // Assinatura
+        document.getElementById('assinaturaVistoriador').value = dados.assinaturaVistoriador || '';
+        document.getElementById('cargoVistoriador').value = dados.cargoVistoriador || 'Engenheiro/Responsável Técnico';
         
-        if (dados.checklist) {
-          dados.checklist.forEach((item, index) => {
-            if (item.atende) {
-              const radio = document.querySelector(`input[name="check_${index}"][value="${item.atende}"]`);
-              if (radio) radio.checked = true;
-            }
-          });
-        }
+        // Renderizar listas
+        renderizarTecnicos();
+        renderizarRepresentantes();
+        renderizarConformidades();
+        renderizarInconformidades();
+        renderizarFotos();
         
-        atualizarStatusSalvo();
+        // Atualizar texto gerado
+        atualizarTextoGerado();
+        
         mostrarStatus('Dados carregados com sucesso!');
       } catch (e) {
         console.error('Erro ao carregar dados:', e);
@@ -1405,7 +1960,7 @@
     }
     
     // ============================================
-    // FUNÇÃO GERAR PDF - ATUALIZADA PARA ITENS DINÂMICOS
+    // FUNÇÃO GERAR PDF COM MELHORIAS VISUAIS
     // ============================================
     function gerarPDF() {
       try {
@@ -1429,73 +1984,48 @@
             // Logo esquerda (ERCBA)
             if (LOGOS.headerLeft) {
               pdf.addImage(LOGOS.headerLeft, 'PNG', marginLeft, 10, 30, 23);
-            } else {
-              pdf.setFillColor(...PDF_CONFIG.colors.primary);
-              pdf.rect(marginLeft, 10, 20, 20, 'F');
-              pdf.setTextColor(255, 255, 255);
-              pdf.setFontSize(8);
-              pdf.text("ERCBA", marginLeft + 10, 22, { align: 'center' });
             }
             
             // Logo direita (IAT)
             if (LOGOS.headerRight) {
               pdf.addImage(LOGOS.headerRight, 'PNG', pageWidth - marginRight - 20, 10, 25, 20);
-            } else {
-              pdf.setFillColor(...PDF_CONFIG.colors.secondary);
-              pdf.rect(pageWidth - marginRight - 20, 10, 20, 20, 'F');
-              pdf.setTextColor(255, 255, 255);
-              pdf.setFontSize(8);
-              pdf.text("IAT", pageWidth - marginRight - 10, 22, { align: 'center' });
             }
           } catch (e) {
-            console.log('Erro ao carregar logos, usando fallback:', e);
-            pdf.setFillColor(...PDF_CONFIG.colors.primary);
-            pdf.rect(marginLeft, 10, 20, 20, 'F');
-            pdf.setTextColor(255, 255, 255);
-            pdf.setFontSize(8);
-            pdf.text("ERCBA", marginLeft + 10, 22, { align: 'center' });
-            
-            pdf.setFillColor(...PDF_CONFIG.colors.secondary);
-            pdf.rect(pageWidth - marginRight - 20, 10, 20, 20, 'F');
-            pdf.text("IAT", pageWidth - marginRight - 10, 22, { align: 'center' });
+            console.log('Logos não carregadas no PDF');
           }
           
+          // Texto do cabeçalho
+          pdf.setTextColor(...PDF_CONFIG.colors.primary);
+          pdf.setFontSize(14);
+          pdf.setFont("helvetica", "bold");
+          pdf.text(PDF_CONFIG.relatorioText.linha1, pageWidth / 2, 15, { align: 'center' });
+          pdf.setFontSize(12);
+          pdf.text(PDF_CONFIG.relatorioText.linha2, pageWidth / 2, 22, { align: 'center' });
+          pdf.setFontSize(11);
+          pdf.text(PDF_CONFIG.relatorioText.linha3, pageWidth / 2, 28, { align: 'center' });
+          
           pdf.setLineWidth(0.5);
-          pdf.line(marginLeft, 35, pageWidth - marginRight, 35);
+          pdf.line(marginLeft, 32, pageWidth - marginRight, 32);
         };
         
         // Função para adicionar rodapé
         const adicionarRodape = (paginaAtual, totalPaginas) => {
           const hoje = new Date().toLocaleDateString('pt-BR');
           
-          // Linha decorativa
-          if (LOGOS.footerLogo) {
-            try {
-              const lineWidth = pageWidth - marginLeft - marginRight;
-              const lineHeight = 2;
-              const lineY = 270;
-              pdf.addImage(LOGOS.footerLogo, 'PNG', marginLeft, lineY, lineWidth, lineHeight);
-            } catch (e) {
-              pdf.setLineWidth(0.5);
-              pdf.setDrawColor(...PDF_CONFIG.colors.primary);
-              pdf.line(marginLeft, 271, pageWidth - marginRight, 271);
-            }
-          } else {
-            pdf.setLineWidth(0.5);
-            pdf.setDrawColor(...PDF_CONFIG.colors.primary);
-            pdf.line(marginLeft, 271, pageWidth - marginRight, 271);
-          }
+          pdf.setLineWidth(0.5);
+          pdf.setDrawColor(...PDF_CONFIG.colors.primary);
+          pdf.line(marginLeft, 277, pageWidth - marginRight, 277);
           
           // Texto do rodapé
           pdf.setFontSize(7);
           pdf.setFont("helvetica", "normal");
           pdf.setTextColor(...PDF_CONFIG.colors.darkGray);
           
-          pdf.text(PDF_CONFIG.footerText.linha1, marginLeft, 278);
-          pdf.text(PDF_CONFIG.footerText.linha2, marginLeft, 282);
-          pdf.text(PDF_CONFIG.footerText.linha3, marginLeft, 286);
-          pdf.text(`Gerado em: ${hoje}`, pageWidth / 2, 286, { align: 'center' });
-          pdf.text(`Página ${paginaAtual} de ${totalPaginas}`, pageWidth - marginRight, 286, { align: 'right' });
+          pdf.text(PDF_CONFIG.footerText.linha1, marginLeft, 283);
+          pdf.text(PDF_CONFIG.footerText.linha2, marginLeft, 287);
+          pdf.text(PDF_CONFIG.footerText.linha3, marginLeft, 291);
+          pdf.text(`Gerado em: ${hoje}`, pageWidth / 2, 291, { align: 'center' });
+          pdf.text(`Página ${paginaAtual} de ${totalPaginas}`, pageWidth - marginRight, 291, { align: 'right' });
         };
         
         // Função para verificar nova página
@@ -1511,192 +2041,14 @@
           return false;
         };
         
-        // Função para adicionar cabeçalho da tabela de condicionantes
-        const adicionarCabecalhoCondicionantes = (linhaY) => {
-          pdf.setFillColor(...PDF_CONFIG.colors.primary);
-          pdf.rect(marginLeft, linhaY, pageWidth - marginLeft - marginRight, 8, 'F');
-          pdf.setTextColor(255, 255, 255);
-          pdf.setFont("helvetica", "bold");
-          pdf.setFontSize(9);
-          pdf.text('CONDICIONANTES', marginLeft + 5, linhaY + 5);
-          pdf.text('ATENDE', pageWidth - marginRight - 15, linhaY + 5);
-          return linhaY + 8;
-        };
-        
-        // Função para adicionar cabeçalho da tabela de checklist
-        const adicionarCabecalhoChecklist = (linhaY) => {
-          pdf.setFillColor(...PDF_CONFIG.colors.secondary);
-          pdf.rect(marginLeft, linhaY, pageWidth - marginLeft - marginRight, 8, 'F');
-          pdf.setTextColor(255, 255, 255);
-          pdf.setFont("helvetica", "bold");
-          pdf.setFontSize(9);
-          pdf.text('CHECK-LIST IN-LOCO', marginLeft + 5, linhaY + 5);
-          pdf.text('ATENDE', pageWidth - marginRight - 15, linhaY + 5);
-          return linhaY + 8;
-        };
-        
-        // Começar a primeira página
-        adicionarCabecalho();
-        yPos = 40;
-        
-        // Título do relatório
-        pdf.setFontSize(16);
-        pdf.setFont("helvetica", "bold");
-        pdf.setTextColor(...PDF_CONFIG.colors.primary);
-        pdf.text(PDF_CONFIG.relatorioText.linha1, pageWidth / 2, yPos, { align: 'center' });
-        yPos += 8;
-        pdf.setFontSize(14);
-        pdf.text(PDF_CONFIG.relatorioText.linha2, pageWidth / 2, yPos, { align: 'center' });
-        yPos += 8;
-        pdf.setFontSize(12);
-        pdf.setTextColor(0, 0, 0);
-        pdf.text(PDF_CONFIG.relatorioText.linha3, pageWidth / 2, yPos, { align: 'center' });
-        yPos += 12;
-        
-        // Informações básicas
-        pdf.setFontSize(11);
-        pdf.setFont("helvetica", "bold");
-        pdf.setTextColor(...PDF_CONFIG.colors.primary);
-        const empreendimento = document.getElementById('empreendimento').value || 'Não informado';
-        const protocolo = document.getElementById('protocolo').value || 'Não informado';
-        const dataVistoria = document.getElementById('dataVistoria').value || 'Não informada';
-        
-        pdf.text('EMPREENDIMENTO:', marginLeft, yPos);
-        pdf.setFont("helvetica", "normal");
-        pdf.setTextColor(0, 0, 0);
-        pdf.text(empreendimento, marginLeft + 45, yPos);
-        yPos += 7;
-        
-        pdf.setFont("helvetica", "bold");
-        pdf.setTextColor(...PDF_CONFIG.colors.primary);
-        pdf.text('PROTOCOLO:', marginLeft, yPos);
-        pdf.setFont("helvetica", "normal");
-        pdf.setTextColor(0, 0, 0);
-        pdf.text(protocolo, marginLeft + 45, yPos);
-        yPos += 7;
-        
-        pdf.setFont("helvetica", "bold");
-        pdf.setTextColor(...PDF_CONFIG.colors.primary);
-        pdf.text('DATA:', marginLeft, yPos);
-        pdf.setFont("helvetica", "normal");
-        pdf.setTextColor(0, 0, 0);
-        pdf.text(dataVistoria, marginLeft + 45, yPos);
-        yPos += 15;
-        
-        // Seção 1: Condicionantes
-        verificarNovaPagina(30);
-        pdf.setFontSize(12);
-        pdf.setFont("helvetica", "bold");
-        pdf.setTextColor(...PDF_CONFIG.colors.primary);
-        pdf.text('1. ATENDIMENTO ÀS CONDICIONANTES:', marginLeft, yPos);
-        yPos += 10;
-        
-        // Tabela de condicionantes
-        let linhaY = yPos;
-        linhaY = adicionarCabecalhoCondicionantes(linhaY);
-        
-        // Dados das condicionantes (incluindo as dinâmicas)
-        pdf.setFontSize(9);
-        for (let i = 0; i < condicionantes.length; i++) {
-          let textoCond = condicionantes[i];
-          if (!textoCond || !textoCond.trim()) continue;
+        // Função para adicionar texto com quebra automática
+        const adicionarTexto = (texto, tamanhoFonte = 11, estilo = "normal", margemEspecial = 0) => {
+          pdf.setFontSize(tamanhoFonte);
+          pdf.setFont("helvetica", estilo);
+          const larguraDisponivel = pageWidth - 2 * marginLeft - margemEspecial;
+          const lines = pdf.splitTextToSize(texto, larguraDisponivel);
           
-          if (linhaY > 250) {
-            const paginaAtual = pdf.internal.getNumberOfPages();
-            adicionarRodape(paginaAtual, paginaAtual + 1);
-            pdf.addPage();
-            adicionarCabecalho();
-            linhaY = 40;
-            linhaY = adicionarCabecalhoCondicionantes(linhaY);
-            pdf.setFontSize(9);
-          }
-          
-          const radioValue = document.querySelector(`input[name="cond_${i}"]:checked`)?.value;
-          const atendeText = radioValue ? radioValue.toUpperCase() : 'NÃO';
-          
-          if (i % 2 === 0) {
-            pdf.setFillColor(...PDF_CONFIG.colors.lightGray);
-            pdf.rect(marginLeft, linhaY, pageWidth - marginLeft - marginRight, 8, 'F');
-          }
-          
-          pdf.setTextColor(0, 0, 0);
-          pdf.setFont("helvetica", "normal");
-          const lines = pdf.splitTextToSize(textoCond, 120);
-          for (let j = 0; j < lines.length; j++) {
-            pdf.text(lines[j], marginLeft + 5, linhaY + (j * 4) + 4);
-          }
-          
-          pdf.setFont("helvetica", "bold");
-          pdf.text(atendeText, pageWidth - marginRight - 15, linhaY + 4);
-          linhaY += Math.max(8, lines.length * 4);
-        }
-        
-        yPos = linhaY + 10;
-        
-        // Seção 2: Checklist
-        verificarNovaPagina(30);
-        pdf.setFontSize(12);
-        pdf.setFont("helvetica", "bold");
-        pdf.setTextColor(...PDF_CONFIG.colors.primary);
-        pdf.text('2. RELATÓRIO DE CONFORMIDADE:', marginLeft, yPos);
-        yPos += 10;
-        
-        // Tabela de checklist
-        linhaY = yPos;
-        linhaY = adicionarCabecalhoChecklist(linhaY);
-        
-        // Dados do checklist (incluindo os dinâmicos)
-        pdf.setFontSize(9);
-        for (let i = 0; i < checklistItems.length; i++) {
-          if (linhaY > 250) {
-            const paginaAtual = pdf.internal.getNumberOfPages();
-            adicionarRodape(paginaAtual, paginaAtual + 1);
-            pdf.addPage();
-            adicionarCabecalho();
-            linhaY = 40;
-            linhaY = adicionarCabecalhoChecklist(linhaY);
-            pdf.setFontSize(9);
-          }
-          
-          const item = checklistItems[i];
-          if (!item || !item.trim()) continue;
-          
-          const radioValue = document.querySelector(`input[name="check_${i}"]:checked`)?.value;
-          const atendeText = radioValue ? radioValue.toUpperCase() : 'NÃO AVALIADO';
-          
-          if (i % 2 === 0) {
-            pdf.setFillColor(...PDF_CONFIG.colors.lightGray);
-            pdf.rect(marginLeft, linhaY, pageWidth - marginLeft - marginRight, 8, 'F');
-          }
-          
-          pdf.setTextColor(0, 0, 0);
-          pdf.setFont("helvetica", "normal");
-          const lines = pdf.splitTextToSize(item, 120);
-          for (let j = 0; j < lines.length; j++) {
-            pdf.text(lines[j], marginLeft + 5, linhaY + (j * 4) + 4);
-          }
-          
-          pdf.setFont("helvetica", "bold");
-          pdf.text(atendeText, pageWidth - marginRight - 15, linhaY + 4);
-          linhaY += Math.max(8, lines.length * 4);
-        }
-        
-        yPos = linhaY + 15;
-        
-        // Observações
-        const observacoes = document.getElementById('observacoes').value;
-        if (observacoes && observacoes.trim()) {
-          verificarNovaPagina(20);
-          pdf.setFontSize(12);
-          pdf.setFont("helvetica", "bold");
-          pdf.setTextColor(...PDF_CONFIG.colors.primary);
-          pdf.text('OBSERVAÇÕES ADICIONAIS:', marginLeft, yPos);
-          yPos += 8;
-          pdf.setFontSize(10);
-          pdf.setFont("helvetica", "normal");
-          pdf.setTextColor(0, 0, 0);
-          const obsLines = pdf.splitTextToSize(observacoes, pageWidth - 2 * marginLeft);
-          for (let i = 0; i < obsLines.length; i++) {
+          for (let i = 0; i < lines.length; i++) {
             if (yPos > 250) {
               const paginaAtual = pdf.internal.getNumberOfPages();
               adicionarRodape(paginaAtual, paginaAtual + 1);
@@ -1704,55 +2056,490 @@
               adicionarCabecalho();
               yPos = 40;
             }
-            pdf.text(obsLines[i], marginLeft, yPos);
+            pdf.text(lines[i], marginLeft + (margemEspecial > 0 ? 10 : 0), yPos);
             yPos += 5;
           }
-        }
+          yPos += 3;
+        };
         
-        // Assinatura
-        verificarNovaPagina(40);
+        // FUNÇÃO PARA CRIAR TABELA BONITA COM CORES ALTERNATAS (AZUL E BRANCO)
+        const criarTabelaIdentificacao = () => {
+          const dadosTabela = [
+            { label: 'INTERESSADO', value: document.getElementById('interessado').value || 'Não informado' },
+            { label: 'ASSUNTO', value: document.getElementById('assunto').value || 'Não informado' },
+            { label: 'MUNICÍPIO', value: document.getElementById('municipio').value || 'Não informado' },
+            { label: 'COORDENADAS', value: document.getElementById('coordenadas').value || 'Não informado' },
+            { label: 'ATIVIDADE', value: document.getElementById('atividade').value || 'Não informado' },
+            { label: 'PROTOCOLO', value: document.getElementById('protocolo').value || 'Não informado' }
+          ];
+          
+          const larguraTabela = pageWidth - 2 * marginLeft;
+          const larguraColunaLabel = 45;
+          const larguraColunaValor = larguraTabela - larguraColunaLabel;
+          const alturaLinha = 8;
+          
+          // Desenhar cabeçalho da tabela com azul mais forte
+          pdf.setFillColor(200, 220, 240); // Azul mais claro para cabeçalho
+          pdf.rect(marginLeft, yPos, larguraTabela, alturaLinha, 'F');
+          
+          pdf.setFontSize(11);
+          pdf.setFont("helvetica", "bold");
+          pdf.setTextColor(...PDF_CONFIG.colors.primary);
+          pdf.text("IDENTIFICAÇÃO DO EMPREENDIMENTO", marginLeft + larguraTabela/2, yPos + 5, { align: 'center' });
+          
+          yPos += alturaLinha + 2;
+          
+          // Desenhar linhas da tabela com cores alternadas AZUL/BRANCO
+          dadosTabela.forEach((item, index) => {
+            // Alternar cores: linha par = azul claro, linha ímpar = branco
+            if (index % 2 === 0) {
+              pdf.setFillColor(...PDF_CONFIG.colors.tableRowBlue); // Azul claro
+            } else {
+              pdf.setFillColor(...PDF_CONFIG.colors.tableRowWhite); // Branco
+            }
+            
+            pdf.rect(marginLeft, yPos, larguraTabela, alturaLinha, 'F');
+            
+            // Borda da célula
+            pdf.setDrawColor(180, 200, 220); // Azul claro para bordas
+            pdf.setLineWidth(0.2);
+            pdf.rect(marginLeft, yPos, larguraTabela, alturaLinha);
+            pdf.rect(marginLeft, yPos, larguraColunaLabel, alturaLinha);
+            
+            // Texto do label (negrito)
+            pdf.setFontSize(10);
+            pdf.setFont("helvetica", "bold");
+            
+            // Cor do texto baseada no fundo
+            if (index % 2 === 0) {
+              pdf.setTextColor(...PDF_CONFIG.colors.primary); // Azul escuro no fundo azul claro
+            } else {
+              pdf.setTextColor(...PDF_CONFIG.colors.primary); // Azul escuro no fundo branco
+            }
+            
+            const labelTruncado = item.label.length > 15 ? item.label.substring(0, 12) + '...' : item.label;
+            pdf.text(labelTruncado, marginLeft + 3, yPos + 5);
+            
+            // Texto do valor
+            pdf.setFont("helvetica", "normal");
+            pdf.setTextColor(0, 0, 0); // Preto para os valores
+            
+            const valorTruncado = item.value.length > 40 ? item.value.substring(0, 37) + '...' : item.value;
+            pdf.text(valorTruncado, marginLeft + larguraColunaLabel + 3, yPos + 5);
+            
+            yPos += alturaLinha;
+          });
+          
+          yPos += 10;
+        };
+        
+        // FUNÇÃO CORRIGIDA PARA ADICIONAR IMAGENS
+        const adicionarImagem = (dataUrl, descricao, index) => {
+          return new Promise((resolve) => {
+            // Primeiro verificar se precisa de nova página
+            if (yPos > 200) {
+              const paginaAtual = pdf.internal.getNumberOfPages();
+              adicionarRodape(paginaAtual, paginaAtual + 1);
+              pdf.addPage();
+              adicionarCabecalho();
+              yPos = 40;
+            }
+            
+            try {
+              // Criar elemento de imagem
+              const img = new Image();
+              
+              img.onload = function() {
+                try {
+                  // Configurar dimensões máximas
+                  const maxWidth = 140; // mm
+                  const maxHeight = 80; // mm
+                  
+                  let width = img.width;
+                  let height = img.height;
+                  
+                  // Calcular proporções para caber no PDF
+                  const widthRatio = maxWidth / width;
+                  const heightRatio = maxHeight / height;
+                  const ratio = Math.min(widthRatio, heightRatio);
+                  
+                  width = width * ratio;
+                  height = height * ratio;
+                  
+                  // Centralizar horizontalmente
+                  const xPos = (pageWidth - width) / 2;
+                  
+                  // Adicionar legenda antes da imagem
+                  pdf.setFontSize(9);
+                  pdf.setFont("helvetica", "bold");
+                  pdf.text(`Foto ${index + 1}: ${descricao || 'Registro fotográfico'}`, pageWidth / 2, yPos, { align: 'center' });
+                  yPos += 5;
+                  
+                  // Criar canvas para processar a imagem
+                  const canvas = document.createElement('canvas');
+                  const ctx = canvas.getContext('2d');
+                  
+                  // Definir tamanho do canvas
+                  canvas.width = img.width;
+                  canvas.height = img.height;
+                  
+                  // Desenhar imagem no canvas
+                  ctx.drawImage(img, 0, 0, img.width, img.height);
+                  
+                  // Converter para JPEG (mais compatível com jsPDF)
+                  const jpegDataUrl = canvas.toDataURL('image/jpeg', 0.7);
+                  
+                  // Adicionar imagem ao PDF
+                  pdf.addImage(jpegDataUrl, 'JPEG', xPos, yPos, width, height);
+                  
+                  // Atualizar posição Y
+                  yPos += height + 15;
+                  
+                  resolve();
+                } catch (error) {
+                  console.error('Erro ao processar imagem:', error);
+                  // Adicionar texto como fallback
+                  pdf.setFontSize(10);
+                  pdf.text(`[Foto ${index + 1}: Imagem não pôde ser carregada]`, marginLeft, yPos);
+                  yPos += 10;
+                  resolve();
+                }
+              };
+              
+              img.onerror = function() {
+                console.error('Imagem não pôde ser carregada');
+                pdf.setFontSize(10);
+                pdf.text(`[Foto ${index + 1}: Imagem não disponível]`, marginLeft, yPos);
+                yPos += 10;
+                resolve();
+              };
+              
+              // Configurar a fonte da imagem
+              img.src = dataUrl;
+              img.crossOrigin = 'Anonymous';
+              
+            } catch (error) {
+              console.error('Erro geral ao adicionar imagem:', error);
+              yPos += 20;
+              resolve();
+            }
+          });
+        };
+        
+        // Começar a primeira página
+        adicionarCabecalho();
+        yPos = 45;
+        
+        // Título principal
+        pdf.setFontSize(14);
+        pdf.setFont("helvetica", "bold");
+        pdf.setTextColor(...PDF_CONFIG.colors.primary);
+        pdf.text('RELATÓRIO DE VISTORIA TÉCNICA - SUBESTAÇÃO', pageWidth / 2, yPos, { align: 'center' });
         yPos += 10;
         
-        // Obter dados do vistoriador
-        const vistoriador = document.getElementById('vistoriador').value || '________________';
-        const cargo = document.getElementById('cargo').value || 'Engenheiro/Responsável Técnico';
+        // TABELA DE IDENTIFICAÇÃO DO EMPREENDIMENTO COM CORES ALTERNATAS
+        verificarNovaPagina(70);
+        criarTabelaIdentificacao();
         
-        // Calcular centro da página para a linha de assinatura
-        const larguraLinhaAssinatura = 80; // 80mm de largura para a linha
-        const posicaoXCentro = (pageWidth - larguraLinhaAssinatura) / 2;
-        
-        // Nome e cargo do vistoriador
-        pdf.setFontSize(11);
+        // DESCRIÇÃO DA VISTORIA
+        verificarNovaPagina(100);
+        pdf.setFontSize(12);
         pdf.setFont("helvetica", "bold");
-        pdf.setTextColor(0, 0, 0);
-        pdf.text('VISTORIADOR:', marginLeft, yPos);
-        pdf.setFont("helvetica", "normal");
-        pdf.setTextColor(0, 0, 0);
-        pdf.text(vistoriador, marginLeft + 45, yPos);
-        yPos += 7;
+        pdf.setTextColor(...PDF_CONFIG.colors.primary);
+        pdf.text('DESCRIÇÃO DA VISTORIA', marginLeft, yPos);
+        yPos += 10;
         
+        // Texto descritivo
+        const textoPreview = document.getElementById('textoPreview').innerText.replace('DESCRIÇÃO:', '').trim();
+        pdf.setFontSize(10);
+        pdf.setFont("helvetica", "normal");
+        adicionarTexto(textoPreview || 'Nenhuma descrição disponível.', 10);
+        
+        yPos += 10;
+        
+        // CONSTATAÇÕES
+        verificarNovaPagina(50);
+        pdf.setFontSize(12);
         pdf.setFont("helvetica", "bold");
-        pdf.setTextColor(0, 0, 0);
-        pdf.text('CARGO:', marginLeft, yPos);
-        pdf.setFont("helvetica", "normal");
-        pdf.setTextColor(0, 0, 0);
-        pdf.text(cargo, marginLeft + 45, yPos);
-        yPos += 15;
+        pdf.setTextColor(...PDF_CONFIG.colors.primary);
+        pdf.text('CONSTATAÇÕES', marginLeft, yPos);
+        yPos += 10;
         
-        // Adicionar rodapé em todas as páginas
-        const totalPaginas = pdf.internal.getNumberOfPages();
-        for (let i = 1; i <= totalPaginas; i++) {
-          pdf.setPage(i);
-          adicionarRodape(i, totalPaginas);
+        const temInconformidades = document.getElementById('inconformidades').checked;
+        const semInconformidades = document.getElementById('semInconformidades').checked;
+        const descInconformidades = document.getElementById('descricaoInconformidades').value || '';
+        const descSemInconformidades = document.getElementById('descricaoSemInconformidades').value || '';
+        
+        pdf.setFontSize(10);
+        pdf.setFont("helvetica", "normal");
+        
+        // CORREÇÃO COMPLETA: Remover símbolos especiais e usar texto simples
+        if (temInconformidades) {
+          // Usar texto simples sem símbolos especiais
+          pdf.text('Foram identificadas inconformidades, consistindo em:', marginLeft, yPos);
+          yPos += 6;
+          if (descInconformidades) {
+            adicionarTexto(descInconformidades, 10);
+          }
+        } else if (semInconformidades) {
+          // Usar texto simples sem símbolos especiais
+          pdf.text('Não foram identificadas inconformidades.', marginLeft, yPos);
+          yPos += 6;
+          if (descSemInconformidades) {
+            adicionarTexto(descSemInconformidades, 10);
+          } else {
+            pdf.text('Os sistemas de contenção de óleo e de separação de água e óleo encontram-se em conformidade,', marginLeft, yPos);
+            yPos += 5;
+            pdf.text('não sendo observadas irregularidades durante a vistoria.', marginLeft, yPos);
+            yPos += 10;
+          }
+        } else {
+          // Opções não marcadas - mostrar ambas como opções
+          pdf.text('Foram identificadas inconformidades, consistindo em:', marginLeft, yPos);
+          yPos += 6;
+          pdf.text('Não foram identificadas inconformidades.', marginLeft, yPos);
+          yPos += 6;
         }
         
-        // Salvar o PDF
-        const nomeArquivo = protocolo ?
-          `Relatorio_Vistoria_${protocolo.replace(/\s+/g, '_')}.pdf` :
-          `Relatorio_Vistoria_${new Date().getTime()}.pdf`;
+        yPos += 10;
         
-        pdf.save(nomeArquivo);
-        mostrarStatus('PDF gerado com sucesso!');
+        // REGISTROS FOTOGRÁFICOS (se houver fotos)
+        if (fotos.length > 0) {
+          verificarNovaPagina(30);
+          pdf.setFontSize(12);
+          pdf.setFont("helvetica", "bold");
+          pdf.setTextColor(...PDF_CONFIG.colors.primary);
+          pdf.text('REGISTROS FOTOGRÁFICOS', marginLeft, yPos);
+          yPos += 10;
+          
+          pdf.setFontSize(10);
+          pdf.setFont("helvetica", "normal");
+          pdf.text(`Total de ${fotos.length} foto(s) registrada(s):`, marginLeft, yPos);
+          yPos += 10;
+          
+          // Adicionar cada imagem de forma síncrona
+          const processarImagens = async () => {
+            for (let i = 0; i < fotos.length; i++) {
+              const foto = fotos[i];
+              const descricao = foto.descricao || `Registro ${i + 1}`;
+              
+              // Verificar espaço antes de adicionar
+              if (yPos > 180) {
+                const paginaAtual = pdf.internal.getNumberOfPages();
+                adicionarRodape(paginaAtual, paginaAtual + 1);
+                pdf.addPage();
+                adicionarCabecalho();
+                yPos = 40;
+              }
+              
+              await adicionarImagem(foto.dataUrl, descricao, i);
+            }
+            
+            // Após processar todas as imagens, adicionar conclusões
+            adicionarConclusoes();
+          };
+          
+          // Função para adicionar as conclusões (conformidades e inconformidades)
+          const adicionarConclusoes = () => {
+            yPos += 10;
+            
+            // CONCLUSÃO
+            verificarNovaPagina(50);
+            pdf.setFontSize(12);
+            pdf.setFont("helvetica", "bold");
+            pdf.setTextColor(...PDF_CONFIG.colors.primary);
+            pdf.text('CONCLUSÃO', marginLeft, yPos);
+            yPos += 10;
+            
+            pdf.setFontSize(10);
+            pdf.setFont("helvetica", "normal");
+            pdf.text('Com base na vistoria técnica realizada, conclui-se que:', marginLeft, yPos);
+            yPos += 10;
+            
+            // Conformidades identificadas
+            const conformidadesValidas = conformidades.filter(c => c && c.trim() !== '');
+            const inconformidadesValidas = inconformidades.filter(i => i && i.trim() !== '');
+            
+            // Adicionar conformidades
+            if (conformidadesValidas.length > 0) {
+              pdf.setFontSize(11);
+              pdf.setFont("helvetica", "bold");
+              pdf.text('Conformidades identificadas:', marginLeft, yPos);
+              yPos += 8;
+              
+              pdf.setFontSize(10);
+              pdf.setFont("helvetica", "normal");
+              
+              conformidadesValidas.forEach((conformidade, index) => {
+                const textoConformidade = `${index + 1}. ${conformidade}`;
+                adicionarTexto(textoConformidade, 10, "normal", 10);
+              });
+              
+              yPos += 5;
+            }
+            
+            // Adicionar inconformidades
+            if (inconformidadesValidas.length > 0) {
+              pdf.setFontSize(11);
+              pdf.setFont("helvetica", "bold");
+              pdf.text('Inconformidades identificadas (quando aplicável):', marginLeft, yPos);
+              yPos += 8;
+              
+              pdf.setFontSize(10);
+              pdf.setFont("helvetica", "normal");
+              
+              inconformidadesValidas.forEach((inconformidade, index) => {
+                const textoInconformidade = `${index + 1}. ${inconformidade}`;
+                adicionarTexto(textoInconformidade, 10, "normal", 10);
+              });
+              
+              yPos += 5;
+            }
+            
+            // Observações Adicionais
+            const observacoes = document.getElementById('observacoesAdicionais').value;
+            if (observacoes && observacoes.trim() !== '') {
+              pdf.setFontSize(11);
+              pdf.setFont("helvetica", "bold");
+              pdf.text('Observações adicionais (se houver):', marginLeft, yPos);
+              yPos += 8;
+              
+              pdf.setFontSize(10);
+              pdf.setFont("helvetica", "normal");
+              adicionarTexto(observacoes, 10);
+            }
+            
+            // Finalizar com a assinatura
+            finalizarComAssinatura();
+          };
+          
+          // Iniciar processamento das imagens
+          processarImagens();
+          
+        } else {
+          // Se não há fotos, adicionar conclusões diretamente
+          adicionarConclusoesDiretamente();
+        }
+        
+        // Função para adicionar conclusões quando não há fotos
+        function adicionarConclusoesDiretamente() {
+          yPos += 10;
+          
+          // CONCLUSÃO
+          verificarNovaPagina(50);
+          pdf.setFontSize(12);
+          pdf.setFont("helvetica", "bold");
+          pdf.setTextColor(...PDF_CONFIG.colors.primary);
+          pdf.text('CONCLUSÃO', marginLeft, yPos);
+          yPos += 10;
+          
+          pdf.setFontSize(10);
+          pdf.setFont("helvetica", "normal");
+          pdf.text('Com base na vistoria técnica realizada, conclui-se que:', marginLeft, yPos);
+          yPos += 10;
+          
+          // Conformidades identificadas
+          const conformidadesValidas = conformidades.filter(c => c && c.trim() !== '');
+          const inconformidadesValidas = inconformidades.filter(i => i && i.trim() !== '');
+          
+          // Adicionar conformidades
+          if (conformidadesValidas.length > 0) {
+            pdf.setFontSize(11);
+            pdf.setFont("helvetica", "bold");
+            pdf.text('Conformidades identificadas:', marginLeft, yPos);
+            yPos += 8;
+            
+            pdf.setFontSize(10);
+            pdf.setFont("helvetica", "normal");
+            
+            conformidadesValidas.forEach((conformidade, index) => {
+              const textoConformidade = `${index + 1}. ${conformidade}`;
+              adicionarTexto(textoConformidade, 10, "normal", 10);
+            });
+            
+            yPos += 5;
+          }
+          
+          // Adicionar inconformidades
+          if (inconformidadesValidas.length > 0) {
+            pdf.setFontSize(11);
+            pdf.setFont("helvetica", "bold");
+            pdf.text('Inconformidades identificadas (quando aplicável):', marginLeft, yPos);
+            yPos += 8;
+            
+            pdf.setFontSize(10);
+            pdf.setFont("helvetica", "normal");
+            
+            inconformidadesValidas.forEach((inconformidade, index) => {
+              const textoInconformidade = `${index + 1}. ${inconformidade}`;
+              adicionarTexto(textoInconformidade, 10, "normal", 10);
+            });
+            
+            yPos += 5;
+          }
+          
+          // Observações Adicionais
+          const observacoes = document.getElementById('observacoesAdicionais').value;
+          if (observacoes && observacoes.trim() !== '') {
+            pdf.setFontSize(11);
+            pdf.setFont("helvetica", "bold");
+            pdf.text('Observações adicionais (se houver):', marginLeft, yPos);
+            yPos += 8;
+            
+            pdf.setFontSize(10);
+            pdf.setFont("helvetica", "normal");
+            adicionarTexto(observacoes, 10);
+          }
+          
+          // Finalizar com a assinatura
+          finalizarComAssinatura();
+        }
+        
+        // Função para finalizar com assinatura
+        function finalizarComAssinatura() {
+          yPos += 10;
+          
+          // Assinatura
+          const vistoriador = document.getElementById('assinaturaVistoriador').value || '________________';
+          const cargo = document.getElementById('cargoVistoriador').value || 'Engenheiro/Responsável Técnico';
+          
+          verificarNovaPagina(30);
+          pdf.setFontSize(11);
+          pdf.setFont("helvetica", "bold");
+          pdf.text('VISTORIADOR (A):', marginLeft, yPos);
+          pdf.setFont("helvetica", "normal");
+          pdf.text(vistoriador, marginLeft + 55, yPos);
+          yPos += 7;
+          
+          pdf.setFont("helvetica", "bold");
+          pdf.text('CARGO:', marginLeft, yPos);
+          pdf.setFont("helvetica", "normal");
+          pdf.text(cargo, marginLeft + 55, yPos);
+          yPos += 15;
+         
+          // Adicionar rodapé em todas as páginas
+          const totalPaginas = pdf.internal.getNumberOfPages();
+          for (let i = 1; i <= totalPaginas; i++) {
+            pdf.setPage(i);
+            adicionarRodape(i, totalPaginas);
+          }
+          
+          // Salvar o PDF
+          const protocolo = document.getElementById('protocolo').value || 'sem_protocolo';
+          const data = new Date();
+          const timestamp = `${data.getDate()}${data.getMonth()+1}${data.getFullYear()}_${data.getHours()}${data.getMinutes()}`;
+          const nomeArquivo = `Relatorio_Subestacao_${protocolo.replace(/\s+/g, '_')}_${timestamp}.pdf`;
+          
+          pdf.save(nomeArquivo);
+          mostrarStatus('PDF gerado com sucesso!');
+        }
+        
+        // Inicializar o processo
+        if (fotos.length > 0) {
+          // Já está sendo chamado no processarImagens()
+        } else {
+          adicionarConclusoesDiretamente();
+        }
         
       } catch (error) {
         console.error('Erro detalhado ao gerar PDF:', error);
@@ -1762,22 +2549,60 @@
     
     function limparFormulario() {
       if (confirm('Tem certeza que deseja limpar todo o formulário? Todos os dados serão perdidos.')) {
-        document.getElementById('formularioVistoria').reset();
-        document.getElementById('dataVistoria').value = new Date().toISOString().split('T')[0];
-        document.getElementById('cargo').value = 'Engenheiro/Responsável Técnico';
-        document.getElementById('cargo2').value = 'Engenheiro/Responsável Técnico';
-        document.getElementById('vistoriador2').value = '';
+        // Limpar formulário de identificação
+        document.getElementById('formularioIdentificacao').reset();
         
-        // Resetar arrays para os valores iniciais
-        condicionantes = [...condicionantesIniciais];
-        checklistItems = [...checklistIniciais];
+        // Limpar campos de data
+        const hoje = new Date();
+        const meses = [
+          "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+          "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+        ];
         
-        // Reconstruir as tabelas
-        preencherCondicionantes();
-        preencherChecklist();
+        document.getElementById('dia').value = hoje.getDate();
+        document.getElementById('mes').value = meses[hoje.getMonth()];
+        document.getElementById('ano').value = hoje.getFullYear();
         
-        localStorage.removeItem('relatorioVistoria');
-        atualizarStatusSalvamento();
+        // Limpar outros campos
+        document.getElementById('subestacao').value = '';
+        document.getElementById('empresa').value = '';
+        
+        // Limpar checkboxes
+        document.getElementById('inconformidades').checked = false;
+        document.getElementById('semInconformidades').checked = false;
+        document.getElementById('desc-inconformidades').style.display = 'none';
+        document.getElementById('desc-sem-inconformidades').style.display = 'none';
+        document.getElementById('container-inconformidades').classList.remove('checked');
+        document.getElementById('container-sem-inconformidades').classList.remove('checked');
+        
+        // Limpar textareas
+        document.getElementById('descricaoInconformidades').value = '';
+        document.getElementById('descricaoSemInconformidades').value = '';
+        document.getElementById('observacoesAdicionais').value = '';
+        
+        // Limpar listas dinâmicas
+        tecnicos = [];
+        representantes = [];
+        conformidades = [];
+        inconformidades = [];
+        fotos = [];
+        
+        renderizarTecnicos();
+        renderizarRepresentantes();
+        renderizarConformidades();
+        renderizarInconformidades();
+        renderizarFotos();
+        
+        // Limpar assinatura
+        document.getElementById('assinaturaVistoriador').value = '';
+        document.getElementById('cargoVistoriador').value = 'Engenheiro/Responsável Técnico';
+        
+        // Atualizar texto gerado
+        atualizarTextoGerado();
+        
+        // Limpar localStorage
+        localStorage.removeItem('relatorioVistoriaSubestacao');
+        
         mostrarStatus('Formulário limpo com sucesso!');
       }
     }
@@ -1802,7 +2627,7 @@
     
     // Auto-save a cada 30 segundos
     setInterval(() => {
-      if (document.getElementById('empreendimento').value ||
+      if (document.getElementById('interessado').value ||
           document.getElementById('protocolo').value) {
         salvarFormulario();
       }
@@ -1810,7 +2635,7 @@
     
     // Prevenir perda de dados ao sair
     window.addEventListener('beforeunload', function(e) {
-      if (document.getElementById('empreendimento').value ||
+      if (document.getElementById('interessado').value ||
           document.getElementById('protocolo').value) {
         salvarFormulario();
       }
