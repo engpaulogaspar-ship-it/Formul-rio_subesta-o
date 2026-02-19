@@ -1245,9 +1245,9 @@
         secondary: [0, 86, 179],
         lightGray: [240, 240, 240],
         darkGray: [100, 100, 100],
-        tableHeader: [230, 240, 250], // Azul claro para cabeçalho
-        tableRowBlue: [230, 240, 250], // Azul claro para linhas alternadas
-        tableRowWhite: [255, 255, 255] // Branco para linhas alternadas
+        tableHeader: [230, 240, 250],
+        tableRowBlue: [230, 240, 250],
+        tableRowWhite: [255, 255, 255]
       },
       pageWidth: 210,
       marginLeft: 20,
@@ -1260,7 +1260,7 @@
     const LOGOS = {
       headerLeft: "https://upload.wikimedia.org/wikipedia/pt/b/ba/Logo_IAT_PR.png",
       headerRight: "https://image2url.com/r2/default/images/1770223607016-99c57976-38bc-462d-aaac-01c87703b919.png",
-      footerLogo: "https://image2url.com/r2/default/images/1770320351621-21df2145-4f19-473f-ab9e-1bb7c0eeb8dc.png"
+      footerLogo: "https://image2url.com/r2/default/images/1770320351621-21df2145-4f19-473f-ab9e-1bb7c0eeb8dc.png" // Logo do rodapé
     };
     
     // ============================================
@@ -1276,7 +1276,6 @@
     // INICIALIZAÇÃO
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
-      // Configurar data atual
       const hoje = new Date();
       const meses = [
         "janeiro", "fevereiro", "março", "abril", "maio", "junho",
@@ -1287,11 +1286,9 @@
       document.getElementById('mes').value = meses[hoje.getMonth()];
       document.getElementById('ano').value = hoje.getFullYear();
       
-      // Configurar checkboxes para serem mutuamente exclusivos
       const inconformidadesCheckbox = document.getElementById('inconformidades');
       const semInconformidadesCheckbox = document.getElementById('semInconformidades');
       
-      // Inicialmente esconder descrições
       document.getElementById('desc-inconformidades').style.display = 'none';
       document.getElementById('desc-sem-inconformidades').style.display = 'none';
       
@@ -1325,22 +1322,18 @@
         atualizarStatusSalvamento();
       });
       
-      // Inicializar containers vazios
       renderizarTecnicos();
       renderizarRepresentantes();
       renderizarConformidades();
       renderizarInconformidades();
       renderizarFotos();
       
-      // Atualizar texto gerado inicialmente
       atualizarTextoGerado();
       
-      // Adicionar listeners para atualizar status
       document.querySelectorAll('input, textarea').forEach(element => {
         element.addEventListener('input', atualizarStatusSalvamento);
       });
       
-      // Carregar dados salvos após um breve delay
       setTimeout(() => {
         carregarFormulario();
       }, 500);
@@ -1356,7 +1349,6 @@
       const subestacao = document.getElementById('subestacao').value || '___________________________';
       const empresa = document.getElementById('empresa').value || '______________________________________';
       
-      // Lista de técnicos
       let listaTecnicos = '';
       if (tecnicos.length > 0) {
         const tecnicosValidos = tecnicos.filter(t => t.trim() !== '');
@@ -1372,7 +1364,6 @@
         }
       }
       
-      // Lista de representantes
       let listaRepresentantes = '';
       if (representantes.length > 0) {
         const representantesValidos = representantes.filter(r => r.trim() !== '');
@@ -1388,7 +1379,6 @@
         }
       }
       
-      // Informações sobre inconformidades
       const temInconformidades = document.getElementById('inconformidades').checked;
       const semInconformidades = document.getElementById('semInconformidades').checked;
       const descInconformidades = document.getElementById('descricaoInconformidades').value || '';
@@ -1408,7 +1398,6 @@
         }
       }
       
-      // Construir o texto completo
       let textoCompleto = `A vistoria foi realizada no dia ${dia} de ${mes} de ${ano}`;
       
       if (listaTecnicos) {
@@ -1425,16 +1414,13 @@
         textoCompleto += ` ${textoInconformidades}`;
       }
       
-      // Adicionar informações sobre fotos
       if (fotos.length > 0) {
         textoCompleto += ` Segue abaixo registros fotográficos do empreendimento:`;
       }
       
-      // Atualizar o preview
       const previewDiv = document.getElementById('textoPreview');
       previewDiv.innerHTML = `<h5>DESCRIÇÃO:</h5>${textoCompleto}`;
       
-      // Se não houver informações suficientes, mostrar mensagem
       if (!dia && !mes && !ano && tecnicos.length === 0) {
         previewDiv.innerHTML = `<h5>DESCRIÇÃO:</h5><p style="color: #666; font-style: italic;">Preencha as informações da vistoria para ver o texto gerado automaticamente.</p>`;
       }
@@ -1464,7 +1450,6 @@
       container.appendChild(div);
       tecnicos.push("");
       
-      // Focar no novo campo
       const input = document.getElementById(`tecnico_${index}`);
       setTimeout(() => {
         input.focus();
@@ -1503,7 +1488,6 @@
       container.appendChild(div);
       representantes.push("");
       
-      // Focar no novo campo
       const input = document.getElementById(`representante_${index}`);
       setTimeout(() => {
         input.focus();
@@ -1542,7 +1526,6 @@
       container.appendChild(div);
       conformidades.push("");
       
-      // Focar no novo campo
       const input = document.getElementById(`conformidade_${index}`);
       setTimeout(() => {
         input.focus();
@@ -1580,7 +1563,6 @@
       container.appendChild(div);
       inconformidades.push("");
       
-      // Focar no novo campo
       const input = document.getElementById(`inconformidade_${index}`);
       setTimeout(() => {
         input.focus();
@@ -1819,7 +1801,6 @@
         container.appendChild(div);
       });
       
-      // Adicionar botão de adicionar foto
       const addButtonDiv = document.createElement('div');
       addButtonDiv.className = 'no-print';
       addButtonDiv.innerHTML = `
@@ -1837,12 +1818,11 @@
     // ============================================
     
     function atualizarStatusSalvamento() {
-      // Esta função pode ser usada para mostrar status visual de alterações não salvas
+      // Função mantida para compatibilidade
     }
     
     function salvarFormulario() {
       const dados = {
-        // Identificação do Empreendimento
         interessado: document.getElementById('interessado').value,
         assunto: document.getElementById('assunto').value,
         municipio: document.getElementById('municipio').value,
@@ -1850,32 +1830,26 @@
         atividade: document.getElementById('atividade').value,
         protocolo: document.getElementById('protocolo').value,
         
-        // Data da Vistoria
         dia: document.getElementById('dia').value,
         mes: document.getElementById('mes').value,
         ano: document.getElementById('ano').value,
         
-        // Detalhes da Vistoria
         subestacao: document.getElementById('subestacao').value,
         empresa: document.getElementById('empresa').value,
         tecnicos: tecnicos,
         representantes: representantes,
         
-        // Constatações
         inconformidadesCheck: document.getElementById('inconformidades').checked,
         semInconformidadesCheck: document.getElementById('semInconformidades').checked,
         descricaoInconformidades: document.getElementById('descricaoInconformidades').value,
         descricaoSemInconformidades: document.getElementById('descricaoSemInconformidades').value,
         
-        // Fotos
         fotos: fotos,
         
-        // Conclusão
         conformidades: conformidades,
         inconformidades: inconformidades,
         observacoesAdicionais: document.getElementById('observacoesAdicionais').value,
         
-        // Assinatura
         assinaturaVistoriador: document.getElementById('assinaturaVistoriador').value,
         cargoVistoriador: document.getElementById('cargoVistoriador').value
       };
@@ -1894,7 +1868,6 @@
       try {
         const dados = JSON.parse(dadosSalvos);
         
-        // Identificação do Empreendimento
         document.getElementById('interessado').value = dados.interessado || '';
         document.getElementById('assunto').value = dados.assunto || '';
         document.getElementById('municipio').value = dados.municipio || '';
@@ -1902,50 +1875,41 @@
         document.getElementById('atividade').value = dados.atividade || '';
         document.getElementById('protocolo').value = dados.protocolo || '';
         
-        // Data da Vistoria
         document.getElementById('dia').value = dados.dia || '';
         document.getElementById('mes').value = dados.mes || '';
         document.getElementById('ano').value = dados.ano || '';
         
-        // Detalhes da Vistoria
         document.getElementById('subestacao').value = dados.subestacao || '';
         document.getElementById('empresa').value = dados.empresa || '';
         tecnicos = dados.tecnicos || [];
         representantes = dados.representantes || [];
         
-        // Constatações
         document.getElementById('inconformidades').checked = dados.inconformidadesCheck || false;
         document.getElementById('semInconformidades').checked = dados.semInconformidadesCheck || false;
         document.getElementById('descricaoInconformidades').value = dados.descricaoInconformidades || '';
         document.getElementById('descricaoSemInconformidades').value = dados.descricaoSemInconformidades || '';
         
-        // Atualizar visual dos checkboxes
         if (dados.inconformidadesCheck) {
           document.getElementById('inconformidades').dispatchEvent(new Event('change'));
         } else if (dados.semInconformidadesCheck) {
           document.getElementById('semInconformidades').dispatchEvent(new Event('change'));
         }
         
-        // Fotos
         fotos = dados.fotos || [];
         
-        // Conclusão
         conformidades = dados.conformidades || [];
         inconformidades = dados.inconformidades || [];
         document.getElementById('observacoesAdicionais').value = dados.observacoesAdicionais || '';
         
-        // Assinatura
         document.getElementById('assinaturaVistoriador').value = dados.assinaturaVistoriador || '';
         document.getElementById('cargoVistoriador').value = dados.cargoVistoriador || 'Engenheiro/Responsável Técnico';
         
-        // Renderizar listas
         renderizarTecnicos();
         renderizarRepresentantes();
         renderizarConformidades();
         renderizarInconformidades();
         renderizarFotos();
         
-        // Atualizar texto gerado
         atualizarTextoGerado();
         
         mostrarStatus('Dados carregados com sucesso!');
@@ -1956,7 +1920,7 @@
     }
     
     // ============================================
-    // FUNÇÃO GERAR PDF COM AS MODIFICAÇÕES SOLICITADAS
+    // FUNÇÃO GERAR PDF - CORRIGIDA COM LOGO NO RODAPÉ
     // ============================================
     function gerarPDF() {
       try {
@@ -2004,7 +1968,7 @@
           pdf.line(marginLeft, 32, pageWidth - marginRight, 32);
         };
         
-        // Função para adicionar rodapé
+        // Função para adicionar rodapé com LOGO
         const adicionarRodape = (paginaAtual, totalPaginas) => {
           const hoje = new Date().toLocaleDateString('pt-BR');
           
@@ -2012,14 +1976,23 @@
           pdf.setDrawColor(...PDF_CONFIG.colors.primary);
           pdf.line(marginLeft, 277, pageWidth - marginRight, 277);
           
-          // Texto do rodapé
+          // Adicionar a logo do rodapé (esquerda)
+          try {
+            if (LOGOS.footerLogo) {
+              pdf.addImage(LOGOS.footerLogo, 'PNG', marginLeft, 280, 15, 12);
+            }
+          } catch (e) {
+            console.log('Logo do rodapé não carregada no PDF');
+          }
+          
+          // Texto do rodapé (agora alinhado mais à direita para não sobrepor a logo)
           pdf.setFontSize(7);
           pdf.setFont("helvetica", "normal");
           pdf.setTextColor(...PDF_CONFIG.colors.darkGray);
           
-          pdf.text(PDF_CONFIG.footerText.linha1, marginLeft, 283);
-          pdf.text(PDF_CONFIG.footerText.linha2, marginLeft, 287);
-          pdf.text(PDF_CONFIG.footerText.linha3, marginLeft, 291);
+          pdf.text(PDF_CONFIG.footerText.linha1, marginLeft + 18, 283);
+          pdf.text(PDF_CONFIG.footerText.linha2, marginLeft + 18, 287);
+          pdf.text(PDF_CONFIG.footerText.linha3, marginLeft + 18, 291);
           pdf.text(`Gerado em: ${hoje}`, pageWidth / 2, 291, { align: 'center' });
           pdf.text(`Página ${paginaAtual} de ${totalPaginas}`, pageWidth - marginRight, 291, { align: 'right' });
         };
@@ -2058,7 +2031,7 @@
           yPos += 3;
         };
         
-        // FUNÇÃO PARA CRIAR TABELA BONITA COM CORES ALTERNATAS (AZUL E BRANCO)
+        // FUNÇÃO PARA CRIAR TABELA BONITA COM CORES ALTERNATAS
         const criarTabelaIdentificacao = () => {
           const dadosTabela = [
             { label: 'INTERESSADO', value: document.getElementById('interessado').value || 'Não informado' },
@@ -2074,8 +2047,7 @@
           const larguraColunaValor = larguraTabela - larguraColunaLabel;
           const alturaLinha = 8;
           
-          // Desenhar cabeçalho da tabela com azul mais forte
-          pdf.setFillColor(200, 220, 240); // Azul mais claro para cabeçalho
+          pdf.setFillColor(200, 220, 240);
           pdf.rect(marginLeft, yPos, larguraTabela, alturaLinha, 'F');
           
           pdf.setFontSize(11);
@@ -2085,40 +2057,34 @@
           
           yPos += alturaLinha + 2;
           
-          // Desenhar linhas da tabela com cores alternadas AZUL/BRANCO
           dadosTabela.forEach((item, index) => {
-            // Alternar cores: linha par = azul claro, linha ímpar = branco
             if (index % 2 === 0) {
-              pdf.setFillColor(...PDF_CONFIG.colors.tableRowBlue); // Azul claro
+              pdf.setFillColor(...PDF_CONFIG.colors.tableRowBlue);
             } else {
-              pdf.setFillColor(...PDF_CONFIG.colors.tableRowWhite); // Branco
+              pdf.setFillColor(...PDF_CONFIG.colors.tableRowWhite);
             }
             
             pdf.rect(marginLeft, yPos, larguraTabela, alturaLinha, 'F');
             
-            // Borda da célula
-            pdf.setDrawColor(180, 200, 220); // Azul claro para bordas
+            pdf.setDrawColor(180, 200, 220);
             pdf.setLineWidth(0.2);
             pdf.rect(marginLeft, yPos, larguraTabela, alturaLinha);
             pdf.rect(marginLeft, yPos, larguraColunaLabel, alturaLinha);
             
-            // Texto do label (negrito)
             pdf.setFontSize(10);
             pdf.setFont("helvetica", "bold");
             
-            // Cor do texto baseada no fundo
             if (index % 2 === 0) {
-              pdf.setTextColor(...PDF_CONFIG.colors.primary); // Azul escuro no fundo azul claro
+              pdf.setTextColor(...PDF_CONFIG.colors.primary);
             } else {
-              pdf.setTextColor(...PDF_CONFIG.colors.primary); // Azul escuro no fundo branco
+              pdf.setTextColor(...PDF_CONFIG.colors.primary);
             }
             
             const labelTruncado = item.label.length > 15 ? item.label.substring(0, 12) + '...' : item.label;
             pdf.text(labelTruncado, marginLeft + 3, yPos + 5);
             
-            // Texto do valor
             pdf.setFont("helvetica", "normal");
-            pdf.setTextColor(0, 0, 0); // Preto para os valores
+            pdf.setTextColor(0, 0, 0);
             
             const valorTruncado = item.value.length > 40 ? item.value.substring(0, 37) + '...' : item.value;
             pdf.text(valorTruncado, marginLeft + larguraColunaLabel + 3, yPos + 5);
@@ -2152,14 +2118,12 @@
                   
                   const xPos = (pageWidth - width) / 2;
                   
-                  // Adicionar legenda
                   pdf.setFontSize(9);
                   pdf.setFont("helvetica", "bold");
                   pdf.text(`Foto ${index + 1}: ${descricao || 'Registro fotográfico'}`, 
                           pageWidth / 2, yPos, { align: 'center' });
                   yPos += 5;
                   
-                  // Adicionar imagem
                   pdf.addImage(dataUrl, 'JPEG', xPos, yPos, width, height);
                   
                   yPos += height + 15;
@@ -2190,7 +2154,7 @@
           });
         };
         
-        // MODIFICAÇÃO IMPORTANTE: Função para adicionar constatações sem o texto padrão
+        // Função para adicionar constatações
         const adicionarConstatacoes = () => {
           const temInconformidades = document.getElementById('inconformidades').checked;
           const semInconformidades = document.getElementById('semInconformidades').checked;
@@ -2200,9 +2164,7 @@
           pdf.setFontSize(10);
           pdf.setFont("helvetica", "normal");
           
-          // MODIFICAÇÃO: Não adicionar o texto padrão "Foram identificadas inconformidades, consistindo em:"
           if (temInconformidades && descInconformidades) {
-            // Adiciona APENAS a descrição do usuário, sem o texto padrão
             adicionarTexto(descInconformidades, 10);
           } else if (semInconformidades) {
             if (descSemInconformidades) {
@@ -2231,7 +2193,7 @@
         pdf.text('RELATÓRIO DE VISTORIA TÉCNICA - SUBESTAÇÃO', pageWidth / 2, yPos, { align: 'center' });
         yPos += 10;
         
-        // TABELA DE IDENTIFICAÇÃO DO EMPREENDIMENTO COM CORES ALTERNATAS
+        // TABELA DE IDENTIFICAÇÃO
         verificarNovaPagina(70);
         criarTabelaIdentificacao();
         
@@ -2243,14 +2205,12 @@
         pdf.text('DESCRIÇÃO DA VISTORIA', marginLeft, yPos);
         yPos += 10;
         
-        // Texto descritivo
         const textoPreview = document.getElementById('textoPreview').innerText.replace('DESCRIÇÃO:', '').trim();
         pdf.setFontSize(10);
         pdf.setFont("helvetica", "normal");
         adicionarTexto(textoPreview || 'Nenhuma descrição disponível.', 10);
         
         yPos += 10;
-        
         
         // REGISTROS FOTOGRÁFICOS (se houver fotos)
         if (fotos.length > 0) {
@@ -2266,12 +2226,10 @@
           pdf.text(`Total de ${fotos.length} foto(s) registrada(s):`, marginLeft, yPos);
           yPos += 10;
           
-          // Adicionar cada imagem
           const processarImagens = async () => {
             for (let i = 0; i < fotos.length; i++) {
               const foto = fotos[i];
               
-              // Verificar espaço antes de adicionar
               if (yPos > 180) {
                 const paginaAtual = pdf.internal.getNumberOfPages();
                 adicionarRodape(paginaAtual, paginaAtual + 1);
@@ -2283,15 +2241,12 @@
               await adicionarImagem(foto.dataUrl, foto.descricao, i);
             }
             
-            // Após processar todas as imagens, adicionar conclusões
             adicionarConclusoes();
           };
           
-          // Função para adicionar as conclusões
           const adicionarConclusoes = () => {
             yPos += 10;
             
-            // CONCLUSÃO
             verificarNovaPagina(50);
             pdf.setFontSize(12);
             pdf.setFont("helvetica", "bold");
@@ -2304,11 +2259,9 @@
             pdf.text('Com base na vistoria técnica realizada, conclui-se que:', marginLeft, yPos);
             yPos += 10;
             
-            // Conformidades identificadas
             const conformidadesValidas = conformidades.filter(c => c && c.trim() !== '');
             const inconformidadesValidas = inconformidades.filter(i => i && i.trim() !== '');
             
-            // Adicionar conformidades
             if (conformidadesValidas.length > 0) {
               pdf.setFontSize(11);
               pdf.setFont("helvetica", "bold");
@@ -2326,7 +2279,6 @@
               yPos += 5;
             }
             
-            // Adicionar inconformidades
             if (inconformidadesValidas.length > 0) {
               pdf.setFontSize(11);
               pdf.setFont("helvetica", "bold");
@@ -2344,7 +2296,6 @@
               yPos += 5;
             }
             
-            // Observações Adicionais
             const observacoes = document.getElementById('observacoesAdicionais').value;
             if (observacoes && observacoes.trim() !== '') {
               pdf.setFontSize(11);
@@ -2357,23 +2308,50 @@
               adicionarTexto(observacoes, 10);
             }
             
-            // Finalizar com a assinatura
             finalizarComAssinatura();
           };
           
-          // Iniciar processamento das imagens
+          const finalizarComAssinatura = () => {
+            yPos += 10;
+            
+            const vistoriador = document.getElementById('assinaturaVistoriador').value || '________________';
+            const cargo = document.getElementById('cargoVistoriador').value || 'Engenheiro/Responsável Técnico';
+            
+            verificarNovaPagina(30);
+            pdf.setFontSize(11);
+            pdf.setFont("helvetica", "bold");
+            pdf.text('VISTORIADOR (A):', marginLeft, yPos);
+            pdf.setFont("helvetica", "normal");
+            pdf.text(vistoriador, marginLeft + 55, yPos);
+            yPos += 7;
+            
+            pdf.setFont("helvetica", "bold");
+            pdf.text('CARGO:', marginLeft, yPos);
+            pdf.setFont("helvetica", "normal");
+            pdf.text(cargo, marginLeft + 55, yPos);
+            yPos += 15;
+            
+            const totalPaginas = pdf.internal.getNumberOfPages();
+            for (let i = 1; i <= totalPaginas; i++) {
+              pdf.setPage(i);
+              adicionarRodape(i, totalPaginas);
+            }
+            
+            const protocolo = document.getElementById('protocolo').value || 'sem_protocolo';
+            const data = new Date();
+            const timestamp = `${data.getDate()}${data.getMonth()+1}${data.getFullYear()}_${data.getHours()}${data.getMinutes()}`;
+            const nomeArquivo = `Relatorio_Subestacao_${protocolo.replace(/\s+/g, '_')}_${timestamp}.pdf`;
+            
+            pdf.save(nomeArquivo);
+            mostrarStatus('PDF gerado com sucesso!');
+          };
+          
           processarImagens();
           
         } else {
           // Se não há fotos, adicionar conclusões diretamente
-          adicionarConclusoesDiretamente();
-        }
-        
-        // Função para adicionar conclusões quando não há fotos
-        function adicionarConclusoesDiretamente() {
           yPos += 10;
           
-          // CONCLUSÃO
           verificarNovaPagina(50);
           pdf.setFontSize(12);
           pdf.setFont("helvetica", "bold");
@@ -2386,11 +2364,9 @@
           pdf.text('Com base na vistoria técnica realizada, conclui-se que:', marginLeft, yPos);
           yPos += 10;
           
-          // Conformidades identificadas
           const conformidadesValidas = conformidades.filter(c => c && c.trim() !== '');
           const inconformidadesValidas = inconformidades.filter(i => i && i.trim() !== '');
           
-          // Adicionar conformidades
           if (conformidadesValidas.length > 0) {
             pdf.setFontSize(11);
             pdf.setFont("helvetica", "bold");
@@ -2408,7 +2384,6 @@
             yPos += 5;
           }
           
-          // Adicionar inconformidades
           if (inconformidadesValidas.length > 0) {
             pdf.setFontSize(11);
             pdf.setFont("helvetica", "bold");
@@ -2426,7 +2401,6 @@
             yPos += 5;
           }
           
-          // Observações Adicionais
           const observacoes = document.getElementById('observacoesAdicionais').value;
           if (observacoes && observacoes.trim() !== '') {
             pdf.setFontSize(11);
@@ -2439,15 +2413,8 @@
             adicionarTexto(observacoes, 10);
           }
           
-          // Finalizar com a assinatura
-          finalizarComAssinatura();
-        }
-        
-        // Função para finalizar com assinatura
-        function finalizarComAssinatura() {
           yPos += 10;
           
-          // Assinatura
           const vistoriador = document.getElementById('assinaturaVistoriador').value || '________________';
           const cargo = document.getElementById('cargoVistoriador').value || 'Engenheiro/Responsável Técnico';
           
@@ -2465,14 +2432,12 @@
           pdf.text(cargo, marginLeft + 55, yPos);
           yPos += 15;
           
-          // Adicionar rodapé em todas as páginas
           const totalPaginas = pdf.internal.getNumberOfPages();
           for (let i = 1; i <= totalPaginas; i++) {
             pdf.setPage(i);
             adicionarRodape(i, totalPaginas);
           }
           
-          // Salvar o PDF
           const protocolo = document.getElementById('protocolo').value || 'sem_protocolo';
           const data = new Date();
           const timestamp = `${data.getDate()}${data.getMonth()+1}${data.getFullYear()}_${data.getHours()}${data.getMinutes()}`;
@@ -2480,13 +2445,6 @@
           
           pdf.save(nomeArquivo);
           mostrarStatus('PDF gerado com sucesso!');
-        }
-        
-        // Inicializar o processo
-        if (fotos.length > 0) {
-          // Já está sendo chamado no processarImagens()
-        } else {
-          adicionarConclusoesDiretamente();
         }
         
       } catch (error) {
@@ -2497,10 +2455,8 @@
     
     function limparFormulario() {
       if (confirm('Tem certeza que deseja limpar todo o formulário? Todos os dados serão perdidos.')) {
-        // Limpar formulário de identificação
         document.getElementById('formularioIdentificacao').reset();
         
-        // Limpar campos de data
         const hoje = new Date();
         const meses = [
           "janeiro", "fevereiro", "março", "abril", "maio", "junho",
@@ -2511,11 +2467,9 @@
         document.getElementById('mes').value = meses[hoje.getMonth()];
         document.getElementById('ano').value = hoje.getFullYear();
         
-        // Limpar outros campos
         document.getElementById('subestacao').value = '';
         document.getElementById('empresa').value = '';
         
-        // Limpar checkboxes
         document.getElementById('inconformidades').checked = false;
         document.getElementById('semInconformidades').checked = false;
         document.getElementById('desc-inconformidades').style.display = 'none';
@@ -2523,12 +2477,10 @@
         document.getElementById('container-inconformidades').classList.remove('checked');
         document.getElementById('container-sem-inconformidades').classList.remove('checked');
         
-        // Limpar textareas
         document.getElementById('descricaoInconformidades').value = '';
         document.getElementById('descricaoSemInconformidades').value = '';
         document.getElementById('observacoesAdicionais').value = '';
         
-        // Limpar listas dinâmicas
         tecnicos = [];
         representantes = [];
         conformidades = [];
@@ -2541,14 +2493,11 @@
         renderizarInconformidades();
         renderizarFotos();
         
-        // Limpar assinatura
         document.getElementById('assinaturaVistoriador').value = '';
         document.getElementById('cargoVistoriador').value = 'Engenheiro/Responsável Técnico';
         
-        // Atualizar texto gerado
         atualizarTextoGerado();
         
-        // Limpar localStorage
         localStorage.removeItem('relatorioVistoriaSubestacao');
         
         mostrarStatus('Formulário limpo com sucesso!');
@@ -2573,7 +2522,6 @@
       }, 3000);
     }
     
-    // Auto-save a cada 30 segundos
     setInterval(() => {
       if (document.getElementById('interessado').value ||
           document.getElementById('protocolo').value) {
@@ -2581,7 +2529,6 @@
       }
     }, 30000);
     
-    // Prevenir perda de dados ao sair
     window.addEventListener('beforeunload', function(e) {
       if (document.getElementById('interessado').value ||
           document.getElementById('protocolo').value) {
