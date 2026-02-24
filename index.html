@@ -23,6 +23,7 @@
       min-height: 100vh;
       padding: 20px 10px;
       color: #333;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .dashboard-container {
@@ -58,15 +59,7 @@
       z-index: 1;
     }
 
-    /* Logo Esquerda */
-    .logo-left {
-      position: relative;
-      z-index: 2;
-      flex: 0 0 auto;
-    }
-
-    /* Logo Direita */
-    .logo-right {
+    .logo-left, .logo-right {
       position: relative;
       z-index: 2;
       flex: 0 0 auto;
@@ -87,7 +80,6 @@
       transform: scale(1.05);
     }
 
-    /* Informações da Organização (Centro) */
     .org-info {
       position: relative;
       z-index: 2;
@@ -132,6 +124,582 @@
       margin-bottom: 30px;
     }
 
+    /* Cards Modernos */
+    .dashboard-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 25px;
+      box-shadow: var(--card-shadow);
+      border: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title i {
+      font-size: 20px;
+    }
+
+    .card-subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-top: 5px;
+      font-weight: 400;
+    }
+
+    /* Formulário */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: #495057;
+      margin-bottom: 8px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-control {
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      padding: 12px 15px;
+      transition: all 0.3s;
+      font-size: 15px;
+      height: auto;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+      outline: none;
+    }
+
+    /* Preview do texto gerado */
+    .texto-preview {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #e9ecef;
+      margin: 20px 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #333;
+      text-align: justify;
+      white-space: pre-line;
+      max-height: 300px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .texto-preview h5 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 5px;
+    }
+
+    /* Checkboxes com descrição */
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .checkbox-container {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #e9ecef;
+      transition: all 0.3s;
+    }
+
+    .checkbox-container.checked {
+      border-color: var(--primary-color);
+      background: rgba(0, 51, 102, 0.05);
+    }
+
+    .checkbox-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .checkbox-option input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+      accent-color: var(--primary-color);
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .checkbox-text {
+      margin: 0;
+      cursor: pointer;
+      font-weight: 500;
+      color: #495057;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .checkbox-description {
+      margin-top: 15px;
+      padding-left: 32px;
+    }
+
+    .checkbox-description textarea {
+      width: 100%;
+      min-height: 100px;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 15px;
+      resize: vertical;
+      transition: all 0.3s;
+      font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .checkbox-description textarea:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+      outline: none;
+    }
+
+    /* Textarea grandes */
+    .large-textarea {
+      min-height: 150px;
+      width: 100%;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 15px;
+      resize: vertical;
+      transition: all 0.3s;
+      font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .large-textarea:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+      outline: none;
+    }
+
+    /* Lista de campos */
+    .field-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .field-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .field-number {
+      background: var(--primary-color);
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .field-input {
+      flex: 1;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      padding: 12px 15px;
+      font-size: 15px;
+      transition: all 0.3s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .field-input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+      outline: none;
+    }
+
+    /* Botões de Adicionar/Remover */
+    .btn-add-field {
+      background: linear-gradient(135deg, #6610f2, #6f42c1);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-add-field:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(102, 16, 242, 0.3);
+    }
+
+    .btn-add-field:active {
+      transform: translateY(0);
+    }
+
+    .btn-remove-field {
+      background: linear-gradient(135deg, #dc3545, #c82333);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      margin-left: 10px;
+      flex-shrink: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-remove-field:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+    }
+
+    .btn-remove-field:active {
+      transform: translateY(0);
+    }
+
+    /* Galeria de Fotos - OTIMIZADO PARA IOS */
+    .foto-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .foto-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      background: #f8f9fa;
+    }
+
+    .foto-preview {
+      width: 100%;
+      height: 150px;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6c757d;
+      overflow: hidden;
+    }
+
+    .foto-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .foto-actions {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 5px;
+      z-index: 10;
+    }
+
+    .foto-action-btn {
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 16px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .foto-action-btn:hover {
+      background: rgba(0, 0, 0, 0.9);
+      transform: scale(1.1);
+    }
+
+    .foto-action-btn:active {
+      transform: scale(0.95);
+    }
+
+    .foto-description {
+      padding: 10px;
+      background: white;
+      border-top: 1px solid #e9ecef;
+    }
+
+    .foto-description input {
+      width: 100%;
+      border: 1px solid #e9ecef;
+      border-radius: 4px;
+      padding: 8px;
+      font-size: 13px;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    /* Botão de adicionar foto - MELHORADO PARA IOS */
+    .add-foto-btn {
+      background: #f8f9fa;
+      border: 2px dashed #6c757d;
+      border-radius: 8px;
+      width: 100%;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #6c757d;
+      cursor: pointer;
+      transition: all 0.3s;
+      -webkit-tap-highlight-color: transparent;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .add-foto-btn:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      background: rgba(0, 51, 102, 0.05);
+    }
+
+    .add-foto-btn:active {
+      background: rgba(0, 51, 102, 0.1);
+      transform: scale(0.98);
+    }
+
+    .add-foto-btn i {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .add-foto-btn span {
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* Input file invisível para iOS */
+    .file-input-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    /* Assinatura */
+    .assinatura-container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      border: 2px solid #e9ecef;
+      margin-top: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .assinatura-line {
+      height: 2px;
+      background: #333;
+      margin-top: 50px;
+      position: relative;
+    }
+
+    .assinatura-text {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 0 20px;
+      font-weight: 500;
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* Botões Modernos */
+    .btn-group-custom {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .btn-custom {
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      min-width: 160px;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-custom:active {
+      transform: translateY(-2px);
+    }
+
+    .btn-save {
+      background: linear-gradient(135deg, var(--accent-color), #20c997);
+      color: white;
+    }
+
+    .btn-load {
+      background: linear-gradient(135deg, #17a2b8, #138496);
+      color: white;
+    }
+
+    .btn-pdf {
+      background: linear-gradient(135deg, #dc3545, #c82333);
+      color: white;
+    }
+
+    .btn-clear {
+      background: linear-gradient(135deg, #6c757d, #5a6268);
+      color: white;
+    }
+
+    .btn-print {
+      background: linear-gradient(135deg, #ffc107, #e0a800);
+      color: #212529;
+    }
+
+    /* Status Bar */
+    .status-bar {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--accent-color);
+      color: white;
+      padding: 14px 22px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      display: none;
+      z-index: 1000;
+      font-weight: 500;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* Footer */
+    .dashboard-footer {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #dee2e6;
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* Seção de Data */
+    .data-section {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #e9ecef;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      align-items: center;
+    }
+
+    /* Media Queries para iOS/Tablet */
     @media (max-width: 1200px) {
       .dashboard-header {
         padding: 15px 20px;
@@ -216,565 +784,11 @@
       .report-title {
         font-size: 12px;
       }
-    }
-
-    /* Cards Modernos */
-    .dashboard-card {
-      background: white;
-      border-radius: var(--border-radius);
-      padding: 25px;
-      box-shadow: var(--card-shadow);
-      border: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      height: 100%;
-    }
-
-    .dashboard-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid #f0f0f0;
-    }
-
-    .card-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--primary-color);
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .card-title i {
-      font-size: 20px;
-    }
-
-    .card-subtitle {
-      font-size: 14px;
-      color: #666;
-      margin-top: 5px;
-      font-weight: 400;
-    }
-
-    /* Formulário */
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-bottom: 25px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-label {
-      font-weight: 600;
-      color: #495057;
-      margin-bottom: 8px;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .form-control {
-      border: 2px solid #e9ecef;
-      border-radius: 8px;
-      padding: 12px 15px;
-      transition: all 0.3s;
-      font-size: 15px;
-      height: auto;
-    }
-
-    .form-control:focus {
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
-      outline: none;
-    }
-
-    /* Preview do texto gerado */
-    .texto-preview {
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 10px;
-      border: 2px solid #e9ecef;
-      margin: 20px 0;
-      font-size: 15px;
-      line-height: 1.6;
-      color: #333;
-      text-align: justify;
-      white-space: pre-line;
-      max-height: 300px;
-      overflow-y: auto;
-    }
-
-    .texto-preview h5 {
-      color: var(--primary-color);
-      margin-bottom: 10px;
-      border-bottom: 2px solid var(--primary-color);
-      padding-bottom: 5px;
-    }
-
-    /* Checkboxes com descrição */
-    .checkbox-group {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      margin: 20px 0;
-    }
-
-    .checkbox-container {
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 10px;
-      border: 2px solid #e9ecef;
-      transition: all 0.3s;
-    }
-
-    .checkbox-container.checked {
-      border-color: var(--primary-color);
-      background: rgba(0, 51, 102, 0.05);
-    }
-
-    .checkbox-option {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      cursor: pointer;
-      margin-bottom: 15px;
-    }
-
-    .checkbox-option input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-      accent-color: var(--primary-color);
-      margin-top: 3px;
-      flex-shrink: 0;
-    }
-
-    .checkbox-text {
-      margin: 0;
-      cursor: pointer;
-      font-weight: 500;
-      color: #495057;
-      line-height: 1.5;
-    }
-
-    .checkbox-description {
-      margin-top: 15px;
-      padding-left: 32px;
-    }
-
-    .checkbox-description textarea {
-      width: 100%;
-      min-height: 100px;
-      border: 2px solid #e9ecef;
-      border-radius: 8px;
-      padding: 15px;
-      font-size: 15px;
-      resize: vertical;
-      transition: all 0.3s;
-      font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-    }
-
-    .checkbox-description textarea:focus {
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
-      outline: none;
-    }
-
-    /* Textarea grandes */
-    .large-textarea {
-      min-height: 150px;
-      width: 100%;
-      border: 2px solid #e9ecef;
-      border-radius: 8px;
-      padding: 15px;
-      font-size: 15px;
-      resize: vertical;
-      transition: all 0.3s;
-      font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-    }
-
-    .large-textarea:focus {
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
-      outline: none;
-    }
-
-    /* Lista de campos */
-    .field-list {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    .field-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .field-number {
-      background: var(--primary-color);
-      color: white;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 14px;
-      flex-shrink: 0;
-    }
-
-    .field-input {
-      flex: 1;
-      border: 2px solid #e9ecef;
-      border-radius: 8px;
-      padding: 12px 15px;
-      font-size: 15px;
-      transition: all 0.3s;
-    }
-
-    .field-input:focus {
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
-      outline: none;
-    }
-
-    /* Botões de Adicionar/Remover */
-    .btn-add-field {
-      background: linear-gradient(135deg, #6610f2, #6f42c1);
-      color: white;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 13px;
-      margin-top: 10px;
-    }
-
-    .btn-add-field:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(102, 16, 242, 0.3);
-    }
-
-    .btn-remove-field {
-      background: linear-gradient(135deg, #dc3545, #c82333);
-      color: white;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 12px;
-      margin-left: 10px;
-      flex-shrink: 0;
-    }
-
-    .btn-remove-field:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
-    }
-
-    /* Galeria de Fotos */
-    .foto-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    .foto-item {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .foto-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .foto-preview {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      background: #f8f9fa;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6c757d;
-    }
-
-    .foto-actions {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      display: flex;
-      gap: 5px;
-    }
-
-    .foto-action-btn {
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      border: none;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .foto-action-btn:hover {
-      background: rgba(0, 0, 0, 0.9);
-      transform: scale(1.1);
-    }
-
-    .foto-description {
-      padding: 10px;
-      background: white;
-      border-top: 1px solid #e9ecef;
-    }
-
-    .foto-description input {
-      width: 100%;
-      border: 1px solid #e9ecef;
-      border-radius: 4px;
-      padding: 5px 8px;
-      font-size: 12px;
-    }
-
-    .add-foto-btn {
-      background: #f8f9fa;
-      border: 2px dashed #6c757d;
-      border-radius: 8px;
-      width: 100%;
-      height: 150px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #6c757d;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .add-foto-btn:hover {
-      border-color: var(--primary-color);
-      color: var(--primary-color);
-      background: rgba(0, 51, 102, 0.05);
-    }
-
-    .add-foto-btn i {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .add-foto-btn span {
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    /* Assinatura */
-    .assinatura-container {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      border: 2px solid #e9ecef;
-      margin-top: 30px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .assinatura-line {
-      height: 2px;
-      background: #333;
-      margin-top: 50px;
-      position: relative;
-    }
-
-    .assinatura-text {
-      position: absolute;
-      top: -25px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: white;
-      padding: 0 20px;
-      font-weight: 500;
-      color: #666;
-      font-size: 14px;
-    }
-
-    /* Botões Modernos */
-    .btn-group-custom {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
-
-    .btn-custom {
-      padding: 14px 28px;
-      border-radius: 10px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 15px;
-      min-width: 160px;
-      justify-content: center;
-    }
-
-    .btn-save {
-      background: linear-gradient(135deg, var(--accent-color), #20c997);
-      color: white;
-    }
-
-    .btn-save:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
-    }
-
-    .btn-load {
-      background: linear-gradient(135deg, #17a2b8, #138496);
-      color: white;
-    }
-
-    .btn-load:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(23, 162, 184, 0.3);
-    }
-
-    .btn-pdf {
-      background: linear-gradient(135deg, #dc3545, #c82333);
-      color: white;
-    }
-
-    .btn-pdf:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(220, 53, 69, 0.3);
-    }
-
-    .btn-clear {
-      background: linear-gradient(135deg, #6c757d, #5a6268);
-      color: white;
-    }
-
-    .btn-clear:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(108, 117, 125, 0.3);
-    }
-
-    .btn-print {
-      background: linear-gradient(135deg, #ffc107, #e0a800);
-      color: #212529;
-    }
-
-    .btn-print:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(255, 193, 7, 0.3);
-    }
-
-    /* Status Bar */
-    .status-bar {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background: var(--accent-color);
-      color: white;
-      padding: 14px 22px;
-      border-radius: 10px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-      display: none;
-      z-index: 1000;
-      font-weight: 500;
-      animation: slideIn 0.3s ease;
-    }
-
-    @keyframes slideIn {
-      from {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-
-    /* Footer */
-    .dashboard-footer {
-      text-align: center;
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid #dee2e6;
-      color: #666;
-      font-size: 14px;
-    }
-
-    .dashboard-footer p {
-      margin-bottom: 5px;
-    }
-
-    /* Badges de Status */
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      margin-left: 10px;
-    }
-
-    .status-badge.saved {
-      background: rgba(40, 167, 69, 0.1);
-      color: var(--accent-color);
-      border: 1px solid rgba(40, 167, 69, 0.2);
-    }
-
-    .status-badge.unsaved {
-      background: rgba(255, 193, 7, 0.1);
-      color: #e0a800;
-      border: 1px solid rgba(255, 193, 7, 0.2);
-    }
-
-    /* Responsividade */
-    @media (max-width: 768px) {
+      
       .btn-custom {
         min-width: 140px;
         padding: 12px 20px;
+        font-size: 14px;
       }
       
       .dashboard-card {
@@ -799,10 +813,16 @@
         align-self: flex-start;
         margin-left: 0;
         margin-top: 5px;
+        width: 100%;
+        justify-content: center;
       }
       
       .foto-gallery {
         grid-template-columns: 1fr;
+      }
+      
+      .foto-preview {
+        height: 200px;
       }
     }
 
@@ -826,19 +846,10 @@
         border: 1px solid #ddd;
       }
       
-      .btn-group-custom {
-        display: none;
-      }
-      
+      .btn-group-custom,
       .btn-add-field,
-      .btn-remove-field {
-        display: none !important;
-      }
-      
-      .add-foto-btn {
-        display: none !important;
-      }
-      
+      .btn-remove-field,
+      .add-foto-btn,
       .foto-action-btn {
         display: none !important;
       }
@@ -864,25 +875,22 @@
       background: var(--secondary-color);
     }
 
-    /* Ícones de Status */
-    .status-icon {
-      font-size: 12px;
-    }
-
-    /* Seção de Data */
-    .data-section {
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 20px 0;
-      border: 2px solid #e9ecef;
-    }
-
-    .data-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      align-items: center;
+    /* Ajustes específicos para iOS */
+    @supports (-webkit-touch-callout: none) {
+      .form-control,
+      .field-input,
+      textarea,
+      input {
+        font-size: 16px; /* Previne zoom automático no iOS */
+      }
+      
+      .btn-custom,
+      .btn-add-field,
+      .btn-remove-field,
+      .foto-action-btn,
+      .add-foto-btn {
+        -webkit-appearance: none;
+      }
     }
   </style>
 </head>
@@ -891,19 +899,16 @@
   <div class="dashboard-container">
     <!-- Header Moderno com Logos nos Lados -->
     <div class="dashboard-header">
-      <!-- Logo Esquerda -->
       <div class="logo-left">
         <img src="https://upload.wikimedia.org/wikipedia/pt/b/ba/Logo_IAT_PR.png" alt="Logo ERCBA" class="logo-img" id="logoLeft">
       </div>
       
-      <!-- Informações da Organização (Centro) -->
       <div class="org-info">
         <h1 class="org-title">ESCRITÓRIO REGIONAL DE CURITIBA (ERCBA)</h1>
         <h2 class="org-department">SETOR DE LICENCIAMENTO DE ENERGIA</h2>
         <div class="report-title">RELATÓRIO DE VISTORIA TÉCNICA</div>
       </div>
       
-      <!-- Logo Direita -->
       <div class="logo-right">
         <img src="https://image2url.com/r2/default/images/1770223607016-99c57976-38bc-462d-aaac-01c87703b919.png" alt="Logo IAT" class="logo-img" id="logoRight">
       </div>
@@ -1019,9 +1024,7 @@
           <label class="form-label">
             <i class="fas fa-user-cog"></i> TÉCNICOS DA VISTORIA:
           </label>
-          <div id="tecnicos-container">
-            <!-- Técnicos serão adicionados dinamicamente -->
-          </div>
+          <div id="tecnicos-container"></div>
           <button type="button" class="btn-add-field no-print" onclick="adicionarTecnico()">
             <i class="fas fa-plus-circle"></i> Adicionar Técnico
           </button>
@@ -1039,9 +1042,7 @@
           <label class="form-label">
             <i class="fas fa-user-tie"></i> REPRESENTANTES DA EMPRESA:
           </label>
-          <div id="representantes-container">
-            <!-- Representantes serão adicionados dinamicamente -->
-          </div>
+          <div id="representantes-container"></div>
           <button type="button" class="btn-add-field no-print" onclick="adicionarRepresentante()">
             <i class="fas fa-plus-circle"></i> Adicionar Representante
           </button>
@@ -1060,7 +1061,6 @@
       
       <div class="texto-preview" id="textoPreview">
         <h5>DESCRIÇÃO:</h5>
-        <!-- O texto será gerado automaticamente aqui -->
       </div>
     </div>
 
@@ -1074,7 +1074,6 @@
       </div>
       
       <div class="checkbox-group">
-        <!-- Opção 1: Com inconformidades -->
         <div class="checkbox-container" id="container-inconformidades">
           <div class="checkbox-option">
             <input type="checkbox" id="inconformidades" name="constatacoes" value="inconformidades" onchange="atualizarTextoGerado()">
@@ -1091,7 +1090,6 @@
           </div>
         </div>
         
-        <!-- Opção 2: Sem inconformidades -->
         <div class="checkbox-container" id="container-sem-inconformidades">
           <div class="checkbox-option">
             <input type="checkbox" id="semInconformidades" name="constatacoes" value="semInconformidades" onchange="atualizarTextoGerado()">
@@ -1110,7 +1108,7 @@
       </div>
     </div>
 
-    <!-- Card de Registros Fotográficos -->
+    <!-- Card de Registros Fotográficos - OTIMIZADO PARA IOS -->
     <div class="dashboard-card">
       <div class="card-header">
         <h3 class="card-title">
@@ -1123,11 +1121,16 @@
         <!-- Fotos serão adicionadas dinamicamente -->
       </div>
       
-      <div class="no-print">
-        <div class="add-foto-btn" onclick="adicionarFoto()">
-          <i class="fas fa-plus-circle"></i>
-          <span>Adicionar Foto/Imagem</span>
-        </div>
+      <!-- Input file oculto para iOS -->
+      <input type="file" id="fotoInput" class="file-input-hidden" accept="image/*" capture="environment" multiple>
+      
+      <div class="no-print" style="text-align: center; margin-top: 15px;">
+        <button type="button" class="btn-add-field" onclick="abrirCamera()" style="width: 100%; justify-content: center;">
+          <i class="fas fa-camera"></i> Tirar Foto
+        </button>
+        <button type="button" class="btn-add-field" onclick="abrirGaleria()" style="width: 100%; justify-content: center; margin-top: 10px; background: linear-gradient(135deg, #17a2b8, #138496);">
+          <i class="fas fa-images"></i> Escolher da Galeria
+        </button>
       </div>
     </div>
 
@@ -1144,9 +1147,7 @@
         <label class="form-label">
           <i class="fas fa-check text-success"></i> CONFORMIDADES IDENTIFICADAS:
         </label>
-        <div id="conformidades-container">
-          <!-- Conformidades serão adicionadas dinamicamente -->
-        </div>
+        <div id="conformidades-container"></div>
         <button type="button" class="btn-add-field no-print" onclick="adicionarConformidade()">
           <i class="fas fa-plus-circle"></i> Adicionar Conformidade
         </button>
@@ -1156,9 +1157,7 @@
         <label class="form-label">
           <i class="fas fa-times text-danger"></i> INCONFORMIDADES IDENTIFICADAS (QUANDO APLICÁVEL):
         </label>
-        <div id="inconformidades-container">
-          <!-- Inconformidades serão adicionadas dinamicamente -->
-        </div>
+        <div id="inconformidades-container"></div>
         <button type="button" class="btn-add-field no-print" onclick="adicionarInconformidade()">
           <i class="fas fa-plus-circle"></i> Adicionar Inconformidade
         </button>
@@ -1245,9 +1244,9 @@
         secondary: [0, 86, 179],
         lightGray: [240, 240, 240],
         darkGray: [100, 100, 100],
-        tableHeader: [230, 240, 250], // Azul claro para cabeçalho
-        tableRowBlue: [230, 240, 250], // Azul claro para linhas alternadas
-        tableRowWhite: [255, 255, 255] // Branco para linhas alternadas
+        tableHeader: [230, 240, 250],
+        tableRowBlue: [230, 240, 250],
+        tableRowWhite: [255, 255, 255]
       },
       pageWidth: 210,
       marginLeft: 20,
@@ -1273,10 +1272,14 @@
     let fotos = [];
     
     // ============================================
+    // DETECÇÃO DE IOS
+    // ============================================
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    
+    // ============================================
     // INICIALIZAÇÃO
     // ============================================
     document.addEventListener('DOMContentLoaded', function() {
-      // Configurar data atual
       const hoje = new Date();
       const meses = [
         "janeiro", "fevereiro", "março", "abril", "maio", "junho",
@@ -1287,11 +1290,10 @@
       document.getElementById('mes').value = meses[hoje.getMonth()];
       document.getElementById('ano').value = hoje.getFullYear();
       
-      // Configurar checkboxes para serem mutuamente exclusivos
+      // Configurar checkboxes
       const inconformidadesCheckbox = document.getElementById('inconformidades');
       const semInconformidadesCheckbox = document.getElementById('semInconformidades');
       
-      // Inicialmente esconder descrições
       document.getElementById('desc-inconformidades').style.display = 'none';
       document.getElementById('desc-sem-inconformidades').style.display = 'none';
       
@@ -1325,119 +1327,106 @@
         atualizarStatusSalvamento();
       });
       
-      // Inicializar containers vazios
+      // Configurar input file para iOS
+      const fotoInput = document.getElementById('fotoInput');
+      fotoInput.addEventListener('change', function(e) {
+        processarArquivos(e.target.files);
+        // Limpar o input para permitir novas seleções
+        this.value = '';
+      });
+      
       renderizarTecnicos();
       renderizarRepresentantes();
       renderizarConformidades();
       renderizarInconformidades();
       renderizarFotos();
       
-      // Atualizar texto gerado inicialmente
       atualizarTextoGerado();
       
-      // Adicionar listeners para atualizar status
       document.querySelectorAll('input, textarea').forEach(element => {
         element.addEventListener('input', atualizarStatusSalvamento);
       });
       
-      // Carregar dados salvos após um breve delay
       setTimeout(() => {
         carregarFormulario();
       }, 500);
     });
     
     // ============================================
-    // FUNÇÃO PARA GERAR TEXTO DESCRITIVO
+    // FUNÇÕES PARA CÂMERA/GALERIA (OTIMIZADAS PARA IOS)
     // ============================================
-    function atualizarTextoGerado() {
-      const dia = document.getElementById('dia').value || '____';
-      const mes = document.getElementById('mes').value || '__________';
-      const ano = document.getElementById('ano').value || '______';
-      const subestacao = document.getElementById('subestacao').value || '___________________________';
-      const empresa = document.getElementById('empresa').value || '______________________________________';
+    
+    function abrirCamera() {
+      const fotoInput = document.getElementById('fotoInput');
       
-      // Lista de técnicos
-      let listaTecnicos = '';
-      if (tecnicos.length > 0) {
-        const tecnicosValidos = tecnicos.filter(t => t.trim() !== '');
-        if (tecnicosValidos.length > 0) {
-          if (tecnicosValidos.length === 1) {
-            listaTecnicos = `pelo técnico ${tecnicosValidos[0]}`;
-          } else if (tecnicosValidos.length === 2) {
-            listaTecnicos = `pelos técnicos ${tecnicosValidos[0]} e ${tecnicosValidos[1]}`;
+      if (isIOS) {
+        // No iOS, configurar para usar a câmera
+        fotoInput.setAttribute('capture', 'environment');
+        fotoInput.removeAttribute('multiple');
+      } else {
+        fotoInput.removeAttribute('capture');
+        fotoInput.removeAttribute('multiple');
+      }
+      
+      fotoInput.click();
+    }
+    
+    function abrirGaleria() {
+      const fotoInput = document.getElementById('fotoInput');
+      
+      // Remover capture para permitir escolher da galeria
+      fotoInput.removeAttribute('capture');
+      
+      // Permitir múltiplas fotos na galeria
+      if (!isIOS) {
+        fotoInput.setAttribute('multiple', 'multiple');
+      }
+      
+      fotoInput.click();
+    }
+    
+    function processarArquivos(arquivos) {
+      if (!arquivos || arquivos.length === 0) return;
+      
+      // Converter FileList para Array
+      const arquivosArray = Array.from(arquivos);
+      
+      arquivosArray.forEach((arquivo, index) => {
+        if (!arquivo.type.startsWith('image/')) {
+          mostrarStatus(`Arquivo ${index + 1} não é uma imagem`, 'error');
+          return;
+        }
+        
+        const reader = new FileReader();
+        
+        reader.onload = function(event) {
+          const fotoData = {
+            id: fotos.length,
+            dataUrl: event.target.result,
+            descricao: '',
+            fileName: arquivo.name
+          };
+          
+          fotos.push(fotoData);
+          
+          // Se for o último arquivo, renderizar
+          if (index === arquivosArray.length - 1) {
+            renderizarFotos();
+            atualizarTextoGerado();
+            atualizarStatusSalvamento();
+            mostrarStatus(`${arquivosArray.length} foto(s) adicionada(s) com sucesso!`);
           } else {
-            const ultimo = tecnicosValidos.pop();
-            listaTecnicos = `pelos técnicos ${tecnicosValidos.join(', ')} e ${ultimo}`;
+            // Renderizar progressivamente
+            renderizarFotos();
           }
-        }
-      }
-      
-      // Lista de representantes
-      let listaRepresentantes = '';
-      if (representantes.length > 0) {
-        const representantesValidos = representantes.filter(r => r.trim() !== '');
-        if (representantesValidos.length > 0) {
-          if (representantesValidos.length === 1) {
-            listaRepresentantes = `pelo funcionário da ${empresa} ${representantesValidos[0]}`;
-          } else if (representantesValidos.length === 2) {
-            listaRepresentantes = `pelos funcionários da ${empresa} ${representantesValidos[0]} e ${representantesValidos[1]}`;
-          } else {
-            const ultimo = representantesValidos.pop();
-            listaRepresentantes = `pelos funcionários da ${empresa} ${representantesValidos.join(', ')} e ${ultimo}`;
-          }
-        }
-      }
-      
-      // Informações sobre inconformidades
-      const temInconformidades = document.getElementById('inconformidades').checked;
-      const semInconformidades = document.getElementById('semInconformidades').checked;
-      const descInconformidades = document.getElementById('descricaoInconformidades').value || '';
-      const descSemInconformidades = document.getElementById('descricaoSemInconformidades').value || '';
-      
-      let textoInconformidades = '';
-      if (temInconformidades && descInconformidades) {
-        textoInconformidades = `Na subestação foram encontradas algumas inconformidades como ${descInconformidades.toLowerCase()}. `;
-        if (semInconformidades || descSemInconformidades) {
-          textoInconformidades += `Já no sistema de contenção de óleo e no sistema de separação de água e óleo não foram encontradas inconformidades.`;
-        }
-      } else if (semInconformidades) {
-        if (descSemInconformidades) {
-          textoInconformidades = descSemInconformidades;
-        } else {
-          textoInconformidades = 'Não foram encontradas inconformidades durante a vistoria.';
-        }
-      }
-      
-      // Construir o texto completo
-      let textoCompleto = `A vistoria foi realizada no dia ${dia} de ${mes} de ${ano}`;
-      
-      if (listaTecnicos) {
-        textoCompleto += `, ${listaTecnicos}`;
-      }
-      
-      if (listaRepresentantes) {
-        textoCompleto += `, e acompanhada ${listaRepresentantes}`;
-      }
-      
-      textoCompleto += `.`;
-      
-      if (textoInconformidades) {
-        textoCompleto += ` ${textoInconformidades}`;
-      }
-      
-      // Adicionar informações sobre fotos
-      if (fotos.length > 0) {
-        textoCompleto += ` Segue abaixo registros fotográficos do empreendimento:`;
-      }
-      
-      // Atualizar o preview
-      const previewDiv = document.getElementById('textoPreview');
-      previewDiv.innerHTML = `<h5>DESCRIÇÃO:</h5>${textoCompleto}`;
-      
-      // Se não houver informações suficientes, mostrar mensagem
-      if (!dia && !mes && !ano && tecnicos.length === 0) {
-        previewDiv.innerHTML = `<h5>DESCRIÇÃO:</h5><p style="color: #666; font-style: italic;">Preencha as informações da vistoria para ver o texto gerado automaticamente.</p>`;
-      }
+        };
+        
+        reader.onerror = function() {
+          mostrarStatus(`Erro ao carregar imagem: ${arquivo.name}`, 'error');
+        };
+        
+        reader.readAsDataURL(arquivo);
+      });
     }
     
     // ============================================
@@ -1464,7 +1453,6 @@
       container.appendChild(div);
       tecnicos.push("");
       
-      // Focar no novo campo
       const input = document.getElementById(`tecnico_${index}`);
       setTimeout(() => {
         input.focus();
@@ -1483,154 +1471,6 @@
       }
     }
     
-    function adicionarRepresentante() {
-      const container = document.getElementById('representantes-container');
-      const index = representantes.length;
-      
-      const div = document.createElement('div');
-      div.className = 'field-item';
-      div.innerHTML = `
-        <div class="field-number">${index + 1}</div>
-        <input type="text" class="field-input representante-input" 
-               id="representante_${index}" 
-               placeholder="Nome completo do representante"
-               oninput="atualizarRepresentanteInput(${index})">
-        <button type="button" class="btn-remove-field no-print" onclick="removerRepresentante(${index})">
-          <i class="fas fa-trash"></i> Remover
-        </button>
-      `;
-      
-      container.appendChild(div);
-      representantes.push("");
-      
-      // Focar no novo campo
-      const input = document.getElementById(`representante_${index}`);
-      setTimeout(() => {
-        input.focus();
-      }, 100);
-      
-      atualizarStatusSalvamento();
-      mostrarStatus('Novo representante adicionado!');
-    }
-    
-    function atualizarRepresentanteInput(index) {
-      const input = document.getElementById(`representante_${index}`);
-      if (input) {
-        representantes[index] = input.value;
-        atualizarTextoGerado();
-        atualizarStatusSalvamento();
-      }
-    }
-    
-    function adicionarConformidade() {
-      const container = document.getElementById('conformidades-container');
-      const index = conformidades.length;
-      
-      const div = document.createElement('div');
-      div.className = 'field-item';
-      div.innerHTML = `
-        <div class="field-number">${index + 1}</div>
-        <input type="text" class="field-input conformidade-input" 
-               id="conformidade_${index}" 
-               placeholder="Descreva a conformidade identificada..."
-               oninput="atualizarConformidadeInput(${index})">
-        <button type="button" class="btn-remove-field no-print" onclick="removerConformidade(${index})">
-          <i class="fas fa-trash"></i> Remover
-        </button>
-      `;
-      
-      container.appendChild(div);
-      conformidades.push("");
-      
-      // Focar no novo campo
-      const input = document.getElementById(`conformidade_${index}`);
-      setTimeout(() => {
-        input.focus();
-      }, 100);
-      
-      atualizarStatusSalvamento();
-      mostrarStatus('Nova conformidade adicionada!');
-    }
-    
-    function atualizarConformidadeInput(index) {
-      const input = document.getElementById(`conformidade_${index}`);
-      if (input) {
-        conformidades[index] = input.value;
-        atualizarStatusSalvamento();
-      }
-    }
-    
-    function adicionarInconformidade() {
-      const container = document.getElementById('inconformidades-container');
-      const index = inconformidades.length;
-      
-      const div = document.createElement('div');
-      div.className = 'field-item';
-      div.innerHTML = `
-        <div class="field-number">${index + 1}</div>
-        <input type="text" class="field-input inconformidade-input" 
-               id="inconformidade_${index}" 
-               placeholder="Descreva a inconformidade identificada..."
-               oninput="atualizarInconformidadeInput(${index})">
-        <button type="button" class="btn-remove-field no-print" onclick="removerInconformidade(${index})">
-          <i class="fas fa-trash"></i> Remover
-        </button>
-      `;
-      
-      container.appendChild(div);
-      inconformidades.push("");
-      
-      // Focar no novo campo
-      const input = document.getElementById(`inconformidade_${index}`);
-      setTimeout(() => {
-        input.focus();
-      }, 100);
-      
-      atualizarStatusSalvamento();
-      mostrarStatus('Nova inconformidade adicionada!');
-    }
-    
-    function atualizarInconformidadeInput(index) {
-      const input = document.getElementById(`inconformidade_${index}`);
-      if (input) {
-        inconformidades[index] = input.value;
-        atualizarStatusSalvamento();
-      }
-    }
-    
-    function adicionarFoto() {
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = 'image/*';
-      input.style.display = 'none';
-      
-      input.onchange = function(e) {
-        const file = e.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function(event) {
-            const fotoData = {
-              id: fotos.length,
-              dataUrl: event.target.result,
-              descricao: '',
-              fileName: file.name
-            };
-            
-            fotos.push(fotoData);
-            renderizarFotos();
-            atualizarTextoGerado();
-            atualizarStatusSalvamento();
-            mostrarStatus('Foto adicionada com sucesso!');
-          };
-          reader.readAsDataURL(file);
-        }
-      };
-      
-      document.body.appendChild(input);
-      input.click();
-      document.body.removeChild(input);
-    }
-    
     function removerTecnico(index) {
       if (tecnicos.length <= 0) return;
       
@@ -1642,63 +1482,6 @@
         mostrarStatus('Técnico removido!');
       }
     }
-    
-    function removerRepresentante(index) {
-      if (representantes.length <= 0) return;
-      
-      if (confirm('Tem certeza que deseja remover este representante?')) {
-        representantes.splice(index, 1);
-        renderizarRepresentantes();
-        atualizarTextoGerado();
-        atualizarStatusSalvamento();
-        mostrarStatus('Representante removido!');
-      }
-    }
-    
-    function removerConformidade(index) {
-      if (conformidades.length <= 0) return;
-      
-      if (confirm('Tem certeza que deseja remover esta conformidade?')) {
-        conformidades.splice(index, 1);
-        renderizarConformidades();
-        atualizarStatusSalvamento();
-        mostrarStatus('Conformidade removida!');
-      }
-    }
-    
-    function removerInconformidade(index) {
-      if (inconformidades.length <= 0) return;
-      
-      if (confirm('Tem certeza que deseja remover esta inconformidade?')) {
-        inconformidades.splice(index, 1);
-        renderizarInconformidades();
-        atualizarStatusSalvamento();
-        mostrarStatus('Inconformidade removida!');
-      }
-    }
-    
-    function removerFoto(index) {
-      if (fotos.length <= 0) return;
-      
-      if (confirm('Tem certeza que deseja remover esta foto?')) {
-        fotos.splice(index, 1);
-        renderizarFotos();
-        atualizarTextoGerado();
-        atualizarStatusSalvamento();
-        mostrarStatus('Foto removida!');
-      }
-    }
-    
-    function atualizarDescricaoFoto(index, descricao) {
-      if (fotos[index]) {
-        fotos[index].descricao = descricao;
-        atualizarStatusSalvamento();
-      }
-    }
-    
-    // ============================================
-    // FUNÇÕES DE RENDERIZAÇÃO
-    // ============================================
     
     function renderizarTecnicos() {
       const container = document.getElementById('tecnicos-container');
@@ -1721,6 +1504,56 @@
         
         container.appendChild(div);
       });
+    }
+    
+    function adicionarRepresentante() {
+      const container = document.getElementById('representantes-container');
+      const index = representantes.length;
+      
+      const div = document.createElement('div');
+      div.className = 'field-item';
+      div.innerHTML = `
+        <div class="field-number">${index + 1}</div>
+        <input type="text" class="field-input representante-input" 
+               id="representante_${index}" 
+               placeholder="Nome completo do representante"
+               oninput="atualizarRepresentanteInput(${index})">
+        <button type="button" class="btn-remove-field no-print" onclick="removerRepresentante(${index})">
+          <i class="fas fa-trash"></i> Remover
+        </button>
+      `;
+      
+      container.appendChild(div);
+      representantes.push("");
+      
+      const input = document.getElementById(`representante_${index}`);
+      setTimeout(() => {
+        input.focus();
+      }, 100);
+      
+      atualizarStatusSalvamento();
+      mostrarStatus('Novo representante adicionado!');
+    }
+    
+    function atualizarRepresentanteInput(index) {
+      const input = document.getElementById(`representante_${index}`);
+      if (input) {
+        representantes[index] = input.value;
+        atualizarTextoGerado();
+        atualizarStatusSalvamento();
+      }
+    }
+    
+    function removerRepresentante(index) {
+      if (representantes.length <= 0) return;
+      
+      if (confirm('Tem certeza que deseja remover este representante?')) {
+        representantes.splice(index, 1);
+        renderizarRepresentantes();
+        atualizarTextoGerado();
+        atualizarStatusSalvamento();
+        mostrarStatus('Representante removido!');
+      }
     }
     
     function renderizarRepresentantes() {
@@ -1746,6 +1579,54 @@
       });
     }
     
+    function adicionarConformidade() {
+      const container = document.getElementById('conformidades-container');
+      const index = conformidades.length;
+      
+      const div = document.createElement('div');
+      div.className = 'field-item';
+      div.innerHTML = `
+        <div class="field-number">${index + 1}</div>
+        <input type="text" class="field-input conformidade-input" 
+               id="conformidade_${index}" 
+               placeholder="Descreva a conformidade identificada..."
+               oninput="atualizarConformidadeInput(${index})">
+        <button type="button" class="btn-remove-field no-print" onclick="removerConformidade(${index})">
+          <i class="fas fa-trash"></i> Remover
+        </button>
+      `;
+      
+      container.appendChild(div);
+      conformidades.push("");
+      
+      const input = document.getElementById(`conformidade_${index}`);
+      setTimeout(() => {
+        input.focus();
+      }, 100);
+      
+      atualizarStatusSalvamento();
+      mostrarStatus('Nova conformidade adicionada!');
+    }
+    
+    function atualizarConformidadeInput(index) {
+      const input = document.getElementById(`conformidade_${index}`);
+      if (input) {
+        conformidades[index] = input.value;
+        atualizarStatusSalvamento();
+      }
+    }
+    
+    function removerConformidade(index) {
+      if (conformidades.length <= 0) return;
+      
+      if (confirm('Tem certeza que deseja remover esta conformidade?')) {
+        conformidades.splice(index, 1);
+        renderizarConformidades();
+        atualizarStatusSalvamento();
+        mostrarStatus('Conformidade removida!');
+      }
+    }
+    
     function renderizarConformidades() {
       const container = document.getElementById('conformidades-container');
       container.innerHTML = '';
@@ -1767,6 +1648,54 @@
         
         container.appendChild(div);
       });
+    }
+    
+    function adicionarInconformidade() {
+      const container = document.getElementById('inconformidades-container');
+      const index = inconformidades.length;
+      
+      const div = document.createElement('div');
+      div.className = 'field-item';
+      div.innerHTML = `
+        <div class="field-number">${index + 1}</div>
+        <input type="text" class="field-input inconformidade-input" 
+               id="inconformidade_${index}" 
+               placeholder="Descreva a inconformidade identificada..."
+               oninput="atualizarInconformidadeInput(${index})">
+        <button type="button" class="btn-remove-field no-print" onclick="removerInconformidade(${index})">
+          <i class="fas fa-trash"></i> Remover
+        </button>
+      `;
+      
+      container.appendChild(div);
+      inconformidades.push("");
+      
+      const input = document.getElementById(`inconformidade_${index}`);
+      setTimeout(() => {
+        input.focus();
+      }, 100);
+      
+      atualizarStatusSalvamento();
+      mostrarStatus('Nova inconformidade adicionada!');
+    }
+    
+    function atualizarInconformidadeInput(index) {
+      const input = document.getElementById(`inconformidade_${index}`);
+      if (input) {
+        inconformidades[index] = input.value;
+        atualizarStatusSalvamento();
+      }
+    }
+    
+    function removerInconformidade(index) {
+      if (inconformidades.length <= 0) return;
+      
+      if (confirm('Tem certeza que deseja remover esta inconformidade?')) {
+        inconformidades.splice(index, 1);
+        renderizarInconformidades();
+        atualizarStatusSalvamento();
+        mostrarStatus('Inconformidade removida!');
+      }
     }
     
     function renderizarInconformidades() {
@@ -1792,6 +1721,25 @@
       });
     }
     
+    function removerFoto(index) {
+      if (fotos.length <= 0) return;
+      
+      if (confirm('Tem certeza que deseja remover esta foto?')) {
+        fotos.splice(index, 1);
+        renderizarFotos();
+        atualizarTextoGerado();
+        atualizarStatusSalvamento();
+        mostrarStatus('Foto removida!');
+      }
+    }
+    
+    function atualizarDescricaoFoto(index, descricao) {
+      if (fotos[index]) {
+        fotos[index].descricao = descricao;
+        atualizarStatusSalvamento();
+      }
+    }
+    
     function renderizarFotos() {
       const container = document.getElementById('foto-gallery');
       container.innerHTML = '';
@@ -1801,7 +1749,7 @@
         div.className = 'foto-item';
         div.innerHTML = `
           <div class="foto-preview">
-            <img src="${foto.dataUrl}" alt="Foto ${index + 1}" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="${foto.dataUrl}" alt="Foto ${index + 1}" loading="lazy">
           </div>
           <div class="foto-actions">
             <button class="foto-action-btn no-print" onclick="removerFoto(${index})" title="Remover foto">
@@ -1818,64 +1766,121 @@
         
         container.appendChild(div);
       });
-      
-      // Adicionar botão de adicionar foto
-      const addButtonDiv = document.createElement('div');
-      addButtonDiv.className = 'no-print';
-      addButtonDiv.innerHTML = `
-        <div class="add-foto-btn" onclick="adicionarFoto()">
-          <i class="fas fa-plus-circle"></i>
-          <span>Adicionar Foto/Imagem</span>
-        </div>
-      `;
-      
-      container.appendChild(addButtonDiv);
     }
     
     // ============================================
-    // FUNÇÕES PRINCIPAIS DO FORMULÁRIO
+    // FUNÇÕES PRINCIPAIS
     // ============================================
     
-    function atualizarStatusSalvamento() {
-      // Esta função pode ser usada para mostrar status visual de alterações não salvas
+    function atualizarTextoGerado() {
+      const dia = document.getElementById('dia').value || '____';
+      const mes = document.getElementById('mes').value || '__________';
+      const ano = document.getElementById('ano').value || '______';
+      const subestacao = document.getElementById('subestacao').value || '___________________________';
+      const empresa = document.getElementById('empresa').value || '______________________________________';
+      
+      let listaTecnicos = '';
+      if (tecnicos.length > 0) {
+        const tecnicosValidos = tecnicos.filter(t => t.trim() !== '');
+        if (tecnicosValidos.length > 0) {
+          if (tecnicosValidos.length === 1) {
+            listaTecnicos = `pelo técnico ${tecnicosValidos[0]}`;
+          } else if (tecnicosValidos.length === 2) {
+            listaTecnicos = `pelos técnicos ${tecnicosValidos[0]} e ${tecnicosValidos[1]}`;
+          } else {
+            const ultimo = tecnicosValidos.pop();
+            listaTecnicos = `pelos técnicos ${tecnicosValidos.join(', ')} e ${ultimo}`;
+          }
+        }
+      }
+      
+      let listaRepresentantes = '';
+      if (representantes.length > 0) {
+        const representantesValidos = representantes.filter(r => r.trim() !== '');
+        if (representantesValidos.length > 0) {
+          if (representantesValidos.length === 1) {
+            listaRepresentantes = `pelo funcionário da ${empresa} ${representantesValidos[0]}`;
+          } else if (representantesValidos.length === 2) {
+            listaRepresentantes = `pelos funcionários da ${empresa} ${representantesValidos[0]} e ${representantesValidos[1]}`;
+          } else {
+            const ultimo = representantesValidos.pop();
+            listaRepresentantes = `pelos funcionários da ${empresa} ${representantesValidos.join(', ')} e ${ultimo}`;
+          }
+        }
+      }
+      
+      const temInconformidades = document.getElementById('inconformidades').checked;
+      const semInconformidades = document.getElementById('semInconformidades').checked;
+      const descInconformidades = document.getElementById('descricaoInconformidades').value || '';
+      const descSemInconformidades = document.getElementById('descricaoSemInconformidades').value || '';
+      
+      let textoInconformidades = '';
+      if (temInconformidades && descInconformidades) {
+        textoInconformidades = `Na subestação foram encontradas algumas inconformidades como ${descInconformidades.toLowerCase()}. `;
+        if (semInconformidades || descSemInconformidades) {
+          textoInconformidades += `Já no sistema de contenção de óleo e no sistema de separação de água e óleo não foram encontradas inconformidades.`;
+        }
+      } else if (semInconformidades) {
+        if (descSemInconformidades) {
+          textoInconformidades = descSemInconformidades;
+        } else {
+          textoInconformidades = 'Não foram encontradas inconformidades durante a vistoria.';
+        }
+      }
+      
+      let textoCompleto = `A vistoria foi realizada no dia ${dia} de ${mes} de ${ano}`;
+      
+      if (listaTecnicos) {
+        textoCompleto += `, ${listaTecnicos}`;
+      }
+      
+      if (listaRepresentantes) {
+        textoCompleto += `, e acompanhada ${listaRepresentantes}`;
+      }
+      
+      textoCompleto += `.`;
+      
+      if (textoInconformidades) {
+        textoCompleto += ` ${textoInconformidades}`;
+      }
+      
+      if (fotos.length > 0) {
+        textoCompleto += ` Segue abaixo registros fotográficos do empreendimento:`;
+      }
+      
+      const previewDiv = document.getElementById('textoPreview');
+      previewDiv.innerHTML = `<h5>DESCRIÇÃO:</h5>${textoCompleto}`;
+      
+      if (!dia && !mes && !ano && tecnicos.length === 0) {
+        previewDiv.innerHTML = `<h5>DESCRIÇÃO:</h5><p style="color: #666; font-style: italic;">Preencha as informações da vistoria para ver o texto gerado automaticamente.</p>`;
+      }
     }
+    
+    function atualizarStatusSalvamento() {}
     
     function salvarFormulario() {
       const dados = {
-        // Identificação do Empreendimento
         interessado: document.getElementById('interessado').value,
         assunto: document.getElementById('assunto').value,
         municipio: document.getElementById('municipio').value,
         coordenadas: document.getElementById('coordenadas').value,
         atividade: document.getElementById('atividade').value,
         protocolo: document.getElementById('protocolo').value,
-        
-        // Data da Vistoria
         dia: document.getElementById('dia').value,
         mes: document.getElementById('mes').value,
         ano: document.getElementById('ano').value,
-        
-        // Detalhes da Vistoria
         subestacao: document.getElementById('subestacao').value,
         empresa: document.getElementById('empresa').value,
         tecnicos: tecnicos,
         representantes: representantes,
-        
-        // Constatações
         inconformidadesCheck: document.getElementById('inconformidades').checked,
         semInconformidadesCheck: document.getElementById('semInconformidades').checked,
         descricaoInconformidades: document.getElementById('descricaoInconformidades').value,
         descricaoSemInconformidades: document.getElementById('descricaoSemInconformidades').value,
-        
-        // Fotos
         fotos: fotos,
-        
-        // Conclusão
         conformidades: conformidades,
         inconformidades: inconformidades,
         observacoesAdicionais: document.getElementById('observacoesAdicionais').value,
-        
-        // Assinatura
         assinaturaVistoriador: document.getElementById('assinaturaVistoriador').value,
         cargoVistoriador: document.getElementById('cargoVistoriador').value
       };
@@ -1894,58 +1899,45 @@
       try {
         const dados = JSON.parse(dadosSalvos);
         
-        // Identificação do Empreendimento
         document.getElementById('interessado').value = dados.interessado || '';
         document.getElementById('assunto').value = dados.assunto || '';
         document.getElementById('municipio').value = dados.municipio || '';
         document.getElementById('coordenadas').value = dados.coordenadas || '';
         document.getElementById('atividade').value = dados.atividade || '';
         document.getElementById('protocolo').value = dados.protocolo || '';
-        
-        // Data da Vistoria
         document.getElementById('dia').value = dados.dia || '';
         document.getElementById('mes').value = dados.mes || '';
         document.getElementById('ano').value = dados.ano || '';
-        
-        // Detalhes da Vistoria
         document.getElementById('subestacao').value = dados.subestacao || '';
         document.getElementById('empresa').value = dados.empresa || '';
+        
         tecnicos = dados.tecnicos || [];
         representantes = dados.representantes || [];
         
-        // Constatações
         document.getElementById('inconformidades').checked = dados.inconformidadesCheck || false;
         document.getElementById('semInconformidades').checked = dados.semInconformidadesCheck || false;
         document.getElementById('descricaoInconformidades').value = dados.descricaoInconformidades || '';
         document.getElementById('descricaoSemInconformidades').value = dados.descricaoSemInconformidades || '';
         
-        // Atualizar visual dos checkboxes
         if (dados.inconformidadesCheck) {
           document.getElementById('inconformidades').dispatchEvent(new Event('change'));
         } else if (dados.semInconformidadesCheck) {
           document.getElementById('semInconformidades').dispatchEvent(new Event('change'));
         }
         
-        // Fotos
         fotos = dados.fotos || [];
-        
-        // Conclusão
         conformidades = dados.conformidades || [];
         inconformidades = dados.inconformidades || [];
         document.getElementById('observacoesAdicionais').value = dados.observacoesAdicionais || '';
-        
-        // Assinatura
         document.getElementById('assinaturaVistoriador').value = dados.assinaturaVistoriador || '';
         document.getElementById('cargoVistoriador').value = dados.cargoVistoriador || 'Engenheiro/Responsável Técnico';
         
-        // Renderizar listas
         renderizarTecnicos();
         renderizarRepresentantes();
         renderizarConformidades();
         renderizarInconformidades();
         renderizarFotos();
         
-        // Atualizar texto gerado
         atualizarTextoGerado();
         
         mostrarStatus('Dados carregados com sucesso!');
@@ -1955,9 +1947,6 @@
       }
     }
     
-    // ============================================
-    // FUNÇÃO GERAR PDF COM AS MODIFICAÇÕES SOLICITADAS
-    // ============================================
     function gerarPDF() {
       try {
         mostrarStatus('Gerando PDF...', 'info');
@@ -1974,15 +1963,11 @@
         const marginRight = 20;
         let yPos = 20;
         
-        // Função para adicionar cabeçalho com logos
         const adicionarCabecalho = () => {
           try {
-            // Logo esquerda (ERCBA)
             if (LOGOS.headerLeft) {
               pdf.addImage(LOGOS.headerLeft, 'PNG', marginLeft, 10, 30, 23);
             }
-            
-            // Logo direita (IAT)
             if (LOGOS.headerRight) {
               pdf.addImage(LOGOS.headerRight, 'PNG', pageWidth - marginRight - 20, 10, 25, 20);
             }
@@ -1990,7 +1975,6 @@
             console.log('Logos não carregadas no PDF');
           }
           
-          // Texto do cabeçalho
           pdf.setTextColor(...PDF_CONFIG.colors.primary);
           pdf.setFontSize(14);
           pdf.setFont("helvetica", "bold");
@@ -2004,7 +1988,6 @@
           pdf.line(marginLeft, 32, pageWidth - marginRight, 32);
         };
         
-        // Função para adicionar rodapé
         const adicionarRodape = (paginaAtual, totalPaginas) => {
           const hoje = new Date().toLocaleDateString('pt-BR');
           
@@ -2012,7 +1995,6 @@
           pdf.setDrawColor(...PDF_CONFIG.colors.primary);
           pdf.line(marginLeft, 277, pageWidth - marginRight, 277);
           
-          // Texto do rodapé
           pdf.setFontSize(7);
           pdf.setFont("helvetica", "normal");
           pdf.setTextColor(...PDF_CONFIG.colors.darkGray);
@@ -2024,7 +2006,6 @@
           pdf.text(`Página ${paginaAtual} de ${totalPaginas}`, pageWidth - marginRight, 291, { align: 'right' });
         };
         
-        // Função para verificar nova página
         const verificarNovaPagina = (alturaNecessaria) => {
           if (yPos + alturaNecessaria > 250) {
             const paginaAtual = pdf.internal.getNumberOfPages();
@@ -2037,7 +2018,6 @@
           return false;
         };
         
-        // Função para adicionar texto com quebra automática
         const adicionarTexto = (texto, tamanhoFonte = 11, estilo = "normal", margemEspecial = 0) => {
           pdf.setFontSize(tamanhoFonte);
           pdf.setFont("helvetica", estilo);
@@ -2058,7 +2038,6 @@
           yPos += 3;
         };
         
-        // FUNÇÃO PARA CRIAR TABELA BONITA COM CORES ALTERNATAS (AZUL E BRANCO)
         const criarTabelaIdentificacao = () => {
           const dadosTabela = [
             { label: 'INTERESSADO', value: document.getElementById('interessado').value || 'Não informado' },
@@ -2074,8 +2053,7 @@
           const larguraColunaValor = larguraTabela - larguraColunaLabel;
           const alturaLinha = 8;
           
-          // Desenhar cabeçalho da tabela com azul mais forte
-          pdf.setFillColor(200, 220, 240); // Azul mais claro para cabeçalho
+          pdf.setFillColor(200, 220, 240);
           pdf.rect(marginLeft, yPos, larguraTabela, alturaLinha, 'F');
           
           pdf.setFontSize(11);
@@ -2085,40 +2063,34 @@
           
           yPos += alturaLinha + 2;
           
-          // Desenhar linhas da tabela com cores alternadas AZUL/BRANCO
           dadosTabela.forEach((item, index) => {
-            // Alternar cores: linha par = azul claro, linha ímpar = branco
             if (index % 2 === 0) {
-              pdf.setFillColor(...PDF_CONFIG.colors.tableRowBlue); // Azul claro
+              pdf.setFillColor(...PDF_CONFIG.colors.tableRowBlue);
             } else {
-              pdf.setFillColor(...PDF_CONFIG.colors.tableRowWhite); // Branco
+              pdf.setFillColor(...PDF_CONFIG.colors.tableRowWhite);
             }
             
             pdf.rect(marginLeft, yPos, larguraTabela, alturaLinha, 'F');
             
-            // Borda da célula
-            pdf.setDrawColor(180, 200, 220); // Azul claro para bordas
+            pdf.setDrawColor(180, 200, 220);
             pdf.setLineWidth(0.2);
             pdf.rect(marginLeft, yPos, larguraTabela, alturaLinha);
             pdf.rect(marginLeft, yPos, larguraColunaLabel, alturaLinha);
             
-            // Texto do label (negrito)
             pdf.setFontSize(10);
             pdf.setFont("helvetica", "bold");
             
-            // Cor do texto baseada no fundo
             if (index % 2 === 0) {
-              pdf.setTextColor(...PDF_CONFIG.colors.primary); // Azul escuro no fundo azul claro
+              pdf.setTextColor(...PDF_CONFIG.colors.primary);
             } else {
-              pdf.setTextColor(...PDF_CONFIG.colors.primary); // Azul escuro no fundo branco
+              pdf.setTextColor(...PDF_CONFIG.colors.primary);
             }
             
             const labelTruncado = item.label.length > 15 ? item.label.substring(0, 12) + '...' : item.label;
             pdf.text(labelTruncado, marginLeft + 3, yPos + 5);
             
-            // Texto do valor
             pdf.setFont("helvetica", "normal");
-            pdf.setTextColor(0, 0, 0); // Preto para os valores
+            pdf.setTextColor(0, 0, 0);
             
             const valorTruncado = item.value.length > 40 ? item.value.substring(0, 37) + '...' : item.value;
             pdf.text(valorTruncado, marginLeft + larguraColunaLabel + 3, yPos + 5);
@@ -2129,7 +2101,6 @@
           yPos += 10;
         };
         
-        // FUNÇÃO PARA ADICIONAR IMAGENS
         const adicionarImagem = (dataUrl, descricao, index) => {
           return new Promise((resolve) => {
             try {
@@ -2152,14 +2123,12 @@
                   
                   const xPos = (pageWidth - width) / 2;
                   
-                  // Adicionar legenda
                   pdf.setFontSize(9);
                   pdf.setFont("helvetica", "bold");
                   pdf.text(`Foto ${index + 1}: ${descricao || 'Registro fotográfico'}`, 
                           pageWidth / 2, yPos, { align: 'center' });
                   yPos += 5;
                   
-                  // Adicionar imagem
                   pdf.addImage(dataUrl, 'JPEG', xPos, yPos, width, height);
                   
                   yPos += height + 15;
@@ -2190,7 +2159,6 @@
           });
         };
         
-        // MODIFICAÇÃO IMPORTANTE: Função para adicionar constatações sem o texto padrão
         const adicionarConstatacoes = () => {
           const temInconformidades = document.getElementById('inconformidades').checked;
           const semInconformidades = document.getElementById('semInconformidades').checked;
@@ -2200,9 +2168,7 @@
           pdf.setFontSize(10);
           pdf.setFont("helvetica", "normal");
           
-          // MODIFICAÇÃO: Não adicionar o texto padrão "Foram identificadas inconformidades, consistindo em:"
           if (temInconformidades && descInconformidades) {
-            // Adiciona APENAS a descrição do usuário, sem o texto padrão
             adicionarTexto(descInconformidades, 10);
           } else if (semInconformidades) {
             if (descSemInconformidades) {
@@ -2220,22 +2186,18 @@
           yPos += 10;
         };
         
-        // Começar a primeira página
         adicionarCabecalho();
         yPos = 45;
         
-        // Título principal
         pdf.setFontSize(14);
         pdf.setFont("helvetica", "bold");
         pdf.setTextColor(...PDF_CONFIG.colors.primary);
         pdf.text('RELATÓRIO DE VISTORIA TÉCNICA - SUBESTAÇÃO', pageWidth / 2, yPos, { align: 'center' });
         yPos += 10;
         
-        // TABELA DE IDENTIFICAÇÃO DO EMPREENDIMENTO COM CORES ALTERNATAS
         verificarNovaPagina(70);
         criarTabelaIdentificacao();
         
-        // DESCRIÇÃO DA VISTORIA
         verificarNovaPagina(100);
         pdf.setFontSize(12);
         pdf.setFont("helvetica", "bold");
@@ -2243,7 +2205,6 @@
         pdf.text('DESCRIÇÃO DA VISTORIA', marginLeft, yPos);
         yPos += 10;
         
-        // Texto descritivo
         const textoPreview = document.getElementById('textoPreview').innerText.replace('DESCRIÇÃO:', '').trim();
         pdf.setFontSize(10);
         pdf.setFont("helvetica", "normal");
@@ -2251,8 +2212,6 @@
         
         yPos += 10;
         
-        
-        // REGISTROS FOTOGRÁFICOS (se houver fotos)
         if (fotos.length > 0) {
           verificarNovaPagina(30);
           pdf.setFontSize(12);
@@ -2266,12 +2225,10 @@
           pdf.text(`Total de ${fotos.length} foto(s) registrada(s):`, marginLeft, yPos);
           yPos += 10;
           
-          // Adicionar cada imagem
           const processarImagens = async () => {
             for (let i = 0; i < fotos.length; i++) {
               const foto = fotos[i];
               
-              // Verificar espaço antes de adicionar
               if (yPos > 180) {
                 const paginaAtual = pdf.internal.getNumberOfPages();
                 adicionarRodape(paginaAtual, paginaAtual + 1);
@@ -2283,15 +2240,12 @@
               await adicionarImagem(foto.dataUrl, foto.descricao, i);
             }
             
-            // Após processar todas as imagens, adicionar conclusões
             adicionarConclusoes();
           };
           
-          // Função para adicionar as conclusões
           const adicionarConclusoes = () => {
             yPos += 10;
             
-            // CONCLUSÃO
             verificarNovaPagina(50);
             pdf.setFontSize(12);
             pdf.setFont("helvetica", "bold");
@@ -2304,11 +2258,9 @@
             pdf.text('Com base na vistoria técnica realizada, conclui-se que:', marginLeft, yPos);
             yPos += 10;
             
-            // Conformidades identificadas
             const conformidadesValidas = conformidades.filter(c => c && c.trim() !== '');
             const inconformidadesValidas = inconformidades.filter(i => i && i.trim() !== '');
             
-            // Adicionar conformidades
             if (conformidadesValidas.length > 0) {
               pdf.setFontSize(11);
               pdf.setFont("helvetica", "bold");
@@ -2326,7 +2278,6 @@
               yPos += 5;
             }
             
-            // Adicionar inconformidades
             if (inconformidadesValidas.length > 0) {
               pdf.setFontSize(11);
               pdf.setFont("helvetica", "bold");
@@ -2344,7 +2295,6 @@
               yPos += 5;
             }
             
-            // Observações Adicionais
             const observacoes = document.getElementById('observacoesAdicionais').value;
             if (observacoes && observacoes.trim() !== '') {
               pdf.setFontSize(11);
@@ -2357,23 +2307,18 @@
               adicionarTexto(observacoes, 10);
             }
             
-            // Finalizar com a assinatura
             finalizarComAssinatura();
           };
           
-          // Iniciar processamento das imagens
           processarImagens();
           
         } else {
-          // Se não há fotos, adicionar conclusões diretamente
           adicionarConclusoesDiretamente();
         }
         
-        // Função para adicionar conclusões quando não há fotos
         function adicionarConclusoesDiretamente() {
           yPos += 10;
           
-          // CONCLUSÃO
           verificarNovaPagina(50);
           pdf.setFontSize(12);
           pdf.setFont("helvetica", "bold");
@@ -2386,11 +2331,9 @@
           pdf.text('Com base na vistoria técnica realizada, conclui-se que:', marginLeft, yPos);
           yPos += 10;
           
-          // Conformidades identificadas
           const conformidadesValidas = conformidades.filter(c => c && c.trim() !== '');
           const inconformidadesValidas = inconformidades.filter(i => i && i.trim() !== '');
           
-          // Adicionar conformidades
           if (conformidadesValidas.length > 0) {
             pdf.setFontSize(11);
             pdf.setFont("helvetica", "bold");
@@ -2408,7 +2351,6 @@
             yPos += 5;
           }
           
-          // Adicionar inconformidades
           if (inconformidadesValidas.length > 0) {
             pdf.setFontSize(11);
             pdf.setFont("helvetica", "bold");
@@ -2426,7 +2368,6 @@
             yPos += 5;
           }
           
-          // Observações Adicionais
           const observacoes = document.getElementById('observacoesAdicionais').value;
           if (observacoes && observacoes.trim() !== '') {
             pdf.setFontSize(11);
@@ -2439,15 +2380,12 @@
             adicionarTexto(observacoes, 10);
           }
           
-          // Finalizar com a assinatura
           finalizarComAssinatura();
         }
         
-        // Função para finalizar com assinatura
         function finalizarComAssinatura() {
           yPos += 10;
           
-          // Assinatura
           const vistoriador = document.getElementById('assinaturaVistoriador').value || '________________';
           const cargo = document.getElementById('cargoVistoriador').value || 'Engenheiro/Responsável Técnico';
           
@@ -2465,14 +2403,12 @@
           pdf.text(cargo, marginLeft + 55, yPos);
           yPos += 15;
           
-          // Adicionar rodapé em todas as páginas
           const totalPaginas = pdf.internal.getNumberOfPages();
           for (let i = 1; i <= totalPaginas; i++) {
             pdf.setPage(i);
             adicionarRodape(i, totalPaginas);
           }
           
-          // Salvar o PDF
           const protocolo = document.getElementById('protocolo').value || 'sem_protocolo';
           const data = new Date();
           const timestamp = `${data.getDate()}${data.getMonth()+1}${data.getFullYear()}_${data.getHours()}${data.getMinutes()}`;
@@ -2482,10 +2418,7 @@
           mostrarStatus('PDF gerado com sucesso!');
         }
         
-        // Inicializar o processo
-        if (fotos.length > 0) {
-          // Já está sendo chamado no processarImagens()
-        } else {
+        if (fotos.length > 0) {} else {
           adicionarConclusoesDiretamente();
         }
         
@@ -2497,10 +2430,8 @@
     
     function limparFormulario() {
       if (confirm('Tem certeza que deseja limpar todo o formulário? Todos os dados serão perdidos.')) {
-        // Limpar formulário de identificação
         document.getElementById('formularioIdentificacao').reset();
         
-        // Limpar campos de data
         const hoje = new Date();
         const meses = [
           "janeiro", "fevereiro", "março", "abril", "maio", "junho",
@@ -2511,11 +2442,9 @@
         document.getElementById('mes').value = meses[hoje.getMonth()];
         document.getElementById('ano').value = hoje.getFullYear();
         
-        // Limpar outros campos
         document.getElementById('subestacao').value = '';
         document.getElementById('empresa').value = '';
         
-        // Limpar checkboxes
         document.getElementById('inconformidades').checked = false;
         document.getElementById('semInconformidades').checked = false;
         document.getElementById('desc-inconformidades').style.display = 'none';
@@ -2523,12 +2452,10 @@
         document.getElementById('container-inconformidades').classList.remove('checked');
         document.getElementById('container-sem-inconformidades').classList.remove('checked');
         
-        // Limpar textareas
         document.getElementById('descricaoInconformidades').value = '';
         document.getElementById('descricaoSemInconformidades').value = '';
         document.getElementById('observacoesAdicionais').value = '';
         
-        // Limpar listas dinâmicas
         tecnicos = [];
         representantes = [];
         conformidades = [];
@@ -2541,14 +2468,11 @@
         renderizarInconformidades();
         renderizarFotos();
         
-        // Limpar assinatura
         document.getElementById('assinaturaVistoriador').value = '';
         document.getElementById('cargoVistoriador').value = 'Engenheiro/Responsável Técnico';
         
-        // Atualizar texto gerado
         atualizarTextoGerado();
         
-        // Limpar localStorage
         localStorage.removeItem('relatorioVistoriaSubestacao');
         
         mostrarStatus('Formulário limpo com sucesso!');
@@ -2573,7 +2497,6 @@
       }, 3000);
     }
     
-    // Auto-save a cada 30 segundos
     setInterval(() => {
       if (document.getElementById('interessado').value ||
           document.getElementById('protocolo').value) {
@@ -2581,7 +2504,6 @@
       }
     }, 30000);
     
-    // Prevenir perda de dados ao sair
     window.addEventListener('beforeunload', function(e) {
       if (document.getElementById('interessado').value ||
           document.getElementById('protocolo').value) {
