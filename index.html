@@ -1230,6 +1230,7 @@
     const PDF_CONFIG = {
       relatorioText: {
         linha1: "DIVISÃO DE LICENCIAMENTO ESTRATÉGICO",
+        linha2: "INSTITUTO ÁGUA E TERRA - IAT",
         linha3: "RELATÓRIO DE VISTORIA TÉCNICA"
       },
       footerText: {
@@ -1946,10 +1947,11 @@
       }
     }
     
+    // Função principal corrigida para gerar PDF
     function gerarPDF() {
+      mostrarStatus('Gerando PDF...', 'info');
+      
       try {
-        mostrarStatus('Gerando PDF...', 'info');
-        
         if (typeof window.jspdf === 'undefined') {
           mostrarStatus('Erro: Biblioteca jsPDF não carregada', 'error');
           return;
@@ -1962,7 +1964,8 @@
         const marginRight = 20;
         let yPos = 20;
         
-        const adicionarCabecalho = () => {
+        // Função para adicionar cabeçalho
+        function adicionarCabecalho() {
           try {
             if (LOGOS.headerLeft) {
               pdf.addImage(LOGOS.headerLeft, 'PNG', marginLeft, 10, 30, 23);
@@ -1985,9 +1988,10 @@
           
           pdf.setLineWidth(0.5);
           pdf.line(marginLeft, 32, pageWidth - marginRight, 32);
-        };
+        }
         
-        const adicionarRodape = (paginaAtual, totalPaginas) => {
+        // Função para adicionar rodapé
+        function adicionarRodape(paginaAtual, totalPaginas) {
           const hoje = new Date().toLocaleDateString('pt-BR');
           
           pdf.setLineWidth(0.5);
@@ -2003,10 +2007,11 @@
           pdf.text(PDF_CONFIG.footerText.linha3, marginLeft, 291);
           pdf.text(`Gerado em: ${hoje}`, pageWidth / 2, 291, { align: 'center' });
           pdf.text(`Página ${paginaAtual} de ${totalPaginas}`, pageWidth - marginRight, 291, { align: 'right' });
-        };
+        }
         
-        const verificarNovaPagina = (alturaNecessaria) => {
-          if (yPos + alturaNecessaria > 250) {
+        // Função para verificar necessidade de nova página
+        function verificarNovaPagina(alturaNecessaria) {
+          if (yPos + alturaNecessaria > 260) {
             const paginaAtual = pdf.internal.getNumberOfPages();
             adicionarRodape(paginaAtual, paginaAtual + 1);
             pdf.addPage();
@@ -2015,29 +2020,33 @@
             return true;
           }
           return false;
-        };
+        }
         
-        const adicionarTexto = (texto, tamanhoFonte = 11, estilo = "normal", margemEspecial = 0) => {
+        // Função para adicionar texto com quebra automática
+        function adicionarTexto(texto, tamanhoFonte = 11, estilo = "normal") {
+          if (!texto) return;
+          
           pdf.setFontSize(tamanhoFonte);
           pdf.setFont("helvetica", estilo);
-          const larguraDisponivel = pageWidth - 2 * marginLeft - margemEspecial;
+          const larguraDisponivel = pageWidth - 2 * marginLeft;
           const lines = pdf.splitTextToSize(texto, larguraDisponivel);
           
           for (let i = 0; i < lines.length; i++) {
-            if (yPos > 250) {
+            if (yPos > 260) {
               const paginaAtual = pdf.internal.getNumberOfPages();
               adicionarRodape(paginaAtual, paginaAtual + 1);
               pdf.addPage();
               adicionarCabecalho();
               yPos = 40;
             }
-            pdf.text(lines[i], marginLeft + (margemEspecial > 0 ? 10 : 0), yPos);
-            yPos += 5;
+            pdf.text(lines[i], marginLeft, yPos);
+            yPos += 6;
           }
           yPos += 3;
-        };
+        }
         
-        const criarTabelaIdentificacao = () => {
+        // Função para criar tabela de identificação
+        function criarTabelaIdentificacao() {
           const dadosTabela = [
             { label: 'INTERESSADO', value: document.getElementById('interessado').value || 'Não informado' },
             { label: 'ASSUNTO', value: document.getElementById('assunto').value || 'Não informado' },
@@ -2049,20 +2058,21 @@
           
           const larguraTabela = pageWidth - 2 * marginLeft;
           const larguraColunaLabel = 45;
-          const larguraColunaValor = larguraTabela - larguraColunaLabel;
           const alturaLinha = 8;
           
-          pdf.setFillColor(200, 220, 240);
+          // Título da tabela
+          pdf.setFillColor(...PDF_CONFIG.colors.tableHeader);
           pdf.rect(marginLeft, yPos, larguraTabela, alturaLinha, 'F');
-          
-          pdf.setFontSize(11);
+          pdf.setFontSize(10);
           pdf.setFont("helvetica", "bold");
           pdf.setTextColor(...PDF_CONFIG.colors.primary);
           pdf.text("IDENTIFICAÇÃO DO EMPREENDIMENTO", marginLeft + larguraTabela/2, yPos + 5, { align: 'center' });
           
           yPos += alturaLinha + 2;
           
+          // Linhas da tabela
           dadosTabela.forEach((item, index) => {
+            // Fundo alternado
             if (index % 2 === 0) {
               pdf.setFillColor(...PDF_CONFIG.colors.tableRowBlue);
             } else {
@@ -2071,36 +2081,31 @@
             
             pdf.rect(marginLeft, yPos, larguraTabela, alturaLinha, 'F');
             
+            // Bordas
             pdf.setDrawColor(180, 200, 220);
-            pdf.setLineWidth(0.2);
+            pdf.setLineWidth(0.1);
             pdf.rect(marginLeft, yPos, larguraTabela, alturaLinha);
-            pdf.rect(marginLeft, yPos, larguraColunaLabel, alturaLinha);
             
-            pdf.setFontSize(10);
+            // Label
+            pdf.setFontSize(9);
             pdf.setFont("helvetica", "bold");
+            pdf.setTextColor(...PDF_CONFIG.colors.primary);
+            pdf.text(item.label, marginLeft + 2, yPos + 5);
             
-            if (index % 2 === 0) {
-              pdf.setTextColor(...PDF_CONFIG.colors.primary);
-            } else {
-              pdf.setTextColor(...PDF_CONFIG.colors.primary);
-            }
-            
-            const labelTruncado = item.label.length > 15 ? item.label.substring(0, 12) + '...' : item.label;
-            pdf.text(labelTruncado, marginLeft + 3, yPos + 5);
-            
+            // Valor
             pdf.setFont("helvetica", "normal");
             pdf.setTextColor(0, 0, 0);
-            
-            const valorTruncado = item.value.length > 40 ? item.value.substring(0, 37) + '...' : item.value;
-            pdf.text(valorTruncado, marginLeft + larguraColunaLabel + 3, yPos + 5);
+            const valorTruncado = item.value.length > 50 ? item.value.substring(0, 47) + '...' : item.value;
+            pdf.text(valorTruncado, marginLeft + larguraColunaLabel + 2, yPos + 5);
             
             yPos += alturaLinha;
           });
           
-          yPos += 10;
-        };
+          yPos += 5;
+        }
         
-        const adicionarImagem = (dataUrl, descricao, index) => {
+        // Função para adicionar imagem ao PDF (retorna Promise)
+        function adicionarImagemAoPDF(dataUrl, descricao, index) {
           return new Promise((resolve) => {
             try {
               const img = new Image();
@@ -2113,29 +2118,39 @@
                   let width = this.width;
                   let height = this.height;
                   
-                  const widthRatio = maxWidth / width;
-                  const heightRatio = maxHeight / height;
-                  const ratio = Math.min(widthRatio, heightRatio);
-                  
+                  const ratio = Math.min(maxWidth / width, maxHeight / height);
                   width = width * ratio;
                   height = height * ratio;
                   
                   const xPos = (pageWidth - width) / 2;
                   
-                  pdf.setFontSize(9);
+                  // Verificar espaço
+                  if (yPos + height + 20 > 260) {
+                    const paginaAtual = pdf.internal.getNumberOfPages();
+                    adicionarRodape(paginaAtual, paginaAtual + 1);
+                    pdf.addPage();
+                    adicionarCabecalho();
+                    yPos = 40;
+                  }
+                  
+                  // Título da foto
+                  pdf.setFontSize(10);
                   pdf.setFont("helvetica", "bold");
+                  pdf.setTextColor(...PDF_CONFIG.colors.primary);
                   pdf.text(`Foto ${index + 1}: ${descricao || 'Registro fotográfico'}`, 
                           pageWidth / 2, yPos, { align: 'center' });
                   yPos += 5;
                   
+                  // Adicionar imagem
                   pdf.addImage(dataUrl, 'JPEG', xPos, yPos, width, height);
                   
-                  yPos += height + 15;
+                  yPos += height + 10;
                   resolve();
                 } catch (error) {
                   console.error('Erro ao adicionar imagem:', error);
                   pdf.setFontSize(10);
-                  pdf.text(`[Foto ${index + 1}: ${descricao || 'Imagem'}]`, marginLeft, yPos);
+                  pdf.setTextColor(0, 0, 0);
+                  pdf.text(`[Erro ao carregar foto ${index + 1}]`, marginLeft, yPos);
                   yPos += 10;
                   resolve();
                 }
@@ -2143,7 +2158,8 @@
               
               img.onerror = function() {
                 pdf.setFontSize(10);
-                pdf.text(`[Foto ${index + 1}: Erro ao carregar]`, marginLeft, yPos);
+                pdf.setTextColor(0, 0, 0);
+                pdf.text(`[Erro ao carregar foto ${index + 1}]`, marginLeft, yPos);
                 yPos += 10;
                 resolve();
               };
@@ -2156,258 +2172,185 @@
               resolve();
             }
           });
-        };
+        }
         
-        const adicionarConstatacoes = () => {
+        // Função principal assíncrona para gerar o PDF
+        const gerarPDFAssincrono = async () => {
+          // Adicionar cabeçalho
+          adicionarCabecalho();
+          yPos = 45;
+          
+          // Título principal
+          pdf.setFontSize(16);
+          pdf.setFont("helvetica", "bold");
+          pdf.setTextColor(...PDF_CONFIG.colors.primary);
+          pdf.text('RELATÓRIO DE VISTORIA TÉCNICA - SUBESTAÇÃO', pageWidth / 2, yPos, { align: 'center' });
+          yPos += 10;
+          
+          // Tabela de identificação
+          verificarNovaPagina(60);
+          criarTabelaIdentificacao();
+          
+          // Descrição da vistoria
+          verificarNovaPagina(30);
+          pdf.setFontSize(14);
+          pdf.setFont("helvetica", "bold");
+          pdf.setTextColor(...PDF_CONFIG.colors.primary);
+          pdf.text('DESCRIÇÃO DA VISTORIA', marginLeft, yPos);
+          yPos += 10;
+          
+          const textoPreview = document.getElementById('textoPreview').innerText.replace('DESCRIÇÃO:', '').trim();
+          adicionarTexto(textoPreview || 'Nenhuma descrição disponível.', 10);
+          
+          yPos += 5;
+          
+          // Constatações
+          verificarNovaPagina(30);
+          pdf.setFontSize(14);
+          pdf.setFont("helvetica", "bold");
+          pdf.setTextColor(...PDF_CONFIG.colors.primary);
+          pdf.text('CONSTATAÇÕES', marginLeft, yPos);
+          yPos += 10;
+          
           const temInconformidades = document.getElementById('inconformidades').checked;
           const semInconformidades = document.getElementById('semInconformidades').checked;
           const descInconformidades = document.getElementById('descricaoInconformidades').value || '';
           const descSemInconformidades = document.getElementById('descricaoSemInconformidades').value || '';
           
-          pdf.setFontSize(10);
-          pdf.setFont("helvetica", "normal");
-          
           if (temInconformidades && descInconformidades) {
             adicionarTexto(descInconformidades, 10);
           } else if (semInconformidades) {
-            if (descSemInconformidades) {
-              adicionarTexto(descSemInconformidades, 10);
-            } else {
-              pdf.text('Não foram identificadas inconformidades durante a vistoria.', marginLeft, yPos);
-              yPos += 6;
-              pdf.text('Os sistemas de contenção de óleo e de separação de água e óleo encontram-se em conformidade,', marginLeft, yPos);
-              yPos += 5;
-              pdf.text('não sendo observadas irregularidades durante a vistoria.', marginLeft, yPos);
-              yPos += 10;
-            }
+            adicionarTexto(descSemInconformidades || 'Não foram identificadas inconformidades durante a vistoria.', 10);
+          } else {
+            adicionarTexto('Nenhuma constatação registrada.', 10);
           }
           
-          yPos += 10;
-        };
-        
-        adicionarCabecalho();
-        yPos = 45;
-        
-        pdf.setFontSize(14);
-        pdf.setFont("helvetica", "bold");
-        pdf.setTextColor(...PDF_CONFIG.colors.primary);
-        pdf.text('RELATÓRIO DE VISTORIA TÉCNICA - SUBESTAÇÃO', pageWidth / 2, yPos, { align: 'center' });
-        yPos += 10;
-        
-        verificarNovaPagina(70);
-        criarTabelaIdentificacao();
-        
-        verificarNovaPagina(100);
-        pdf.setFontSize(12);
-        pdf.setFont("helvetica", "bold");
-        pdf.setTextColor(...PDF_CONFIG.colors.primary);
-        pdf.text('DESCRIÇÃO DA VISTORIA', marginLeft, yPos);
-        yPos += 10;
-        
-        const textoPreview = document.getElementById('textoPreview').innerText.replace('DESCRIÇÃO:', '').trim();
-        pdf.setFontSize(10);
-        pdf.setFont("helvetica", "normal");
-        adicionarTexto(textoPreview || 'Nenhuma descrição disponível.', 10);
-        
-        yPos += 10;
-        
-        if (fotos.length > 0) {
-          verificarNovaPagina(30);
-          pdf.setFontSize(12);
-          pdf.setFont("helvetica", "bold");
-          pdf.setTextColor(...PDF_CONFIG.colors.primary);
-          pdf.text('REGISTROS FOTOGRÁFICOS', marginLeft, yPos);
-          yPos += 10;
+          yPos += 5;
           
-          pdf.setFontSize(10);
-          pdf.setFont("helvetica", "normal");
-          pdf.text(`Total de ${fotos.length} foto(s) registrada(s):`, marginLeft, yPos);
-          yPos += 10;
-          
-          const processarImagens = async () => {
-            for (let i = 0; i < fotos.length; i++) {
-              const foto = fotos[i];
-              
-              if (yPos > 180) {
-                const paginaAtual = pdf.internal.getNumberOfPages();
-                adicionarRodape(paginaAtual, paginaAtual + 1);
-                pdf.addPage();
-                adicionarCabecalho();
-                yPos = 40;
-              }
-              
-              await adicionarImagem(foto.dataUrl, foto.descricao, i);
-            }
-            
-            adicionarConclusoes();
-          };
-          
-          const adicionarConclusoes = () => {
-            yPos += 10;
-            
-            verificarNovaPagina(50);
-            pdf.setFontSize(12);
+          // Registros fotográficos
+          if (fotos.length > 0) {
+            verificarNovaPagina(30);
+            pdf.setFontSize(14);
             pdf.setFont("helvetica", "bold");
             pdf.setTextColor(...PDF_CONFIG.colors.primary);
-            pdf.text('CONCLUSÃO', marginLeft, yPos);
+            pdf.text('REGISTROS FOTOGRÁFICOS', marginLeft, yPos);
             yPos += 10;
             
             pdf.setFontSize(10);
             pdf.setFont("helvetica", "normal");
-            pdf.text('Com base na vistoria técnica realizada, conclui-se que:', marginLeft, yPos);
+            pdf.text(`Total de ${fotos.length} foto(s) registrada(s):`, marginLeft, yPos);
             yPos += 10;
             
-            const conformidadesValidas = conformidades.filter(c => c && c.trim() !== '');
-            const inconformidadesValidas = inconformidades.filter(i => i && i.trim() !== '');
-            
-            if (conformidadesValidas.length > 0) {
-              pdf.setFontSize(11);
-              pdf.setFont("helvetica", "bold");
-              pdf.text('Conformidades identificadas:', marginLeft, yPos);
-              yPos += 8;
-              
-              pdf.setFontSize(10);
-              pdf.setFont("helvetica", "normal");
-              
-              conformidadesValidas.forEach((conformidade, index) => {
-                const textoConformidade = `${index + 1}. ${conformidade}`;
-                adicionarTexto(textoConformidade, 10, "normal", 10);
-              });
-              
-              yPos += 5;
+            // Adicionar cada imagem sequencialmente
+            for (let i = 0; i < fotos.length; i++) {
+              const foto = fotos[i];
+              await adicionarImagemAoPDF(foto.dataUrl, foto.descricao, i);
             }
-            
-            if (inconformidadesValidas.length > 0) {
-              pdf.setFontSize(11);
-              pdf.setFont("helvetica", "bold");
-              pdf.text('Inconformidades identificadas (quando aplicável):', marginLeft, yPos);
-              yPos += 8;
-              
-              pdf.setFontSize(10);
-              pdf.setFont("helvetica", "normal");
-              
-              inconformidadesValidas.forEach((inconformidade, index) => {
-                const textoInconformidade = `${index + 1}. ${inconformidade}`;
-                adicionarTexto(textoInconformidade, 10, "normal", 10);
-              });
-              
-              yPos += 5;
-            }
-            
-            const observacoes = document.getElementById('observacoesAdicionais').value;
-            if (observacoes && observacoes.trim() !== '') {
-              pdf.setFontSize(11);
-              pdf.setFont("helvetica", "bold");
-              pdf.text('Observações adicionais (se houver):', marginLeft, yPos);
-              yPos += 8;
-              
-              pdf.setFontSize(10);
-              pdf.setFont("helvetica", "normal");
-              adicionarTexto(observacoes, 10);
-            }
-            
-            finalizarComAssinatura();
-          };
+          }
           
-          processarImagens();
-          
-        } else {
-          adicionarConclusoesDiretamente();
-        }
-        
-        function adicionarConclusoesDiretamente() {
-          yPos += 10;
-          
+          // Conclusão
           verificarNovaPagina(50);
-          pdf.setFontSize(12);
+          pdf.setFontSize(14);
           pdf.setFont("helvetica", "bold");
           pdf.setTextColor(...PDF_CONFIG.colors.primary);
           pdf.text('CONCLUSÃO', marginLeft, yPos);
           yPos += 10;
           
-          pdf.setFontSize(10);
+          pdf.setFontSize(11);
           pdf.setFont("helvetica", "normal");
           pdf.text('Com base na vistoria técnica realizada, conclui-se que:', marginLeft, yPos);
           yPos += 10;
           
+          // Conformidades
           const conformidadesValidas = conformidades.filter(c => c && c.trim() !== '');
-          const inconformidadesValidas = inconformidades.filter(i => i && i.trim() !== '');
-          
           if (conformidadesValidas.length > 0) {
-            pdf.setFontSize(11);
+            pdf.setFontSize(12);
             pdf.setFont("helvetica", "bold");
+            pdf.setTextColor(...PDF_CONFIG.colors.primary);
             pdf.text('Conformidades identificadas:', marginLeft, yPos);
             yPos += 8;
             
             pdf.setFontSize(10);
             pdf.setFont("helvetica", "normal");
+            pdf.setTextColor(0, 0, 0);
             
             conformidadesValidas.forEach((conformidade, index) => {
-              const textoConformidade = `${index + 1}. ${conformidade}`;
-              adicionarTexto(textoConformidade, 10, "normal", 10);
+              adicionarTexto(`${index + 1}. ${conformidade}`, 10);
             });
             
             yPos += 5;
           }
           
+          // Inconformidades
+          const inconformidadesValidas = inconformidades.filter(i => i && i.trim() !== '');
           if (inconformidadesValidas.length > 0) {
-            pdf.setFontSize(11);
+            pdf.setFontSize(12);
             pdf.setFont("helvetica", "bold");
-            pdf.text('Inconformidades identificadas (quando aplicável):', marginLeft, yPos);
+            pdf.setTextColor(...PDF_CONFIG.colors.primary);
+            pdf.text('Inconformidades identificadas:', marginLeft, yPos);
             yPos += 8;
             
             pdf.setFontSize(10);
             pdf.setFont("helvetica", "normal");
+            pdf.setTextColor(0, 0, 0);
             
             inconformidadesValidas.forEach((inconformidade, index) => {
-              const textoInconformidade = `${index + 1}. ${inconformidade}`;
-              adicionarTexto(textoInconformidade, 10, "normal", 10);
+              adicionarTexto(`${index + 1}. ${inconformidade}`, 10);
             });
             
             yPos += 5;
           }
           
+          // Observações adicionais
           const observacoes = document.getElementById('observacoesAdicionais').value;
           if (observacoes && observacoes.trim() !== '') {
-            pdf.setFontSize(11);
+            pdf.setFontSize(12);
             pdf.setFont("helvetica", "bold");
-            pdf.text('Observações adicionais (se houver):', marginLeft, yPos);
+            pdf.setTextColor(...PDF_CONFIG.colors.primary);
+            pdf.text('Observações adicionais:', marginLeft, yPos);
             yPos += 8;
             
             pdf.setFontSize(10);
             pdf.setFont("helvetica", "normal");
+            pdf.setTextColor(0, 0, 0);
             adicionarTexto(observacoes, 10);
           }
           
-          finalizarComAssinatura();
-        }
-        
-        function finalizarComAssinatura() {
+          // Assinatura
+          verificarNovaPagina(30);
+          pdf.setFontSize(12);
+          pdf.setFont("helvetica", "bold");
+          pdf.setTextColor(...PDF_CONFIG.colors.primary);
+          pdf.text('ASSINATURA', marginLeft, yPos);
           yPos += 10;
           
-          const vistoriador = document.getElementById('assinaturaVistoriador').value || '________________';
+          const vistoriador = document.getElementById('assinaturaVistoriador').value || '______________________';
           const cargo = document.getElementById('cargoVistoriador').value || 'Engenheiro/Responsável Técnico';
           
-          verificarNovaPagina(30);
           pdf.setFontSize(11);
-          pdf.setFont("helvetica", "bold");
-          pdf.text('VISTORIADOR (A):', marginLeft, yPos);
           pdf.setFont("helvetica", "normal");
-          pdf.text(vistoriador, marginLeft + 55, yPos);
-          yPos += 7;
+          pdf.setTextColor(0, 0, 0);
+          pdf.text(`Vistoriador(a): ${vistoriador}`, marginLeft, yPos);
+          yPos += 8;
+          pdf.text(`Cargo: ${cargo}`, marginLeft, yPos);
+          yPos += 8;
           
-          pdf.setFont("helvetica", "bold");
-          pdf.text('CARGO:', marginLeft, yPos);
-          pdf.setFont("helvetica", "normal");
-          pdf.text(cargo, marginLeft + 55, yPos);
-          yPos += 15;
+          // Linha de assinatura
+          pdf.setLineWidth(0.5);
+          pdf.line(marginLeft, yPos, pageWidth - marginRight, yPos);
+          yPos += 5;
+          pdf.setFontSize(9);
+          pdf.setTextColor(...PDF_CONFIG.colors.darkGray);
+          pdf.text('Assinatura', pageWidth / 2, yPos, { align: 'center' });
           
+          // Adicionar rodapé em todas as páginas
           const totalPaginas = pdf.internal.getNumberOfPages();
           for (let i = 1; i <= totalPaginas; i++) {
             pdf.setPage(i);
             adicionarRodape(i, totalPaginas);
           }
           
+          // Salvar PDF
           const protocolo = document.getElementById('protocolo').value || 'sem_protocolo';
           const data = new Date();
           const timestamp = `${data.getDate()}${data.getMonth()+1}${data.getFullYear()}_${data.getHours()}${data.getMinutes()}`;
@@ -2415,14 +2358,16 @@
           
           pdf.save(nomeArquivo);
           mostrarStatus('PDF gerado com sucesso!');
-        }
+        };
         
-        if (fotos.length > 0) {} else {
-          adicionarConclusoesDiretamente();
-        }
+        // Executar a função assíncrona
+        gerarPDFAssincrono().catch(error => {
+          console.error('Erro na geração do PDF:', error);
+          mostrarStatus(`Erro ao gerar PDF: ${error.message}`, 'error');
+        });
         
       } catch (error) {
-        console.error('Erro detalhado ao gerar PDF:', error);
+        console.error('Erro ao iniciar geração do PDF:', error);
         mostrarStatus(`Erro ao gerar PDF: ${error.message}`, 'error');
       }
     }
