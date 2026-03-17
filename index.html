@@ -1814,7 +1814,8 @@
       
       let textoInconformidades = '';
       if (temInconformidades && descInconformidades) {
-        textoInconformidades = `Na subestação foram encontradas algumas inconformidades como ${descInconformidades.toLowerCase()}. `;
+        textoInconformidades = `Na subestação foram encontradas algumas inconformidades como:
+        ${descInconformidades.toLowerCase()}. `;
         if (semInconformidades || descSemInconformidades) {
           textoInconformidades += `Já no sistema de contenção de óleo e no sistema de separação de água e óleo não foram encontradas inconformidades.`;
         }
